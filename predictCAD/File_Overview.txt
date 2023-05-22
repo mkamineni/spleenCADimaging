@@ -1,0 +1,5 @@
+CADcohort_all_rad.csv: includes 42,772 patients with PCE features and radiomics features extracted from the spleen 
+CADcohort_just_rad.csv: includes 42,772 patients with only radiomics features extracted from the spleen 
+CADcohort_all.csv: includes 42,772 patients with only PCE features
+
+model_outputs.txt: outputs of the performance of different models trained on different cohorts and on different days
