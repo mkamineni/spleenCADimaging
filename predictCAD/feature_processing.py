@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-import step_reg
+import numpy as np
 
 def add_radiomics_features(data, phase):
     rad = pd.read_csv('../radiomics/radiomics_spleen.csv')
@@ -50,11 +50,3 @@ def calculate_vif(df, features):
         vif[feature] = 1/(tolerance[feature])
     # return VIF DataFrame
     return pd.DataFrame({'VIF': vif, 'Tolerance': tolerance})
-
-def forward_select(X, y = None):
-    included = step_reg.forward_regression(X, y)
-    if y = 
-    print("Included")
-    print(included)
-    return X[included], y
-    

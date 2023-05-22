@@ -7,7 +7,7 @@ from feature_processing import add_radiomics_features, add_existing_abdominal_fe
 withPCE = True
 withRadiomics = True
 withExistAbFeats = False #existing abdominal features
-dropNa = True
+dropNa = False
 phase = 'wat'
 
 def make_feat_numerical(coh, covars):
@@ -94,6 +94,6 @@ print(len(coh))
 print(coh.columns)
 print(coh.head())
 
-vif = calculate_vif(coh, covars)
-print(vif.to_string())
+#vif = calculate_vif(coh, covars)
+#print(vif.to_string())
 coh.to_csv(make_filename(withPCE, withRadiomics, withExistAbFeats, dropNa), index = None)

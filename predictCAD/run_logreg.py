@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
 import xgboost as xgb
+import step_reg
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
@@ -13,13 +14,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import FunctionTransformer
-from feature_processing import forward_select
+from feature_processing import calculate_vif, logit_pvalue
     
-with open('covars.txt', 'r') as fp:
+with open('cohorts/covars.txt', 'r') as fp:
     covars = [x.strip() for x in fp.readlines()]
 outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
 
-cohort = 'cohorts/CADcohort_rad'#'CADcohort_just_rad'
+cohort = 'cohorts/CADcohort_all_rad'#'CADcohort_just_rad'
 
 choices = ['logreg_l1']#, 'logreg_l2']#, 'xgboost']
 f = open('model_outputs.txt', "a+")
@@ -39,6 +40,16 @@ for choice in choices:
         # configure the cross-validation procedure
         cv = KFold(n_splits=5, shuffle=True, random_state=1)
 
+        imputer = SimpleImputer(missing_values=np.nan, strategy='median')
+        imputer.fit(X_train)
+        X_train = pd.DataFrame(imputer.transform(X_train), columns = X_train.columns).reset_index(drop = True)
+        Y_train = Y_train.reset_index(drop = True)
+        included_feats = step_reg.forward_regression(X_train, Y_train)
+        input(included_feats)
+        X_train = X_train[included_feats]
+        vif = calculate_vif(X_train, included_feats)
+        input(vif.to_string())
+
         # define search
         if 'logreg' in choice:
             # define search space
@@ -46,17 +57,16 @@ for choice in choices:
             c_parameters=[5**(-5),5**(-4),5**(-3),5**(-2),5**(-1),0.5,5**(0),5,10]
             
             if choice == 'logreg_l1':
-                pipeline=Pipeline([('num_imputer', SimpleImputer(missing_values=np.nan, strategy='median')), ('standard_scaler', StandardScaler()), ('feature_selector', FunctionTransformer(forward_select)), ('model', LogisticRegression(solver = 'saga'))])
+                pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression(solver = 'saga'))])
                 param_grid = dict({'model__penalty': ['l1'], 'model__max_iter': [1000, 5000], 'model__class_weight':['balanced', None], 'model__C':c_parameters})
             else:
-                pipeline=Pipeline([('num_imputer', SimpleImputer(missing_values=np.nan, strategy='median')), ('standard_scaler', StandardScaler()), ('feature_selector', FunctionTransformer(forward_select)), ('model', LogisticRegression())])
+                pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression())])
                 param_grid = dict({'model__penalty': ['l2'], 'model__class_weight':['balanced', None], 'model__C':c_parameters})
 
         else:
             model = xgb.XGBClassifier()
 
             pipeline = Pipeline([
-                ('num_imputer', SimpleImputer(missing_values=np.nan, strategy='median')),
                 ('standard_scaler', StandardScaler()), 
                 ('pca', PCA()), 
                 ('model', model)
@@ -73,11 +83,19 @@ for choice in choices:
         result = search.fit(X_train, Y_train)
         print(result)
         best_model = result.best_estimator_
+        X_test = imputer.transform(X_test)
+        #X_test = X_test[included_feats]
         predictions = best_model.predict_proba(X_test)
         print(result.best_params_)
         f.write("Best Parameters of Model: %s \n" %str(result.best_params_))
-        
+
         feat_imp = best_model.named_steps['model'].coef_[0]
+        #p_values = logit_pvalue(best_model.named_steps['model'], X_train)
+
+        #tups = []
+        #for ind, coef in enumerate(feat_imp):
+        #    tups.append((coef, p_values[ind]))
+            
         print(feat_imp)
         print(covars)
         feat_to_imp = dict(zip(covars, feat_imp))
