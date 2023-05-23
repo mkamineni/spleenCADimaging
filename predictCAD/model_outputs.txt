@@ -587,9 +587,296 @@ AUC of model: 0.814656
 Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
 Best Parameters of Model: {'model__C': 0.008, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
 Top 20 Features: [('age.x', 0.5142976305244066), ('antihtnbase.x', 0.4413948822616761), ('sex.x_Male', 0.12563712675314323), ('original_glcm_DifferenceEntropy', 0.07256208196746587), ('dm1_prev.x', 0.05754067267894494), ('SBP.x', 0.055881477382476966), ('original_glszm_GrayLevelNonUniformity', 0.05198173211329309), ('smoking.x_Current', 0.04660447304417733), ('original_shape_Maximum2DDiameterRow', 0.04530931621453594), ('dm2_prev.x', 0.034128327283084736), ('original_shape_Sphericity', 0.02516991104410428), ('race.x_asian', 0.024424168318251803), ('original_ngtdm_Complexity', 0.01676359019425993), ('original_glszm_SizeZoneNonUniformityNormalized', 0.0033825874713643866), ('original_shape_Flatness', 0.0), ('original_shape_LeastAxisLength', 0.0), ('original_shape_MajorAxisLength', 0.0), ('original_shape_Maximum2DDiameterSlice', 0.0), ('original_shape_Maximum3DDiameter', 0.0), ('original_shape_MeshVolume', 0.0)] 
-AUC of model: 0.782440 
+AUC of model: 0.782440 -----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.00032, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.04, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.8580836694680616, 1.0)), ('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (-0.08874746709359035, 1.0)), ('age.x', (0.6738385458995247, 0.9999999999999953)), ('dm1_prev.x', (-0.07823420577910005, 0.9999999999999951)), ('sex.x_Female', (-0.11850310903981598, 0.9999999999999838)), ('race.x_asian', (0.0, 0.9999999999974989)), ('SBP.x', (-0.3498929613505171, 0.9999999999777269)), ('dm2_prev.x', (0.06381062171299302, 0.9999999999517915)), ('hdl.x', (-0.5840230950326675, 0.9999999999404705)), ('tchol.x', (-0.1709685096885997, 0.9999999999189149)), ('sex.x_Male', (0.11850310903981598, nan)), ('smoking.x_Current', (0.28829507211682065, nan)), ('smoking.x_Previous', (0.01922215679526019, 1.0)), ('smoking.x_Never', (0.0, 0.9999999999999993))] 
+AUC of model: 0.893665 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age.x', (0.7386348944585821, nan)), ('race.x_other', (-0.0520185119641398, 1.0)), ('sex.x_Female', (-0.14216428844382992, 1.0)), ('race.x_mixed', (0.0, 0.9988587364538855)), ('race.x_black', (-0.03014349895989833, 0.9957426127897504)), ('dm1_prev.x', (-0.0963580365616813, 0.9950924537004022)), ('antihtnbase.x', (0.7338126575319264, 0.9909973599927793)), ('race.x_white', (0.0, 0.9857267015424014)), ('race.x_asian', (0.01365229683593691, 0.08105124991087287)), ('SBP.x', (-0.2023024620734681, 5.947686787521889e-12)), ('hdl.x', (-0.13913118128532417, 3.750333377183779e-13)), ('tchol.x', (-0.045381448162858426, 0.0)), ('dm2_prev.x', (-0.005853301813443368, 0.0)), ('sex.x_Male', (0.14216428844382992, nan)), ('smoking.x_Current', (0.24911679243817536, nan)), ('smoking.x_Previous', (-0.17375043631116305, 1.0)), ('smoking.x_Never', (0.0, 0.9569963180114651))] 
+AUC of model: 0.734175 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age.x', (0.6708112281825089, nan)), ('antihtnbase.x', (0.78855952703425, 1.0)), ('race.x_mixed', (-0.06453874272695788, 1.0)), ('race.x_other', (-0.16972972476697826, 1.0)), ('race.x_white', (-0.24930151885608728, 1.0)), ('race.x_black', (-0.17000771658097188, 0.9999999999999885)), ('dm1_prev.x', (-0.15024135830269433, 0.9999999999999825)), ('sex.x_Female', (-0.1789063816697781, 0.9999999999999525)), ('race.x_asian', (-0.13042427521105787, 0.9999999999930922)), ('SBP.x', (-0.27462034204553953, 0.9999999999324225)), ('dm2_prev.x', (0.05397958859311097, 0.9999999998958746)), ('tchol.x', (-0.23511090282299288, 0.9999999997806461)), ('hdl.x', (-0.49994775513831374, 0.9999999997747084)), ('sex.x_Male', (0.1789063816697781, nan)), ('smoking.x_Current', (0.3548846456702635, nan)), ('smoking.x_Never', (0.22977492921176423, nan)), ('smoking.x_Previous', (0.20125483764870236, nan))] 
+AUC of model: 0.818983 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+Best Parameters of Model: {'model__C': 0.04, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age.x', (0.5139269632254203, nan)), ('hdl.x', (-0.05939135962349065, 1.0)), ('dm2_prev.x', (0.0, 1.0)), ('dm1_prev.x', (0.0, 1.0)), ('antihtnbase.x', (0.6237982226470644, 1.0)), ('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (0.0, 1.0)), ('sex.x_Female', (-0.010492869988706648, 1.0)), ('race.x_asian', (0.0, 0.9999646687051262)), ('SBP.x', (0.0, 0.9990082548337473)), ('tchol.x', (0.0, 0.99839949877583)), ('sex.x_Male', (0.010492869988706648, nan)), ('smoking.x_Current', (0.164603970396243, nan)), ('smoking.x_Previous', (0.0, 1.0)), ('smoking.x_Never', (0.0, 0.9999978705292081))] 
+AUC of model: 0.734781 
  
 -----------------Date of Analysis: 2023-05-22----------------- 
-cohorts/CADcohort_rad
-Number of patients 33539Model Choice: logreg_l1 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
 Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.8581054314290835, 1.0)), ('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (-0.08875270871844346, 1.0)), ('dm1_prev.x', (-0.07822813992489178, 0.9999999999999951)), ('age.x', (0.6739045615617405, 0.9999999999999918)), ('sex.x_Female', (-0.11850255794975335, 0.9999999999999838)), ('race.x_asian', (0.0, 0.9999999999974964)), ('SBP.x', (-0.349901546143532, 0.9999999999777016)), ('dm2_prev.x', (0.06380695447677245, 0.9999999999517475)), ('hdl.x', (-0.5840868375135272, 0.999999999940409)), ('tchol.x', (-0.17095766559192355, 0.9999999999188394)), ('sex.x_Male', (0.11850255794975335, nan)), ('smoking.x_Current', (0.28830926734298645, nan)), ('smoking.x_Previous', (0.01921733253059999, 1.0)), ('smoking.x_Never', (0.0, 0.9999999999999996))] 
+AUC of model: 0.893702 
+ 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l2 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.008, 'model__class_weight': 'balanced', 'model__penalty': 'l2'} 
+Top 20 Features: [('age.x', (0.39578077438222814, nan)), ('race.x_other', (-0.034909432383415796, 0.9999991178740584)), ('race.x_mixed', (-0.024184389711947824, 0.9999917099691937)), ('antihtnbase.x', (0.6144386115732192, 0.9998725807210727)), ('race.x_white', (-0.01451224418684374, 0.9997652602775449)), ('sex.x_Female', (-0.12225351259871706, 0.9997505034699994)), ('race.x_black', (-0.04156824441065621, 0.999385154597173)), ('dm1_prev.x', (-0.06082604018084742, 0.9876300258930364)), ('dm2_prev.x', (0.04271606551957075, 0.9084639865277433)), ('race.x_asian', (-0.036091790656269426, 0.6730766366275263)), ('SBP.x', (-0.004173425779625804, 0.0301377418803479)), ('tchol.x', (-0.10751022359858292, 0.02362999505608787)), ('hdl.x', (-0.23483121903654658, 0.005899386171160703)), ('sex.x_Male', (0.12225351259871706, nan)), ('smoking.x_Current', (0.2021274021677965, nan)), ('smoking.x_Previous', (0.028220885176322465, 0.9995025820718495)), ('smoking.x_Never', (-0.10667757834358552, 0.9990580522762962))] 
+AUC of model: 0.905460 
+ 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-22----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.008, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age.x', (0.5069756593922916, nan)), ('race.x_other', (-0.0017394136084988266, 0.9999864242939775)), ('race.x_white', (-0.005852018253724952, 0.9999808196019973)), ('sex.x_Female', (-0.28374575552340664, 0.999934981110292)), ('race.x_mixed', (-0.0012224525203342748, 0.9999100225381583)), ('race.x_black', (0.008103804167106288, 0.9994568778960407)), ('dm1_prev.x', (-0.7173246658204717, 0.9992396427323584)), ('race.x_asian', (0.048922604678114275, 0.9349696216153218)), ('antihtnbase.x', (0.49000547055093596, 0.889311165752956)), ('hdl.x', (-0.4402436548531685, 0.003868543012473191)), ('dm2_prev.x', (-0.12346250158251107, 0.0011038963732652451)), ('tchol.x', (0.05351359995017162, 1.0984968810801021e-05)), ('SBP.x', (0.09929218684642643, 2.6720817469794156e-07)), ('sex.x_Male', (0.28374575552340664, nan)), ('smoking.x_Current', (0.11155141710339847, nan)), ('smoking.x_Previous', (-0.06186157165444314, 0.9989351475106594)), ('smoking.x_Never', (-0.04072176804410754, 0.9970906983272725))] 
+AUC of model: 0.816268 
+ 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (-0.08875497881646292, 1.0)), ('sex.x_Female', (-0.11850285562146143, 0.8228666183618185)), ('dm1_prev.x', (-0.07822805239407447, 0.6797303129805842)), ('antihtnbase.x', (0.8581082083765059, 0.6096532262551209)), ('hdl.x', (-0.5840994194790059, 0.29706305127324856)), ('dm2_prev.x', (0.06380667446563608, 0.03223533306670049)), ('SBP.x', (-0.34990473968096253, 0.0007253531410088179)), ('tchol.x', (-0.1709559401112562, 4.220901843129916e-05)), ('race.x_asian', (0.0, 1.9406745132760207e-07)), ('age.x', (0.6739106915948266, 5.73094104046285e-138)), ('sex.x_Male', (0.11850285562146143, nan)), ('smoking.x_Current', (0.28830470142514136, nan)), ('smoking.x_Previous', (0.01921353009658358, 1.0)), ('smoking.x_Never', (0.0, 0.6163204075842138))] 
+AUC of model: 0.893702 
+ 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (-0.08874914292515049, 1.0)), ('sex.x_Female', (-0.11850101360151319, 0.822871151219271)), ('dm1_prev.x', (-0.07823377113007784, 0.6797003986350345)), ('antihtnbase.x', (0.8580790687635559, 0.6096128817706734)), ('hdl.x', (-0.5840145351840049, 0.2970081381831228)), ('dm2_prev.x', (0.06381044986489061, 0.03223280081237795)), ('SBP.x', (-0.3498959854861635, 0.0007262901044563483)), ('tchol.x', (-0.17096859245389787, 4.2260948945685335e-05)), ('race.x_asian', (0.0, 1.940364782038183e-07)), ('age.x', (0.6738366355207142, 5.72280369283753e-138)), ('sex.x_Male', (0.11850101360151319, nan)), ('smoking.x_Current', (0.2882929799285846, nan)), ('smoking.x_Previous', (0.019220846417463702, 1.0)), ('smoking.x_Never', (0.0, 0.6163207338336185))] 
+AUC of model: 0.893665 
+ 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('race.x_black', (0.0, 1.0)), ('race.x_mixed', (0.0, 1.0)), ('race.x_other', (0.0, 1.0)), ('race.x_white', (-0.08875426823247823, 1.0)), ('sex.x_Female', (-0.11850081495779602, 0.8228680234952777)), ('dm1_prev.x', (-0.0782266863655192, 0.6797243045729737)), ('antihtnbase.x', (0.8581042941747367, 0.6096594914124892)), ('hdl.x', (-0.5841042137828826, 0.2970708983605516)), ('dm2_prev.x', (0.06380794586348494, 0.03223682501900939)), ('SBP.x', (-0.3499017278160283, 0.0007252808957339053)), ('tchol.x', (-0.170953171905204, 4.221096569113671e-05)), ('race.x_asian', (0.0, 1.9409224983827687e-07)), ('age.x', (0.6739089584291907, 5.730352142217352e-138)), ('sex.x_Male', (0.11850081495779602, nan)), ('smoking.x_Current', (0.28830644115451487, nan)), ('smoking.x_Previous', (0.01921271970271964, 1.0)), ('smoking.x_Never', (0.0, 0.616318301311366))] 
+AUC of model: 0.893702 
+ 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age.x', (0.544467268009743, 0.0)), ('tchol.x', (0.6292055375707898, 0.0)), ('hdl.x', (0.4981534193711094, 0.0)), ('SBP.x', (-0.503207354895331, 0.0)), ('dm2_prev.x', (0.04807279275708504, 0.0)), ('original_shape_Maximum2DDiameterSlice', (-0.0995941104773631, 8.973774391809949e-41)), ('original_shape_Maximum2DDiameterColumn', (0.01967080198270157, 1.3104346266902125e-38)), ('original_shape_MeshVolume', (0.02764825920957229, 4.1127684993109435e-38)), ('antihtnbase.x', (-0.12075476804581138, 1.0307284607388746e-35)), ('original_shape_Flatness', (0.0470228249759887, 2.498530754416347e-35)), ('original_shape_MajorAxisLength', (-0.13675863826342824, 1.8008348668028197e-30)), ('original_shape_Sphericity', (-0.06801997533492207, 3.5536391173346656e-22)), ('original_shape_VoxelVolume', (-0.3412866915885333, 9.730323084549032e-21)), ('original_firstorder_10Percentile', (-0.11123230525314591, 1.1131514911628855e-14)), ('original_firstorder_90Percentile', (0.13789550804300857, 1.5453247821408816e-13)), ('original_shape_SurfaceVolumeRatio', (0.16209486445140023, 4.052213720447574e-11)), ('original_shape_Maximum3DDiameter', (0.1310229414729012, 5.354600593893199e-11)), ('original_shape_Elongation', (0.12403281903351009, 2.7144482151110427e-09)), ('original_shape_LeastAxisLength', (0.1906545820393099, 7.154708579725543e-07)), ('dm1_prev.x', (-0.12537127900365055, 2.550894828647435e-06))] 
+AUC of model: 0.827798 
+ 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.5442987306603703, 0.0)), ('sex.x_Male', (0.6288459175245055, 0.0)), ('age.x', (0.4980233596418818, 0.0)), ('hdl.x', (-0.5028779557086893, 0.0)), ('original_firstorder_Skewness', (0.21560603717922708, 2.8980383325188227e-40)), ('original_shape_Maximum2DDiameterColumn', (-0.13656128821810262, 1.4949686408389775e-38)), ('SBP.x', (0.13086219133429788, 4.5174979433797426e-38)), ('smoking.x_Never', (-0.12529690324455445, 1.0191618465177386e-35)), ('smoking.x_Current', (0.12384863969975511, 2.835726858899307e-35)), ('original_shape_Maximum2DDiameterRow', (0.18921416905867314, 4.4704105204849275e-30)), ('original_glrlm_LongRunLowGrayLevelEmphasis', (-0.11373558852098342, 4.338713449755373e-22)), ('original_glcm_Correlation', (0.15897986423462118, 4.917381607459556e-20)), ('original_shape_SurfaceArea', (-0.33438368311369615, 3.604064807868809e-14)), ('original_firstorder_InterquartileRange', (-0.10835940455348847, 6.134633520381731e-13)), ('original_glszm_GrayLevelNonUniformity', (0.1405738504788802, 7.563955607439969e-11)), ('original_glcm_ClusterShade', (-0.09868805367746726, 7.748227249350086e-11)), ('original_shape_MinorAxisLength', (-0.12007255956350248, 3.251904936552827e-09)), ('race.x_asian', (0.046876001288862254, 7.616968478765185e-07)), ('tchol.x', (0.0477995014267171, 2.863156599969661e-06)), ('original_glrlm_RunLengthNonUniformity', (0.1334068324301429, 6.0919640663397364e-05))] 
+AUC of model: 0.827821 
+ 
+
+-----------------Date of Analysis: 2023-05-23----------------- 
+cohorts/CADcohort_all_rad
+Number of patients 42760Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.9663611896879646, 2.355517611217904e-27)), ('age.x', (0.8917133986795263, 7.216684604179836e-24)), ('original_gldm_GrayLevelNonUniformity', (2.772239869852062, 1.1533875454161395e-12)), ('original_glszm_LargeAreaLowGrayLevelEmphasis', (-0.9281166099628178, 3.750456761073131e-12)), ('original_firstorder_Median', (-0.616267860980118, 1.2170173983993542e-08)), ('original_gldm_DependenceNonUniformity', (-1.5676121369563525, 1.4144516491166902e-07)), ('hdl.x', (-0.49676688842824174, 1.4468121388142715e-07)), ('original_glrlm_RunVariance', (-0.7851758914461325, 1.5225088600055809e-05)), ('original_firstorder_RobustMeanAbsoluteDeviation', (0.5920498540585601, 0.00019807430544973887)), ('dm1_prev.x', (-0.2765306861990851, 0.0005940420678621079)), ('smoking.x_Current', (0.26958419392741856, 0.0007077296159440637)), ('original_shape_Maximum2DDiameterSlice', (-0.280163639682284, 0.002306042582979511)), ('original_shape_Flatness', (0.15956962282191786, 0.056657882285607454)), ('sex.x_Male', (0.1645525297773601, 0.07583511344059911)), ('original_shape_Maximum2DDiameterColumn', (0.14226952803408432, 0.13012545478322515)), ('tchol.x', (-0.08205899603160682, 0.3458181046507435)), ('SBP.x', (-0.03445491307071642, 0.6880131814611095)), ('dm2_prev.x', (-0.017620061430927918, 0.8291239794366516))] 
+AUC of model: 0.847810 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+Best Parameters of Model: {'model__C': 0.04, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.6975690661922805, 3.9784041618312e-58)), ('age.x', (0.5030774914801476, 2.667418046842318e-33)), ('smoking.x_Current', (0.18561350560496645, 1.0079682138412254e-06)), ('sex.x_Male', (0.14969367217745916, 0.00044578777967060955)), ('hdl.x', (-0.05913640142124139, 0.16645793385813507)), ('SBP.x', (-0.02261952629616588, 0.5743219174424434)), ('tchol.x', (0.0, 1.0)), ('dm1_prev.x', (0.0, 1.0)), ('original_shape_Maximum2DDiameterColumn', (0.0, 1.0))] 
+AUC of model: 0.757925 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.7986987221350865, 1.408492879485508e-07)), ('age.x', (0.552298558559359, 0.0002345139013892267)), ('hdl.x', (-0.43992745783178633, 0.005607185027048411)), ('sex.x_Male', (0.2877956901041664, 0.06824064202408772)), ('smoking.x_Current', (0.22553387713904952, 0.1074189114885118)), ('tchol.x', (-0.2136615268667264, 0.1576485718525022)), ('SBP.x', (-0.20770864230793917, 0.16470454664052944)), ('original_shape_Maximum2DDiameterColumn', (0.1598113659978134, 0.25994899642771346)), ('dm1_prev.x', (-0.0468855105239432, 0.7385420200602069))] 
+AUC of model: 0.813509 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+Best Parameters of Model: {'model__C': 0.04, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase.x', (0.6364968939055545, 1.0211319357210412e-62)), ('age.x', (0.5085390247248687, 4.803975519634891e-43)), ('smoking.x_Current', (0.17475245663052924, 1.3778323051028706e-07)), ('original_shape_Maximum2DDiameterColumn', (0.022577407989854723, 0.4982133307902926)), ('tchol.x', (-0.01895069645716623, 0.5835365814457023)), ('sex.x_Male', (0.014016530515870729, 0.6855760295537414)), ('SBP.x', (0.0, 1.0)), ('dm1_prev.x', (0.0, 1.0))] 
+AUC of model: 0.731577 
+ 

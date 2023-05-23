@@ -30,9 +30,6 @@ def make_feat_numerical(coh, covars):
     
     coh = coh.drop(cat_feats, axis = 1)
     covars = [var for var in covars if var not in cat_feats]
-    #imputer = SimpleImputer(c)
-    #for col in covars:
-    #    coh[col] = imputer.fit_transform(coh[col].values.reshape(-1,1))[:,0]
     return coh, covars
 
     
@@ -87,7 +84,7 @@ np.random.seed(5)
 # add train-test split
 coh['train'] = np.random.choice(2, coh.shape[0], p=[0.3, 0.7])
 
-with open('covars.txt', 'w') as fp:
+with open('cohorts/covars.txt', 'w') as fp:
     fp.writelines(var + '\n' for var in covars)
 print(len(coh))
 

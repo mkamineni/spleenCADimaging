@@ -1,12 +1,16 @@
+import random
+import numpy as np
+random.seed(0)
+np.random.seed(0)
+
 # modules for Log Reg
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 from datetime import date
 import xgboost as xgb
 import step_reg
 
-from sklearn.linear_model import LogisticRegression
+from logreg_wpval import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 from sklearn.model_selection import KFold, GridSearchCV
 from sklearn.pipeline import Pipeline
@@ -27,7 +31,7 @@ f = open('model_outputs.txt', "a+")
 f.write('-----------------Date of Analysis: %s----------------- \n' %str(date.today()))
 f.write(cohort + '\n')
 data_filt = pd.read_csv(cohort +'.csv')
-train, test = data_filt[data_filt.train==1], data_filt[data_filt.train==0]
+train, test = data_filt[data_filt.train==1].head(1000), data_filt[data_filt.train==0].head(1000)
 X_train, X_test = train[covars], test[covars]
 f.write("Number of patients %d" %data_filt.shape[0])
 
@@ -77,37 +81,55 @@ for choice in choices:
                 'model__max_depth': [2, 3, 5, 7, 10],
                 'model__n_estimators': [10, 100, 500],
             }
+        '''
+        import statsmodels.api as sm
+        X1 = sm.add_constant(X_train)
+        model = sm.OLS(Y_train, X1)
+        model = model.fit()
+        #model.tvalues
+        # array([ 0.37424023, -2.36373529,  3.57930174])
+        # compute p-values
+        #t.sf(np.abs(model.tvalues), n-X1.shape[1])*2 
+        # array([7.09042437e-01, 2.00854025e-02, 5.40073114e-04])  
+
+        print(model.summary())
+        input("Stop")
+        '''
 
         search = GridSearchCV(pipeline, param_grid, scoring='roc_auc', n_jobs=-1, cv=cv)
         # execute search
-        result = search.fit(X_train, Y_train)
+        result = search.fit(np.array(X_train), Y_train)
         print(result)
-        best_model = result.best_estimator_
-        X_test = imputer.transform(X_test)
-        #X_test = X_test[included_feats]
-        predictions = best_model.predict_proba(X_test)
+        best_pipeline = result.best_estimator_
+        X_test = pd.DataFrame(imputer.transform(X_test), columns = X_test.columns).reset_index(drop = True)
+        X_test = X_test[included_feats]
+        predictions = best_pipeline.predict_proba(np.array(X_test))
         print(result.best_params_)
         f.write("Best Parameters of Model: %s \n" %str(result.best_params_))
 
-        feat_imp = best_model.named_steps['model'].coef_[0]
-        #p_values = logit_pvalue(best_model.named_steps['model'], X_train)
+        best_model= best_pipeline.named_steps['model'] 
+        feat_imp = best_model.coef_[0]
+        print(feat_imp)
+        #from regressors import stats
+        #input("coef_pval:\n", logit_pvalue(best_model.named_steps['model'], X_train, Y_train))
 
-        #tups = []
-        #for ind, coef in enumerate(feat_imp):
-        #    tups.append((coef, p_values[ind]))
+        p_values = best_model.p_vals#logit_pvalue(best_model.named_steps['model'], X_train)
+        #p_values = stats.coef_pval(best_model, np.array(X_train), Y_train)
+        
+        assert len(p_values)==len(included_feats)+1
+        tups = []
+        for ind, coef in enumerate(feat_imp):
+            tups.append((coef, p_values[ind+1]))
             
         print(feat_imp)
-        print(covars)
-        feat_to_imp = dict(zip(covars, feat_imp))
+        feat_to_imp = dict(zip(included_feats, tups))
 
-        sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1], reverse = True)
+        sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1][1], reverse = False)
         print(sorted_feat_to_imp)
         
         f.write("Top 20 Features: %s \n" %str(sorted_feat_to_imp[:20])) 
 
 
-        print(predictions[:,1])
-        print(np.array(Y_test))
         auc = roc_auc_score(np.array(Y_test), predictions[:,1])
         print(auc)
         f.write("AUC of model: %f \n \n" %auc)
