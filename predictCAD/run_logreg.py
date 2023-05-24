@@ -18,22 +18,22 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import FunctionTransformer
-from feature_processing import calculate_vif, logit_pvalue
+from feature_processing import calculate_vif#, logit_pvalue
     
 with open('cohorts/covars.txt', 'r') as fp:
     covars = [x.strip() for x in fp.readlines()]
 outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
 
-cohort = 'cohorts/CADcohort_all_rad'#'CADcohort_just_rad'
+cohort = 'cohorts/CADcohort_all_demo_radliver'#'CADcohort_just_rad'
 
 choices = ['logreg_l1']#, 'logreg_l2']#, 'xgboost']
 f = open('model_outputs.txt', "a+")
 f.write('-----------------Date of Analysis: %s----------------- \n' %str(date.today()))
 f.write(cohort + '\n')
 data_filt = pd.read_csv(cohort +'.csv')
-train, test = data_filt[data_filt.train==1].head(1000), data_filt[data_filt.train==0].head(1000)
+train, test = data_filt[data_filt.train==1], data_filt[data_filt.train==0]
 X_train, X_test = train[covars], test[covars]
-f.write("Number of patients %d" %data_filt.shape[0])
+f.write("Number of patients %d \n" %data_filt.shape[0])
 
 for choice in choices:
     f.write('Model Choice: %s \n' %choice)
@@ -49,10 +49,9 @@ for choice in choices:
         X_train = pd.DataFrame(imputer.transform(X_train), columns = X_train.columns).reset_index(drop = True)
         Y_train = Y_train.reset_index(drop = True)
         included_feats = step_reg.forward_regression(X_train, Y_train)
-        input(included_feats)
         X_train = X_train[included_feats]
         vif = calculate_vif(X_train, included_feats)
-        input(vif.to_string())
+        f.write(vif.to_string() + "\n")
 
         # define search
         if 'logreg' in choice:
@@ -81,20 +80,6 @@ for choice in choices:
                 'model__max_depth': [2, 3, 5, 7, 10],
                 'model__n_estimators': [10, 100, 500],
             }
-        '''
-        import statsmodels.api as sm
-        X1 = sm.add_constant(X_train)
-        model = sm.OLS(Y_train, X1)
-        model = model.fit()
-        #model.tvalues
-        # array([ 0.37424023, -2.36373529,  3.57930174])
-        # compute p-values
-        #t.sf(np.abs(model.tvalues), n-X1.shape[1])*2 
-        # array([7.09042437e-01, 2.00854025e-02, 5.40073114e-04])  
-
-        print(model.summary())
-        input("Stop")
-        '''
 
         search = GridSearchCV(pipeline, param_grid, scoring='roc_auc', n_jobs=-1, cv=cv)
         # execute search
@@ -115,16 +100,17 @@ for choice in choices:
 
         p_values = best_model.p_vals#logit_pvalue(best_model.named_steps['model'], X_train)
         #p_values = stats.coef_pval(best_model, np.array(X_train), Y_train)
+        se = best_model.se
         
         assert len(p_values)==len(included_feats)+1
         tups = []
         for ind, coef in enumerate(feat_imp):
-            tups.append((coef, p_values[ind+1]))
+            tups.append((coef, se[ind+1], p_values[ind+1]))
             
         print(feat_imp)
         feat_to_imp = dict(zip(included_feats, tups))
 
-        sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1][1], reverse = False)
+        sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1][2], reverse = False)
         print(sorted_feat_to_imp)
         
         f.write("Top 20 Features: %s \n" %str(sorted_feat_to_imp[:20])) 

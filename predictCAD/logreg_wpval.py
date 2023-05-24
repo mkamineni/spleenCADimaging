@@ -35,10 +35,24 @@ class LogisticRegression(linear_model.LogisticRegression):
         
         # standard deviation of the noise.
         sigma_hat = np.sqrt(np.sum(np.square(y - X1@beta_hat)) / (n - X1.shape[1]))
+        
         # estimate the covariance matrix for beta 
         beta_cov = np.linalg.inv(X1.T@X1)
+        self.se = sigma_hat * np.sqrt(np.diagonal(beta_cov))
+        
+        # let's test method 2 to see if we get the same
+        # Initiate matrix of 0's, fill diagonal with each predicted observation's variance
+        #V = np.diagflat(np.product(y, axis=1))
+
+        #covLogit = np.linalg.inv(np.dot(np.dot(X1.T, V), X1))
+        #print("Covariance matrix: ", covLogit)
+
+        # Standard errors
+        #print("Standard errors: ", np.sqrt(np.diag(covLogit)))
+        #input(self.se)
+
         # the t-test statistic for each variable from the formula from above figure
-        self.t_vals = beta_hat / (sigma_hat * np.sqrt(np.diagonal(beta_cov)))
+        self.t_vals = beta_hat / self.se
         # compute 2-sided p-values.
         self.p_vals = t.sf(np.abs(self.t_vals), n-X1.shape[1])*2
         return self

@@ -3,8 +3,8 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 from scipy.stats import norm
 
-def add_radiomics_features(data, phase):
-    rad = pd.read_csv('../radiomics/radiomics_spleen.csv')
+def add_radiomics_features(data, phase, organ = 'spleen'):
+    rad = pd.read_csv('../radiomics/radiomics_%s.csv' %organ)
     diag_cols = [elem for elem in rad.columns if 'diagnostics' in elem]
     rad = rad[rad.Image.str.contains(phase)]
     rad = rad.drop(['Image', 'Mask']+diag_cols, axis = 1)
@@ -23,7 +23,6 @@ def add_radiomics_features(data, phase):
             covars.remove(col)
 
     return data, covars
-
 
 def add_existing_abdominal_features(data_filt, abdominal_covars):
     exist_ab=pd.read_csv("gs://ukbb_spleen/Abdominal_features/abdominal_features.csv")

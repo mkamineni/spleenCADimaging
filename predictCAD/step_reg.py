@@ -5,7 +5,7 @@ import statsmodels.api as sm
 
 
 def forward_regression(X, y,
-                       threshold_in = 0.25,
+                       threshold_in = 0.1,
                        verbose=False):
     initial_list = []
     included = list(initial_list)
@@ -27,7 +27,7 @@ def forward_regression(X, y,
         if not changed:
             break
     # parallels for these are: range, sex_male, range, firstorder_energy
-    for elem in ['original_firstorder_Minimum', 'sex.x_Female', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy']:
+    for elem in ['original_firstorder_Minimum', 'sex_Female', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy']:
         if elem in included:
             included.remove(elem)
     return included
