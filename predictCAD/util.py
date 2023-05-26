@@ -4,10 +4,13 @@ import numpy as np
 from scipy.stats import norm
 
 def add_radiomics_features(data, phase, organ = 'spleen'):
+    print(organ)
     rad = pd.read_csv('../radiomics/radiomics_%s.csv' %organ)
     diag_cols = [elem for elem in rad.columns if 'diagnostics' in elem]
     rad = rad[rad.Image.str.contains(phase)]
     rad = rad.drop(['Image', 'Mask']+diag_cols, axis = 1)
+    rad = rad.add_prefix(organ+'_')
+    rad = rad.rename(columns = {organ+'_ID':'ID'})
     rad = rad.drop_duplicates('ID').dropna()
     covars = list(rad.columns)
     covars.remove("ID")
@@ -33,6 +36,29 @@ def add_existing_abdominal_features(data_filt, abdominal_covars):
     print(data.spleen_vol.value_counts(dropna=False))
     print(data.head())
     return data
+
+def make_feat_numerical(coh, covars):
+    
+    cat_feats = ['race', 'Sex', 'SmokingStatusv2']
+    feat_map = {'race':'race', 'Sex':'sex', 'SmokingStatusv2':'smoking'}
+    # categories that are already binary: dm2_prev, dm1_prev, antihtnbase, so leave alone
+
+    # continuous vars: tchol, hdl, SBP
+
+    # quintile age
+    #age_expand = pd.get_dummies(pd.qcut(coh['age'], 5), prefix = "age")
+	#coh = pd.concat([coh, age_expand], axis=1)
+        
+    # make categorical vars into binary
+    for feat in cat_feats:
+        if feat in coh.columns:
+            feat_expand = pd.get_dummies(coh[feat], prefix = feat_map[feat])
+            coh = pd.concat([coh, feat_expand], axis=1)
+            covars.extend(feat_expand.columns)
+    
+    coh = coh.drop([feat for feat in cat_feats if feat in coh.columns], axis = 1)
+    covars = [var for var in covars if var not in cat_feats]
+    return coh, covars
     
 def calculate_vif(df, features):    
     vif, tolerance = {}, {}
@@ -51,25 +77,18 @@ def calculate_vif(df, features):
     # return VIF DataFrame
     return pd.DataFrame({'VIF': vif, 'Tolerance': tolerance})
 
-
-'''
-#Not currently being used anywhere, but was tested
-def logit_pvalue(model, x):
-   
-    p1 = model.predict_proba(x)
-    n1 = len(p1)
-    input(n1)
-    m1 = len(model.coef_[0]) + 1
-    coefs = np.concatenate([model.intercept_, model.coef_[0]])
-    x_full = np.matrix(np.insert(np.array(x), 0, 1, axis = 1))
-    answ = np.zeros((m1, m1))
-    for i in range(n1):
-        add = np.dot(np.transpose(x_full[i, :]), x_full[i, :]) * float(p1[i,1]) * float(p1[i, 0])
-        answ = answ + add
-        print(add)
-    vcov = np.linalg.inv(np.matrix(answ))
-    se = np.sqrt(np.diag(vcov))
-    t1 =  coefs/se  
-    p1 = (1 - norm.cdf(abs(t1))) * 2
-    return p1
-'''
+def make_filename(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa):
+    filename = 'cohorts/CADcohort'
+    if not dropNa:
+        filename = filename + '_all'
+    if withDemo:
+        filename = filename + '_demo'
+    elif not withPCE:
+        filename = filename + '_just'
+    if withRadiomicsSpleen:
+        filename = filename + '_rad'
+    if withRadiomicsLiver:
+        filename = filename + '_radliver'    
+    if withExistAbFeats:
+        filename = filename + '_existab'
+    return filename+'.csv'

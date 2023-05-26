@@ -27,7 +27,8 @@ def forward_regression(X, y,
         if not changed:
             break
     # parallels for these are: range, sex_male, range, firstorder_energy
-    for elem in ['original_firstorder_Minimum', 'sex_Female', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy']:
+    ignore = ['original_firstorder_Minimum', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy']
+    for elem in [organ+'_'+elem for elem in ignore for organ in ['liver', 'spleen']]+['sex_Female']:
         if elem in included:
             included.remove(elem)
     return included
