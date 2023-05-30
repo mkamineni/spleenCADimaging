@@ -2,6 +2,37 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 import numpy as np
 from scipy.stats import norm
+import step_reg
+from sklearn.impute import SimpleImputer
+import datetime
+
+
+def add_mri_times(data):
+    '''
+    Adding MRI acquisition times and age at MRI
+    '''
+    # opening up datafile with information about MRI acquisiton times and age at MRI and modifying columns to prepare for merge with main dataframe
+    mri_data = pd.read_csv("gs://ukbb_spleen/MRI_acquisition_times.csv", sep=',')
+    mri_data = mri_data.rename({'Unnamed: 0': 'ID', 'sex': 'Sex', 'enroll_age':'age'}, axis='columns')
+
+    # calculate time to mri acquisition in days
+    mri_data.acquisition_time = pd.DatetimeIndex(mri_data.acquisition_time).normalize()
+    mri_data.enroll_date = pd.DatetimeIndex(mri_data.enroll_date).normalize()
+
+    mri_data['time_to_mri_acquisition'] = (mri_data['acquisition_time']  - mri_data['enroll_date'] ).astype('timedelta64[D]').astype('int64')
+
+    mri_data['age_at_mri'] = mri_data['age'] + (mri_data['acquisition_time']  - mri_data['enroll_date']).astype('timedelta64[D]').astype('int64')/365.25
+    mri_data = mri_data[['ID', 'Sex', 'age', 'time_to_mri_acquisition', 'age_at_mri']]
+    mri_data['age'] = mri_data['age'].apply(np.floor).astype(int)
+    
+    # merge mri data with cohort
+    merged = data.merge(mri_data, on = ['ID', 'age', 'Sex'], how = 'inner')
+    
+    # update the age to age at mri
+    new = merged.drop('age', axis = 1)
+    new = new.rename(columns = {'age_at_mri': 'age'})
+    return new
+    
 
 def add_radiomics_features(data, phase, organ = 'spleen'):
     print(organ)
@@ -59,6 +90,24 @@ def make_feat_numerical(coh, covars):
     coh = coh.drop([feat for feat in cat_feats if feat in coh.columns], axis = 1)
     covars = [var for var in covars if var not in cat_feats]
     return coh, covars
+
+def impute_select_features(X_train, X_test, Y_train, Y_test, include):
+    '''
+    include is a string that represents a feature to include in the model
+    '''
+    imputer = SimpleImputer(missing_values=np.nan, strategy='median')
+    imputer.fit(X_train)
+    X_train = pd.DataFrame(imputer.transform(X_train), columns = X_train.columns).reset_index(drop = True)
+    Y_train = Y_train.reset_index(drop = True)
+    X_test = pd.DataFrame(imputer.transform(X_test), columns = X_test.columns).reset_index(drop = True)
+    
+    included_feats = step_reg.forward_regression(X_train.drop(include, axis = 1, inplace = False), Y_train) + [include]
+    X_train, X_test = X_train[included_feats], X_test[included_feats]
+    vif = calculate_vif(X_train, included_feats)
+    print(vif.to_string())
+
+    return X_train, X_test, Y_train, Y_test
+
     
 def calculate_vif(df, features):    
     vif, tolerance = {}, {}

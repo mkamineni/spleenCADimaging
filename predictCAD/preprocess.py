@@ -5,7 +5,7 @@ import random
 random.seed(5)
 np.random.seed(5)
 
-from util import add_radiomics_features, add_existing_abdominal_features, calculate_vif, make_filename, make_feat_numerical
+from util import add_mri_times, add_radiomics_features, add_existing_abdominal_features, calculate_vif, make_filename, make_feat_numerical
 
 withPCE = False
 withDemo = True
@@ -24,8 +24,10 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     pce_covars = ['age', 'race', 'Sex', 'tchol', 'hdl', 'SBP', 'dm2_prev', 'dm1_prev', 'antihtnbase', 'SmokingStatusv2', 'statin0']
     demo_only = ['age', 'race', 'Sex']
     outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
-    other= ['ID', 'pce_goff']
+    other= ['ID', 'pce_goff', 'time_to_mri_acquisition'] + ['FollowUp_'+outcome for outcome in outcomes] # adding follow up times here because don't want to drop na based on these columns, unless cox model
     abdominal_covars = ['spleen_vol']
+    
+    data_filt = add_mri_times(data_filt)
     
     data_filt, spleen_rad_covars = add_radiomics_features(data_filt, phase, 'spleen')
 

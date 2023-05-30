@@ -16,10 +16,10 @@ if __name__=="__main__":
     	action = 'store_true', 
     	default = False)
 
-    parser.add_argument('--run_model', '-run_model', 
-    	help = "run logistic regression model with cohort",
-    	action = 'store_true', 
-    	default = False)
+    parser.add_argument('--model_choices', '-run_model', 
+    	help = "specify models to train: mention any or all of the following separated by commas: logreg_l1, logreg_l2, xgboost, cox",
+    	default = 'logreg_l1', 
+    	type = str)
 
     parser.add_argument('--run_bootstrap', '-run_bootstrap', 
     	help = "bootstrap model 1000 times",
@@ -36,17 +36,12 @@ if __name__=="__main__":
     	default = False, 
     	type = str)
     
-    parser.add_argument('--model_choices', '-model_choices', 
-    	help = "specify models to use: mention any or all of the following separated by commas: logreg_l1, logreg_l2, xgboost",
-    	default = 'logreg_l1', 
-    	type = str)
 
 
 
     args = parser.parse_args()
     randseed = args.randseed
     preprocess = args.preprocess
-    run_model = args.run_model
     run_bootstrap = args.run_bootstrap
     eval_model = args.eval_model
     coh = args.coh.lower()
@@ -58,7 +53,7 @@ if __name__=="__main__":
     if preprocess:
         create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
     
-    if run_model:
+    if model_choices:
         train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
     
     if run_bootstrap:

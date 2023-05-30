@@ -1,11 +1,11 @@
-# Source: https://github.com/AakkashVijayakumar/stepwise-regression/blob/master/stepwise_regression/step_reg.py
+# modified source: https://github.com/AakkashVijayakumar/stepwise-regression/blob/master/stepwise_regression/step_reg.py
 
 import pandas as pd
 import statsmodels.api as sm
 
 
 def forward_regression(X, y,
-                       threshold_in = 0.1,
+                       threshold_in = 0.2,
                        verbose=False):
     initial_list = []
     included = list(initial_list)
@@ -27,7 +27,7 @@ def forward_regression(X, y,
         if not changed:
             break
     # parallels for these are: range, sex_male, range, firstorder_energy
-    ignore = ['original_firstorder_Minimum', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy']
+    ignore = ['original_firstorder_Minimum', 'original_firstorder_Maximum', 'original_firstorder_TotalEnergy', 'original_glcm_JointAverage']
     for elem in [organ+'_'+elem for elem in ignore for organ in ['liver', 'spleen']]+['sex_Female']:
         if elem in included:
             included.remove(elem)
