@@ -1,0 +1,20 @@
+-----------------Date of Analysis: 2023-05-31----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome Coronary_Artery_Disease 
+AUC [CI]: 0.842851 [0.839253426458819, 0.8456435406492365] 
+Top 20 Features: [('antihtnbase', (0.36460404306252636, 0.0008725629496683414, 0.0)), ('statin0', (0.28831757010084713, 0.0009156990846260483, 0.0)), ('sex_Male', (0.6776608657075094, 0.0018091712297106674, 0.0)), ('age', (0.4420810032722457, 0.0018015061705775213, 0.0)), ('hdl', (-0.33766623634581155, 0.0018215252485448482, 0.0)), ('smoking_Never', (-0.1628753393297327, 0.0011994418121585098, 0.0)), ('spleen_original_shape_Sphericity', (0.052677334008269724, 0.0013300334432753977, 0.0)), ('spleen_original_shape_MinorAxisLength', (-0.14252095705870305, 0.001633240511853854, 0.0)), ('spleen_original_gldm_DependenceEntropy', (0.09981892891562211, 0.0015601550242038465, 0.0)), ('race_asian', (0.051644339139228695, 0.000948995807795121, 0.0))] 
+
+-----------------Date of Analysis: 2023-05-31----------------- 
+cohorts/CADcohort_all_demo_rad.csv
+Number of patients 38474 
+Bootstrap of 2 reps for Model logreg_l1 and Outcome Coronary_Artery_Disease 
+AUC [CI]: 0.763184 [0.7621150338278522, 0.7642523595828273] 
+Top 20 Features: [('sex_Male', (0.8125633641150527, 0.006490145586030338, 0.0)), ('age', (0.6744513176447391, 0.014611516774754028, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.2647696428343135, 0.011201224059819853, 1.5846389616736968e-123)), ('spleen_original_shape_Maximum2DDiameterRow', (0.1059223866230736, 0.006616425867768248, 1.105659929167028e-57)), ('spleen_original_shape_Sphericity', (0.15411885225971222, 0.010396090958103399, 1.0144328938929354e-49)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.1896914260938205, 0.023003187777810685, 1.6336003192539675e-16)), ('spleen_original_glcm_Autocorrelation', (0.17178258009506406, 0.026037504287718644, 4.181329295492766e-11)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.10827058833139228, 0.06369173086416555, 0.08914673880037395)), ('race_asian', (0.05657611279288124, 0.035008707456452716, 0.1060817056181482))] 
+
+-----------------Date of Analysis: 2023-05-31----------------- 
+cohorts/CADcohort_all_demo_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome Coronary_Artery_Disease 
+AUC [CI]: 0.763202 [0.7589345871526267, 0.7662032185388781] 
+Top 20 Features: [('sex_Male', (0.8060125178906028, 0.0014653131363595764, 0.0)), ('age', (0.6255956048510507, 0.0012822433886741874, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.21315815856917908, 0.0012742600232999218, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.32138632787690374, 0.001654897499748445, 0.0)), ('spleen_original_shape_Sphericity', (0.18049593288298488, 0.0011483155517358718, 0.0)), ('spleen_original_glcm_Autocorrelation', (0.22076477220280544, 0.0015002650864073166, 0.0)), ('race_asian', (0.07831318328546524, 0.0008629718110770772, 0.0)), ('spleen_original_shape_Maximum2DDiameterRow', (0.0924870347397951, 0.0013521560816720755, 0.0)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.08056872339432392, 0.001947616958290322, 0.0))] 

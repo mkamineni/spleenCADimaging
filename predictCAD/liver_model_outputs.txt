@@ -1,0 +1,1086 @@
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_demo_radliver.csv
+Number of patients 38448 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                       VIF  Tolerance
+sex_Male                                          1.777398   0.562620
+age                                               1.117288   0.895024
+original_shape_Sphericity                         2.007866   0.498041
+original_glcm_Imc1                                2.887986   0.346262
+original_firstorder_10Percentile                  3.234739   0.309144
+original_shape_LeastAxisLength                    2.320120   0.431012
+original_glszm_GrayLevelNonUniformity            17.951308   0.055706
+race_asian                                        1.018842   0.981506
+original_glcm_MaximumProbability                  6.734317   0.148493
+original_glcm_DifferenceVariance                  2.830968   0.353236
+original_gldm_DependenceVariance                  5.188981   0.192716
+original_glrlm_RunLengthNonUniformityNormalized  13.694711   0.073021
+original_firstorder_Skewness                      2.070609   0.482950
+original_glszm_SizeZoneNonUniformity             19.212607   0.052049
+original_glszm_LargeAreaHighGrayLevelEmphasis     4.747892   0.210620
+original_glszm_SizeZoneNonUniformityNormalized    2.975001   0.336134
+original_glszm_ZonePercentage                     4.878957   0.204962
+original_glszm_GrayLevelVariance                  3.772648   0.265066
+original_firstorder_Kurtosis                      4.297924   0.232670
+original_shape_Maximum2DDiameterRow               2.062615   0.484822
+original_glszm_LargeAreaLowGrayLevelEmphasis      3.613130   0.276768
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.7646422010697721, 0.019102028426840098, 0.0)), ('age', (0.6340304111478792, 0.015891786948089057, 0.0)), ('original_gldm_DependenceVariance', (0.48768894379619354, 0.035127655744451085, 7.993853544437606e-44)), ('original_glrlm_RunLengthNonUniformityNormalized', (0.6095028891109484, 0.0560960374278997, 1.6858183068910848e-27)), ('original_glszm_GrayLevelNonUniformity', (0.6949362346682836, 0.0646277604748619, 5.7423412062786264e-27)), ('original_shape_LeastAxisLength', (-0.2295463133139256, 0.022607287245419883, 3.1922150477820712e-24)), ('original_firstorder_10Percentile', (-0.28563250050158706, 0.02921653152489034, 1.4217779545003728e-22)), ('original_glszm_SizeZoneNonUniformity', (-0.5843379636589577, 0.06900441892836612, 2.4937714300161438e-17)), ('original_glszm_LargeAreaHighGrayLevelEmphasis', (0.2506688879803793, 0.03118758817072673, 9.172233063614827e-16)), ('original_glszm_GrayLevelVariance', (0.22770478573109798, 0.029818585930979007, 2.234880270082323e-14)), ('original_glszm_SizeZoneNonUniformityNormalized', (0.20938251396240196, 0.027875989093490202, 5.858162662859546e-14)), ('original_shape_Maximum2DDiameterRow', (-0.13827878973174726, 0.022134125884080928, 4.1757648410440005e-10)), ('original_glcm_DifferenceVariance', (-0.16383128874624764, 0.026929704616063137, 1.1746625630626962e-09)), ('original_glcm_Imc1', (0.1582421943991774, 0.028113814049544505, 1.8164892401434122e-08)), ('original_firstorder_Kurtosis', (-0.16797369811220472, 0.03016546461158286, 2.5707321268920513e-08)), ('original_glcm_MaximumProbability', (-0.22720000553641562, 0.04310397000753667, 1.3569997284541181e-07)), ('original_glszm_ZonePercentage', (-0.2386013948501421, 0.04678535889697257, 3.398044637620351e-07)), ('original_firstorder_Skewness', (0.09937222823653673, 0.021065944191146824, 2.3911504568621973e-06)), ('race_asian', (0.060090223968751424, 0.014089597604901397, 2.000235969735696e-05)), ('original_shape_Sphericity', (-0.07486412731702832, 0.02142391338084447, 0.0004750949708587358))] 
+AUC of model: 0.782509 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                       VIF  Tolerance
+sex_Male                                          1.775746   0.563144
+age                                               1.114597   0.897186
+original_shape_Sphericity                         2.006339   0.498420
+original_glcm_Imc1                                2.144865   0.466230
+original_firstorder_10Percentile                  2.930498   0.341239
+original_shape_LeastAxisLength                    2.290696   0.436549
+original_glszm_GrayLevelNonUniformity            16.701302   0.059876
+original_glcm_DifferenceVariance                  2.751772   0.363402
+original_glrlm_RunLengthNonUniformityNormalized   8.359209   0.119629
+original_gldm_DependenceVariance                  5.145002   0.194363
+original_glszm_LargeAreaHighGrayLevelEmphasis     4.695315   0.212978
+original_glcm_MaximumProbability                  4.919314   0.203280
+original_firstorder_Skewness                      2.014541   0.496391
+original_glszm_SizeZoneNonUniformity             18.427672   0.054266
+race_asian                                        1.018797   0.981550
+original_shape_Maximum2DDiameterRow               2.010408   0.497411
+original_firstorder_Kurtosis                      4.260862   0.234694
+original_glszm_GrayLevelVariance                  3.771355   0.265157
+original_glszm_SizeZoneNonUniformityNormalized    2.525005   0.396039
+original_glszm_LargeAreaLowGrayLevelEmphasis      3.596646   0.278037
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.6628455815129349, 0.015388726790780391, 0.0)), ('sex_Male', (0.5144217308583369, 0.018180434638240116, 3.9427321551787105e-176)), ('original_firstorder_10Percentile', (-0.27735023549054266, 0.025619050202292087, 2.594107872389323e-27)), ('original_gldm_DependenceVariance', (0.32456459613503835, 0.03316061827889454, 1.2721554950451765e-22)), ('original_glrlm_RunLengthNonUniformityNormalized', (0.4012770897461231, 0.041827654281489726, 8.507772969424058e-22)), ('original_glszm_LargeAreaHighGrayLevelEmphasis', (0.2800220478367643, 0.03014231672492503, 1.5429191109506278e-20)), ('original_shape_LeastAxisLength', (-0.18901531290916693, 0.02123920811954205, 5.61707316984077e-19)), ('original_glszm_GrayLevelNonUniformity', (0.47396617878913383, 0.05698357182013179, 8.976737777768495e-17)), ('original_glcm_DifferenceVariance', (-0.22193736867471622, 0.02681153061414157, 1.2559434482802094e-16)), ('original_glcm_Imc1', (0.17307431230562292, 0.021704518105821774, 1.5347721870248629e-15)), ('original_glcm_MaximumProbability', (-0.22603228955870208, 0.03414761057072279, 3.609744789741102e-11)), ('original_glszm_SizeZoneNonUniformity', (-0.3461178330305637, 0.0604880154976658, 1.0522190353251727e-08)), ('original_glszm_GrayLevelVariance', (0.1567200178793761, 0.027810885909575693, 1.7485114381989202e-08)), ('original_shape_Maximum2DDiameterRow', (-0.10412815052630828, 0.020092332668127173, 2.1895261150831658e-07)), ('race_asian', (0.06320233094255279, 0.013699008225531568, 3.956721555703132e-06)), ('original_shape_Sphericity', (-0.06805439225877837, 0.020169150171763624, 0.0007403528375013089)), ('original_firstorder_Skewness', (0.06484721229731265, 0.019803507570503386, 0.0010583728290188424)), ('original_firstorder_Kurtosis', (-0.09065138688236664, 0.029094879724258494, 0.0018349880575804956)), ('original_glszm_SizeZoneNonUniformityNormalized', (0.05190427195745241, 0.023328267235543716, 0.026084468927295754)), ('original_glszm_LargeAreaLowGrayLevelEmphasis', (0.028303210135131058, 0.026406795834313993, 0.28380295986346626))] 
+AUC of model: 0.749205 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                       VIF  Tolerance
+sex_Male                                          1.707662   0.585596
+age                                               1.114094   0.897591
+original_shape_Sphericity                         1.538072   0.650165
+original_glcm_Imc1                                2.141298   0.467006
+original_firstorder_10Percentile                  2.797120   0.357511
+original_shape_LeastAxisLength                    2.289206   0.436833
+original_glszm_GrayLevelNonUniformity            15.772327   0.063402
+original_firstorder_Skewness                      1.726528   0.579197
+race_asian                                        1.018767   0.981579
+original_glszm_SizeZoneNonUniformity             17.618371   0.056759
+original_glcm_MaximumProbability                  4.736299   0.211135
+original_glcm_DifferenceVariance                  2.645978   0.377932
+original_gldm_DependenceVariance                  5.088919   0.196505
+original_glrlm_RunLengthNonUniformityNormalized   8.044457   0.124309
+original_glszm_LargeAreaHighGrayLevelEmphasis     4.063870   0.246071
+original_glszm_SizeZoneNonUniformityNormalized    2.364635   0.422898
+original_firstorder_Kurtosis                      4.165282   0.240080
+original_glszm_GrayLevelVariance                  3.425822   0.291901
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.6209788513198244, 0.015490627633703371, 0.0)), ('sex_Male', (0.6370654913115175, 0.018060863075109804, 1.5099029859609917e-272)), ('original_firstorder_10Percentile', (-0.34537029413229037, 0.02574868295191113, 5.065861439064639e-41)), ('original_gldm_DependenceVariance', (0.3678353384996918, 0.03345844388370042, 4.09335550012744e-28)), ('original_glcm_Imc1', (0.23200282494552235, 0.023058806860163823, 8.186435876231529e-24)), ('original_glszm_GrayLevelNonUniformity', (0.5518501491309034, 0.05600199437587521, 6.579308953233214e-23)), ('original_glcm_MaximumProbability', (-0.2916750946687853, 0.03452068483987377, 2.930929261314881e-17)), ('original_glrlm_RunLengthNonUniformityNormalized', (0.3502087032878048, 0.042469227134450865, 1.6354433299891754e-16)), ('original_glszm_SizeZoneNonUniformity', (-0.4920772202152336, 0.05993241684294147, 2.2020467430324423e-16)), ('original_shape_LeastAxisLength', (-0.17438995742888955, 0.02159170203931674, 6.65364774386387e-16)), ('original_glcm_DifferenceVariance', (-0.19292472307121641, 0.025477247471595722, 3.663010741804494e-14)), ('original_glszm_LargeAreaHighGrayLevelEmphasis', (0.2087018799176652, 0.02816160351158434, 1.254769860591409e-13)), ('original_glszm_GrayLevelVariance', (0.181168914447208, 0.026991408947252576, 1.918490627336322e-11)), ('original_glszm_SizeZoneNonUniformityNormalized', (0.13777673969316967, 0.02273206087491904, 1.3536227276540307e-09)), ('original_firstorder_Skewness', (0.09805198288209782, 0.018665492231941805, 1.495478479162819e-07)), ('original_firstorder_Kurtosis', (-0.1263881786476927, 0.02896103195132049, 1.2766050401592436e-05)), ('race_asian', (0.0584960085955122, 0.013839929812810943, 2.3723658361433576e-05)), ('original_shape_Sphericity', (-0.01976897481954169, 0.017904896364055043, 0.2695454312953136))] 
+AUC of model: 0.767291 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                       VIF  Tolerance
+age                                               1.114094   0.897591
+sex_Male                                          1.707662   0.585596
+original_shape_Sphericity                         1.538072   0.650165
+original_firstorder_10Percentile                  2.797120   0.357511
+original_glcm_Imc1                                2.141298   0.467006
+race_asian                                        1.018767   0.981579
+original_glszm_GrayLevelNonUniformity            15.772327   0.063402
+original_shape_LeastAxisLength                    2.289206   0.436833
+original_glcm_DifferenceVariance                  2.645978   0.377932
+original_glcm_MaximumProbability                  4.736299   0.211135
+original_glszm_LargeAreaHighGrayLevelEmphasis     4.063870   0.246071
+original_firstorder_Skewness                      1.726528   0.579197
+original_glrlm_RunLengthNonUniformityNormalized   8.044457   0.124309
+original_gldm_DependenceVariance                  5.088919   0.196505
+original_glszm_SizeZoneNonUniformity             17.618371   0.056759
+original_firstorder_Kurtosis                      4.165282   0.240080
+original_glszm_GrayLevelVariance                  3.425822   0.291901
+original_glszm_SizeZoneNonUniformityNormalized    2.364635   0.422898
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.6445600545988559, 0.014947595047391913, 0.0)), ('sex_Male', (0.34543034809989204, 0.01739234881525283, 8.843823068130762e-88)), ('original_firstorder_10Percentile', (-0.278015065640472, 0.02456415513180845, 1.0698391793112382e-29)), ('original_shape_LeastAxisLength', (-0.1822039432624486, 0.020722980928430296, 1.464484422989499e-18)), ('original_glszm_GrayLevelNonUniformity', (0.4612448045415936, 0.05373110414212841, 9.137806808113245e-18)), ('original_glszm_LargeAreaHighGrayLevelEmphasis', (0.23575179867614923, 0.027469199511249376, 9.290975412406384e-18)), ('original_glcm_Imc1', (0.18533839689342313, 0.021634061113529744, 1.0624166571106789e-17)), ('original_gldm_DependenceVariance', (0.2407937632359286, 0.03150501311292021, 2.1216838072609946e-14)), ('original_glcm_DifferenceVariance', (-0.19061373189810574, 0.025378850287219208, 5.879784939639645e-14)), ('original_glrlm_RunLengthNonUniformityNormalized', (0.2693730492345977, 0.04032635251136338, 2.3922484933017534e-11)), ('original_glszm_GrayLevelVariance', (0.16706311311013217, 0.02554721532627062, 6.177173063748396e-11)), ('original_glszm_SizeZoneNonUniformity', (-0.3658369425090828, 0.05731122801569072, 1.7326882536386297e-10)), ('original_glcm_MaximumProbability', (-0.1846746146823184, 0.03287140000847738, 1.9307547281189843e-08)), ('race_asian', (0.06415078997407718, 0.013423702944758089, 1.7624011131014391e-06)), ('original_glszm_SizeZoneNonUniformityNormalized', (0.09905531343239728, 0.021361786827426475, 3.5344576199701343e-06)), ('original_firstorder_Kurtosis', (-0.11826350115356712, 0.02761005041245401, 1.8410047569898e-05)), ('original_firstorder_Skewness', (0.058984699429435426, 0.017886049477002876, 0.0009744385799880306)), ('original_shape_Sphericity', (-0.023670242531085198, 0.017040516621528116, 0.16481553154064488))] 
+AUC of model: 0.731604 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_demo_radliver.csv
+Number of patients 38833 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                       VIF  Tolerance
+sex_Male                                          1.697856   0.588978
+age                                               1.094676   0.913513
+original_glcm_Imc1                                3.613230   0.276761
+original_shape_Sphericity                         2.283988   0.437831
+original_glcm_InverseVariance                     3.427868   0.291726
+original_glszm_GrayLevelNonUniformityNormalized   6.995517   0.142949
+original_glrlm_GrayLevelNonUniformityNormalized  26.542799   0.037675
+original_firstorder_90Percentile                  7.357972   0.135907
+original_glszm_GrayLevelVariance                  3.860725   0.259019
+original_gldm_DependenceVariance                 10.789880   0.092679
+original_glcm_Idm                                19.360746   0.051651
+race_asian                                        1.018046   0.982274
+original_glszm_SmallAreaLowGrayLevelEmphasis      4.412005   0.226654
+original_firstorder_Kurtosis                      4.825590   0.207229
+original_shape_LeastAxisLength                    5.961950   0.167730
+original_gldm_GrayLevelNonUniformity              8.979144   0.111369
+original_shape_Flatness                           4.837660   0.206712
+original_firstorder_Skewness                      1.750962   0.571115
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.7526999152545955, 0.018392641292569793, 0.0)), ('age', (0.6087965128683106, 0.015573609121890852, 0.0)), ('original_gldm_DependenceVariance', (0.7014787925253144, 0.05827022046022755, 2.2330987242599904e-33)), ('original_glszm_GrayLevelNonUniformityNormalized', (0.4903488689432542, 0.043112358160172816, 5.65113405033256e-30)), ('original_glcm_Idm', (-0.7775218400177045, 0.08012322012389289, 2.8968831928448694e-22)), ('original_firstorder_90Percentile', (-0.4244361956089845, 0.04434611813066933, 1.0588815077039871e-21)), ('original_glcm_InverseVariance', (0.2665929031295182, 0.03331361044651571, 1.2189630626432887e-15)), ('original_gldm_GrayLevelNonUniformity', (0.34494880103008485, 0.04476134995656058, 1.2941806119887958e-14)), ('original_glszm_GrayLevelVariance', (0.24067432564844202, 0.03226353672785785, 8.676008695242187e-14)), ('original_firstorder_Kurtosis', (-0.25212949616068736, 0.03431953130674679, 2.034172619792047e-13)), ('original_shape_LeastAxisLength', (-0.2638474229868551, 0.038530425986356184, 7.501101422012794e-12)), ('race_asian', (0.08784225373059955, 0.013967792141470519, 3.1969300168842125e-10)), ('original_glszm_SmallAreaLowGrayLevelEmphasis', (-0.2306242101190436, 0.04096394110538229, 1.8028049883318138e-08)), ('original_shape_Sphericity', (-0.1161623468149565, 0.022484079623144214, 2.3861185685327976e-07)), ('original_shape_Flatness', (0.17216624250592244, 0.033792501181917074, 3.4909829182425477e-07)), ('original_glrlm_GrayLevelNonUniformityNormalized', (-0.23427192784839884, 0.09127541855060303, 0.010268660754205372)), ('original_firstorder_Skewness', (0.04881410607305245, 0.01944638920168497, 0.01206666678687164)), ('original_glcm_Imc1', (0.05265569162571955, 0.035276547715460294, 0.13552769437414786))] 
+AUC of model: 0.781766 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                       VIF  Tolerance
+age                                               1.094676   0.913513
+sex_Male                                          1.697856   0.588978
+original_glcm_Imc1                                3.613230   0.276761
+original_shape_Sphericity                         2.283988   0.437831
+original_glszm_GrayLevelNonUniformityNormalized   6.995517   0.142949
+original_glcm_InverseVariance                     3.427868   0.291726
+original_glszm_SmallAreaLowGrayLevelEmphasis      4.412005   0.226654
+race_asian                                        1.018046   0.982274
+original_glszm_GrayLevelVariance                  3.860725   0.259019
+original_firstorder_Kurtosis                      4.825590   0.207229
+original_firstorder_90Percentile                  7.357972   0.135907
+original_glrlm_GrayLevelNonUniformityNormalized  26.542799   0.037675
+original_gldm_DependenceVariance                 10.789880   0.092679
+original_glcm_Idm                                19.360746   0.051651
+original_gldm_GrayLevelNonUniformity              8.979144   0.111369
+original_shape_LeastAxisLength                    5.961950   0.167730
+original_shape_Flatness                           4.837660   0.206712
+original_firstorder_Skewness                      1.750962   0.571115
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.6464184492155459, 0.01507398086066496, 0.0)), ('sex_Male', (0.48962223697843515, 0.01763997130888348, 1.45825751906353e-169)), ('original_glszm_GrayLevelNonUniformityNormalized', (0.46207973836132893, 0.041197454650634666, 3.3947040620560484e-29)), ('original_gldm_DependenceVariance', (0.5535678561238359, 0.05586022241815199, 3.771153654753324e-23)), ('original_firstorder_90Percentile', (-0.38734455214962177, 0.0423403044053512, 5.780179479864458e-20)), ('original_gldm_GrayLevelNonUniformity', (0.388658679045447, 0.043178740285864804, 2.2334851952366767e-19)), ('original_glcm_InverseVariance', (0.2779769449761508, 0.032472563212833115, 1.1251220724083036e-17)), ('original_glcm_Idm', (-0.5594436039961929, 0.07735127228961998, 4.741588389946853e-13)), ('original_shape_LeastAxisLength', (-0.24167543431160118, 0.03669047239137644, 4.491901085350056e-11)), ('original_glszm_GrayLevelVariance', (0.1972125458819304, 0.030289791110918472, 7.472247535818243e-11)), ('race_asian', (0.08678969368547468, 0.0135769279861466, 1.6325960050987955e-10)), ('original_shape_Flatness', (0.14319269008507923, 0.03209618425756717, 8.144046313690337e-06)), ('original_glrlm_GrayLevelNonUniformityNormalized', (-0.38247920145868564, 0.08788946890444667, 1.3501171568693461e-05)), ('original_glszm_SmallAreaLowGrayLevelEmphasis', (-0.16092127240486648, 0.03863249508925346, 3.1075504107562907e-05)), ('original_shape_Sphericity', (-0.08731091091294864, 0.02154685573294791, 5.075092778181119e-05)), ('original_firstorder_Kurtosis', (-0.11504486317070672, 0.03133528586992934, 0.0002412105606337847)), ('original_glcm_Imc1', (0.10063345569226179, 0.03470056657341539, 0.0037310047712781082)), ('original_firstorder_Skewness', (0.03249879602115688, 0.018514767581260045, 0.07920962714865312))] 
+AUC of model: 0.756925 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                       VIF  Tolerance
+sex_Male                                          1.689735   0.591809
+age                                               1.090115   0.917335
+original_shape_Sphericity                         2.219020   0.450649
+original_glcm_Imc1                                2.029802   0.492659
+original_glcm_InverseVariance                     3.398144   0.294278
+original_glszm_GrayLevelNonUniformityNormalized   5.781446   0.172967
+original_glszm_SmallAreaLowGrayLevelEmphasis      3.024936   0.330585
+race_asian                                        1.017814   0.982498
+original_glszm_GrayLevelVariance                  3.827757   0.261250
+original_firstorder_Kurtosis                      4.159238   0.240429
+original_gldm_DependenceVariance                 10.044001   0.099562
+original_glcm_Idm                                13.919589   0.071841
+original_firstorder_90Percentile                  6.218613   0.160808
+original_firstorder_Skewness                      1.740591   0.574517
+original_shape_LeastAxisLength                    5.856974   0.170737
+original_gldm_GrayLevelNonUniformity              7.653525   0.130659
+original_shape_Flatness                           4.837412   0.206722
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.612495063044234, 0.015213064759077261, 0.0)), ('sex_Male', (0.6295264884197431, 0.01783745011588863, 7.679808646098632e-273)), ('original_glcm_Idm', (-0.8528656780623564, 0.0617041513203081, 1.881644143305959e-43)), ('original_gldm_DependenceVariance', (0.7384609358950104, 0.053917962148885015, 1.0725881306876207e-42)), ('original_glszm_GrayLevelNonUniformityNormalized', (0.4340576261162447, 0.03925089631541404, 1.9931433249551445e-28)), ('original_glcm_InverseVariance', (0.33731919117874903, 0.03268719772272873, 5.74549872461052e-25)), ('original_firstorder_90Percentile', (-0.33348189051755944, 0.037096713874368095, 2.4829793908914865e-19)), ('original_glszm_SmallAreaLowGrayLevelEmphasis', (-0.2643515568918115, 0.029614079091703948, 4.395010304750529e-19)), ('original_gldm_GrayLevelNonUniformity', (0.2862883088188568, 0.040918508128166484, 2.623458014674944e-12)), ('original_firstorder_Kurtosis', (-0.2060299490204199, 0.02989360305769058, 5.497150523852197e-12)), ('original_glszm_GrayLevelVariance', (0.2048478205056037, 0.030734605087846725, 2.6456700928726387e-11)), ('original_shape_LeastAxisLength', (-0.2306181383186258, 0.03746247134080856, 7.461572112458552e-10)), ('original_shape_Sphericity', (-0.12627902759821738, 0.02154605455927813, 4.6039650922387875e-09)), ('race_asian', (0.07540420267411702, 0.013738195193480062, 4.050076305165086e-08)), ('original_shape_Flatness', (0.16120219324190707, 0.03273395472447057, 8.452569921920903e-07)), ('original_firstorder_Skewness', (0.08149176451235175, 0.018729168823732194, 1.3548007134844781e-05)), ('original_glcm_Imc1', (-0.01918118721609085, 0.0221563695357925, 0.3866443488620911))] 
+AUC of model: 0.769345 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                       VIF  Tolerance
+age                                               1.090115   0.917335
+sex_Male                                          1.689735   0.591809
+original_glcm_Imc1                                2.029802   0.492659
+original_firstorder_90Percentile                  6.218613   0.160808
+original_glcm_Idm                                13.919589   0.071841
+original_glszm_GrayLevelNonUniformityNormalized   5.781446   0.172967
+original_glszm_SmallAreaLowGrayLevelEmphasis      3.024936   0.330585
+race_asian                                        1.017814   0.982498
+original_glszm_GrayLevelVariance                  3.827757   0.261250
+original_firstorder_Kurtosis                      4.159238   0.240429
+original_gldm_DependenceVariance                 10.044001   0.099562
+original_glcm_InverseVariance                     3.398144   0.294278
+original_gldm_GrayLevelNonUniformity              7.653525   0.130659
+original_shape_LeastAxisLength                    5.856974   0.170737
+original_firstorder_Skewness                      1.740591   0.574517
+original_shape_Flatness                           4.837412   0.206722
+original_shape_Sphericity                         2.219020   0.450649
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.6209566878674672, 0.026153367973776133, 1.3010384074562862e-124)), ('sex_Male', (0.33996918603211507, 0.03208410675036278, 3.1037903363939524e-26)), ('original_gldm_DependenceVariance', (0.6207683480617332, 0.09573481242704103, 8.917492901644616e-11)), ('original_glcm_Idm', (-0.6865216642121486, 0.10695886171930098, 1.3757113808494221e-10)), ('original_gldm_GrayLevelNonUniformity', (0.40898291363610323, 0.06765783766858831, 1.495294179329201e-09)), ('original_glszm_GrayLevelNonUniformityNormalized', (0.33833519405103996, 0.06073004413814861, 2.530870424184499e-08)), ('original_glcm_InverseVariance', (0.31303995495458603, 0.058123060312732254, 7.211776764604557e-08)), ('original_shape_LeastAxisLength', (-0.3440853959106975, 0.06683091786427829, 2.6244346713625143e-07)), ('original_glszm_SmallAreaLowGrayLevelEmphasis', (-0.2811257963951102, 0.057480619754339296, 1.0043068427717223e-06)), ('original_firstorder_90Percentile', (-0.25350521313658947, 0.06372786480849496, 6.951678424634865e-05)), ('race_asian', (0.08054264873865888, 0.020603542040269412, 9.261563002241584e-05)), ('original_firstorder_Kurtosis', (-0.20818055440522362, 0.05385898542558002, 0.00011095764885827298)), ('original_shape_Flatness', (0.22582650378977007, 0.05874927587943622, 0.0001210930026321527)), ('original_shape_Sphericity', (-0.11429098028316932, 0.03611746000363658, 0.0015538989871194287)), ('original_glszm_GrayLevelVariance', (0.16066950601844193, 0.05291516948236738, 0.002394532493637501)), ('original_firstorder_Skewness', (0.05497756100643675, 0.031791754174443895, 0.08375496363104645)), ('original_glcm_Imc1', (-0.00539749592187615, 0.03765839983856487, 0.8860312945223838))] 
+AUC of model: 0.730801 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_just_radliver.csv
+Number of patients 38833 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                           VIF  Tolerance
+original_firstorder_10Percentile                      7.582542   0.131882
+original_shape_LeastAxisLength                       20.467812   0.048857
+original_glszm_GrayLevelNonUniformity                19.826897   0.050437
+original_glcm_DifferenceVariance                      4.184076   0.239001
+original_firstorder_Energy                           12.283665   0.081409
+original_glrlm_RunLengthNonUniformity                45.825731   0.021822
+original_shape_Elongation                             5.494324   0.182006
+original_gldm_DependenceNonUniformity                47.172869   0.021199
+original_glcm_ClusterShade                            3.668548   0.272587
+original_shape_SurfaceArea                           22.468163   0.044507
+original_gldm_LargeDependenceLowGrayLevelEmphasis     1.778739   0.562196
+original_firstorder_Kurtosis                          4.821990   0.207383
+original_firstorder_InterquartileRange               18.833950   0.053096
+original_glrlm_GrayLevelVariance                    234.916825   0.004257
+original_glcm_SumSquares                            425.347032   0.002351
+original_glszm_SizeZoneNonUniformity                 22.425045   0.044593
+original_glcm_InverseVariance                         3.829856   0.261106
+original_shape_Maximum2DDiameterRow                   3.886997   0.257268
+original_glszm_GrayLevelVariance                      4.635044   0.215748
+original_glszm_SmallAreaEmphasis                      3.274110   0.305427
+original_ngtdm_Coarseness                             2.450997   0.407997
+original_gldm_SmallDependenceEmphasis                 7.446177   0.134297
+original_gldm_DependenceEntropy                      12.337880   0.081051
+original_gldm_GrayLevelVariance                    1043.318987   0.000958
+original_shape_Flatness                              22.606142   0.044236
+original_shape_Maximum2DDiameterSlice                 1.166752   0.857080
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('original_firstorder_10Percentile', (-0.8324280495826923, 0.04995250672745547, 2.3790362806210743e-62)), ('original_glszm_GrayLevelNonUniformity', (1.0804658623010222, 0.06524476911114901, 1.3516346936423062e-61)), ('original_glcm_SumSquares', (-4.881534764254722, 0.3476130266406839, 8.501791435894512e-45)), ('original_firstorder_Kurtosis', (-0.36367991164182484, 0.03344669985230497, 1.5431122965055992e-27)), ('original_glcm_ClusterShade', (0.3343092834711541, 0.03312075765063075, 5.8937345282530925e-24)), ('original_firstorder_Energy', (-0.5822730424729908, 0.057787889626421146, 7.051139931265134e-24)), ('original_gldm_GrayLevelVariance', (5.198475129943373, 0.5366782932855544, 3.444909380670504e-22)), ('original_glcm_DifferenceVariance', (-0.3495263743332796, 0.03740835556694576, 9.316808801160452e-21)), ('original_gldm_LargeDependenceLowGrayLevelEmphasis', (-0.29422807355224406, 0.03270606102436569, 2.3380809176387055e-19)), ('original_firstorder_InterquartileRange', (-0.5113402955745805, 0.06569682767006643, 7.063830382404246e-15)), ('original_shape_LeastAxisLength', (-0.5515263564877885, 0.07134149638726285, 1.0687850927524239e-14)), ('original_glszm_GrayLevelVariance', (0.24084806251255816, 0.031264075244234295, 1.322148700244624e-14)), ('original_glrlm_RunLengthNonUniformity', (0.748091938794362, 0.09926628005340077, 4.838120325770745e-14)), ('original_gldm_DependenceNonUniformity', (-0.6866160162013732, 0.09882808147244893, 3.716049775400327e-12)), ('original_glszm_SizeZoneNonUniformity', (-0.5004058520421308, 0.07390375397888596, 1.2785300540771265e-11)), ('original_glszm_SmallAreaEmphasis', (0.14704475932871802, 0.027347141332792688, 7.574977687637698e-08)), ('original_gldm_SmallDependenceEmphasis', (-0.2798651575433859, 0.05677430809991732, 8.246853976505975e-07)), ('original_shape_Flatness', (0.34533425677798024, 0.07409368616253671, 3.1501564754898643e-06)), ('original_shape_Maximum2DDiameterSlice', (0.05518070952120603, 0.014646926757206177, 0.00016496210057149668)), ('original_ngtdm_Coarseness', (0.19282735405127663, 0.05784901621447317, 0.0008582646436926453))] 
+AUC of model: 0.728658 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                          VIF  Tolerance
+original_firstorder_10Percentile                     6.085616   0.164322
+original_shape_LeastAxisLength                       2.389205   0.418549
+original_glszm_GrayLevelNonUniformity               17.890311   0.055896
+original_glcm_DifferenceVariance                     3.716136   0.269097
+original_firstorder_Energy                          10.351939   0.096600
+original_glrlm_RunLengthNonUniformity               42.684009   0.023428
+original_shape_Elongation                            1.198996   0.834031
+original_shape_Maximum2DDiameterSlice                1.104964   0.905007
+original_gldm_LargeDependenceLowGrayLevelEmphasis    1.697830   0.588987
+original_glcm_ClusterShade                           3.509453   0.284945
+original_gldm_DependenceNonUniformity               38.780546   0.025786
+original_firstorder_InterquartileRange              14.101360   0.070915
+original_glrlm_GrayLevelVariance                   181.701216   0.005504
+original_glcm_SumSquares                           362.963570   0.002755
+original_firstorder_Kurtosis                         4.303542   0.232367
+original_glszm_SizeZoneNonUniformity                21.874432   0.045715
+original_gldm_GrayLevelVariance                    836.193811   0.001196
+original_glcm_InverseVariance                        3.339066   0.299485
+original_glszm_GrayLevelVariance                     4.453509   0.224542
+original_glszm_SmallAreaEmphasis                     2.798893   0.357284
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('original_firstorder_10Percentile', (-0.7327628561541453, 0.04317702818771397, 1.3432770129620091e-64)), ('original_glszm_GrayLevelNonUniformity', (0.9541303885890002, 0.06027690114798816, 1.9593791061428472e-56)), ('original_glcm_SumSquares', (-4.117345562420537, 0.30552818306467056, 2.1607341511867137e-41)), ('original_shape_Elongation', (0.14757315795495163, 0.014743012684401324, 1.3816862675953663e-23)), ('original_firstorder_Energy', (-0.4627640903659999, 0.050107554042831924, 2.5728505631023424e-20)), ('original_shape_LeastAxisLength', (-0.17804922860003586, 0.02083999527232491, 1.3006897237869898e-17)), ('original_firstorder_Kurtosis', (-0.2400924972790742, 0.028669592136296555, 5.5475283281375314e-17)), ('original_glcm_DifferenceVariance', (-0.2680567020863172, 0.03447113740139168, 7.469710086630611e-15)), ('original_gldm_GrayLevelVariance', (3.464192226574178, 0.46344023998612394, 7.723371493845928e-14)), ('original_glszm_SizeZoneNonUniformity', (-0.503551320748614, 0.06988262584727634, 5.775803948510573e-13)), ('original_gldm_LargeDependenceLowGrayLevelEmphasis', (-0.1959119784552817, 0.027538308635755366, 1.1259514609547471e-12)), ('original_glszm_GrayLevelVariance', (0.17066523621155655, 0.029685723814401967, 8.973687870771245e-09)), ('original_glszm_SmallAreaEmphasis', (0.1359053038924632, 0.02604301760648314, 1.8038483918298268e-07)), ('original_glcm_ClusterShade', (0.15847282787478356, 0.03101839754158774, 3.2387747988623906e-07)), ('original_firstorder_InterquartileRange', (-0.22676890682632084, 0.05518398371260992, 3.968178210697114e-05)), ('original_glrlm_GrayLevelVariance', (0.851675348276998, 0.20785949864694714, 4.178874198507818e-05)), ('original_glrlm_RunLengthNonUniformity', (0.36428314226902037, 0.09118197921202525, 6.466091397470749e-05)), ('original_shape_Maximum2DDiameterSlice', (0.05234120495960275, 0.01374836752239941, 0.00014061437690390848)), ('original_glcm_InverseVariance', (0.08940629557283493, 0.028645079578909154, 0.0018013118283862393)), ('original_gldm_DependenceNonUniformity', (-0.25759719762480954, 0.08701315038560735, 0.0030720010569424343))] 
+AUC of model: 0.709663 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                          VIF  Tolerance
+original_firstorder_10Percentile                     6.085616   0.164322
+original_shape_LeastAxisLength                       2.389205   0.418549
+original_glszm_GrayLevelNonUniformity               17.890311   0.055896
+original_glcm_DifferenceVariance                     3.716136   0.269097
+original_firstorder_Energy                          10.351939   0.096600
+original_glcm_InverseVariance                        3.339066   0.299485
+original_shape_Maximum2DDiameterSlice                1.104964   0.905007
+original_shape_Elongation                            1.198996   0.834031
+original_glszm_GrayLevelVariance                     4.453509   0.224542
+original_firstorder_Kurtosis                         4.303542   0.232367
+original_firstorder_InterquartileRange              14.101360   0.070915
+original_glszm_SizeZoneNonUniformity                21.874432   0.045715
+original_glszm_SmallAreaEmphasis                     2.798893   0.357284
+original_gldm_LargeDependenceLowGrayLevelEmphasis    1.697830   0.588987
+original_glcm_ClusterShade                           3.509453   0.284945
+original_glrlm_GrayLevelVariance                   181.701216   0.005504
+original_glcm_SumSquares                           362.963570   0.002755
+original_gldm_GrayLevelVariance                    836.193811   0.001196
+original_glrlm_RunLengthNonUniformity               42.684009   0.023428
+original_gldm_DependenceNonUniformity               38.780546   0.025786
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('original_firstorder_10Percentile', (-0.8339245145994567, 0.044492461498792525, 2.206040161426899e-78)), ('original_glszm_GrayLevelNonUniformity', (1.0813949481819252, 0.06145902341042967, 2.6725113944148983e-69)), ('original_shape_Elongation', (0.1695825009906805, 0.014955172272537565, 8.372793392055761e-30)), ('original_glcm_SumSquares', (-3.372994939213167, 0.30466845946890475, 1.733879027045217e-28)), ('original_shape_LeastAxisLength', (-0.20586000216279296, 0.02114078957762965, 2.0847181493769545e-22)), ('original_firstorder_Kurtosis', (-0.27356208529860726, 0.0294351410799508, 1.4898201529999116e-20)), ('original_glszm_SizeZoneNonUniformity', (-0.6400921975464913, 0.07150784195076587, 3.51139842374295e-19)), ('original_glcm_DifferenceVariance', (-0.29417727383011366, 0.0356155630523043, 1.4592203222669602e-16)), ('original_glcm_ClusterShade', (0.2496440416707954, 0.032158858089890524, 8.30489329196807e-15)), ('original_gldm_LargeDependenceLowGrayLevelEmphasis', (-0.2190187675474331, 0.028231115093147525, 8.623635972304456e-15)), ('original_firstorder_Energy', (-0.3870088082322112, 0.051504702356061936, 5.732652877353661e-14)), ('original_glszm_GrayLevelVariance', (0.2252432362107423, 0.030215321280493708, 9.013857327783481e-14)), ('original_gldm_DependenceNonUniformity', (-0.5554419887281088, 0.08875294117289835, 3.892118640734144e-10)), ('original_glszm_SmallAreaEmphasis', (0.1619768649463119, 0.026421700903370565, 8.763192547411984e-10)), ('original_gldm_GrayLevelVariance', (2.7050104916638245, 0.4634212458755757, 5.313486878714847e-09)), ('original_glrlm_RunLengthNonUniformity', (0.5345024790902154, 0.09252236253553738, 7.604042496442923e-09)), ('original_firstorder_InterquartileRange', (-0.2539755834398875, 0.056120761195366776, 6.024740536955641e-06)), ('original_glrlm_GrayLevelVariance', (0.8955071459353555, 0.21040466377839723, 2.0800664907273575e-05)), ('original_shape_Maximum2DDiameterSlice', (0.05584051082195589, 0.013902506948261681, 5.9049194653835175e-05)), ('original_glcm_InverseVariance', (0.11264818961799368, 0.02941783893764117, 0.00012853562765793898))] 
+AUC of model: 0.718453 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                          VIF  Tolerance
+original_firstorder_10Percentile                     6.085616   0.164322
+original_shape_LeastAxisLength                       2.389205   0.418549
+original_glszm_GrayLevelNonUniformity               17.890311   0.055896
+original_glcm_DifferenceVariance                     3.716136   0.269097
+original_firstorder_Energy                          10.351939   0.096600
+original_glrlm_RunLengthNonUniformity               42.684009   0.023428
+original_shape_Elongation                            1.198996   0.834031
+original_shape_Maximum2DDiameterSlice                1.104964   0.905007
+original_gldm_LargeDependenceLowGrayLevelEmphasis    1.697830   0.588987
+original_glcm_ClusterShade                           3.509453   0.284945
+original_gldm_DependenceNonUniformity               38.780546   0.025786
+original_firstorder_InterquartileRange              14.101360   0.070915
+original_glrlm_GrayLevelVariance                   181.701216   0.005504
+original_glcm_SumSquares                           362.963570   0.002755
+original_firstorder_Kurtosis                         4.303542   0.232367
+original_glszm_SizeZoneNonUniformity                21.874432   0.045715
+original_glcm_InverseVariance                        3.339066   0.299485
+original_glszm_SmallAreaEmphasis                     2.798893   0.357284
+original_glszm_GrayLevelVariance                     4.453509   0.224542
+original_gldm_GrayLevelVariance                    836.193811   0.001196
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('original_glszm_GrayLevelNonUniformity', (0.9437069631689824, 0.059466720931538486, 1.0306315016124815e-56)), ('original_firstorder_10Percentile', (-0.6403532826517923, 0.042114057301364985, 3.2655842926484497e-52)), ('original_glcm_SumSquares', (-3.490621684164789, 0.29880256070778893, 1.5748134384277782e-31)), ('original_shape_Elongation', (0.13934797678012734, 0.014517193085146865, 8.08619736047822e-22)), ('original_firstorder_Energy', (-0.4124446009656601, 0.04923541122918814, 5.4297958029665285e-17)), ('original_shape_LeastAxisLength', (-0.16618098352413477, 0.020547964402802394, 6.0918340709769e-16)), ('original_glszm_SizeZoneNonUniformity', (-0.533819486297888, 0.06880181166408456, 8.573682915559806e-15)), ('original_glcm_DifferenceVariance', (-0.26062982577383914, 0.03401861156325108, 1.839324174034314e-14)), ('original_firstorder_Kurtosis', (-0.208452648555657, 0.02807524161561163, 1.1296277877999933e-13)), ('original_gldm_LargeDependenceLowGrayLevelEmphasis', (-0.19736794765371685, 0.029063131182741897, 1.1135298128914623e-11)), ('original_gldm_GrayLevelVariance', (2.928063647060039, 0.45346636204035073, 1.0675014349423124e-10)), ('original_glszm_SmallAreaEmphasis', (0.15455014460048078, 0.025639112528421715, 1.6609822909871762e-09)), ('original_glszm_GrayLevelVariance', (0.16581417704359977, 0.029164790357855075, 1.3048908157122508e-08)), ('original_glcm_ClusterShade', (0.16652779598831308, 0.03022957778851879, 3.613493468415225e-08)), ('original_firstorder_InterquartileRange', (-0.22959844167527274, 0.054122263629787226, 2.2132153693904728e-05)), ('original_glrlm_GrayLevelVariance', (0.8182232164906379, 0.203168021591455, 5.641554257963209e-05)), ('original_glrlm_RunLengthNonUniformity', (0.288216681072859, 0.09089498206737756, 0.001519802111962463)), ('original_glcm_InverseVariance', (0.08290337652485932, 0.02820148765028351, 0.003285503456195989)), ('original_shape_Maximum2DDiameterSlice', (0.03266037707154243, 0.013602014811675951, 0.01634396643913748)), ('original_gldm_DependenceNonUniformity', (-0.19585003372748802, 0.0858715079717314, 0.02256421549341548))] 
+AUC of model: 0.688208 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38833 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                    VIF  Tolerance
+statin0                        1.334520   0.749333
+antihtnbase                    1.279090   0.781806
+sex_Male                       1.380858   0.724187
+original_shape_VoxelVolume    40.028261   0.024982
+hdl                            1.301517   0.768334
+smoking_Never                  1.153728   0.866755
+age                            1.184718   0.844083
+original_shape_SurfaceArea    34.640983   0.028868
+original_ngtdm_Coarseness      1.145531   0.872958
+original_shape_Sphericity      3.809972   0.262469
+original_glcm_Imc1             1.324444   0.755034
+original_firstorder_Kurtosis   1.873670   0.533712
+original_glszm_ZoneVariance    4.029276   0.248184
+smoking_Current                1.129950   0.884995
+race_other                     1.001490   0.998513
+dm2_prev                       1.093978   0.914095
+dm1_prev                       1.016525   0.983743
+race_black                     1.009301   0.990785
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.670187060286843, 0.045476607305500454, 3.731960251090973e-49)), ('antihtnbase', (0.3601297673403894, 0.025356478297872992, 8.818364438127885e-46)), ('statin0', (0.3305390822227379, 0.0261611707216766, 1.3587595706703054e-36)), ('hdl', (-0.4273240137743941, 0.04557590203947332, 6.846102683950603e-21)), ('age', (0.2826688391626948, 0.04177797603874459, 1.3241226996984006e-11)), ('smoking_Never', (-0.16049709568634066, 0.03622286776695885, 9.38743601124698e-06)), ('original_shape_VoxelVolume', (-0.819336697578152, 0.22399109523385052, 0.0002542916767132994)), ('original_glcm_Imc1', (0.1442816815054114, 0.039779383719666495, 0.00028668148565146376)), ('original_ngtdm_Coarseness', (0.05753110545356335, 0.018346830890198135, 0.0017141428748997762)), ('original_firstorder_Kurtosis', (-0.13907840421339954, 0.047718298369914966, 0.003561769286522667)), ('original_shape_SurfaceArea', (0.5656140780543105, 0.2098767023787439, 0.007039228975263886)), ('smoking_Current', (0.07418312630642793, 0.031421096736735835, 0.018228989072706335)), ('original_glszm_ZoneVariance', (0.12430455844439507, 0.0649221074253005, 0.05553431281985064)), ('race_other', (-0.11015331589097187, 0.06628224253228102, 0.09653628485279722)), ('original_shape_Sphericity', (0.12106439588851758, 0.07510718357322578, 0.10698623287969923)), ('dm1_prev', (0.030466138196375434, 0.019428430648097142, 0.11685279922166401)), ('race_black', (-0.05984131535332306, 0.04772250996600677, 0.20986266292114175)), ('dm2_prev', (0.019937214450133293, 0.02228358011546609, 0.3709451914258006))] 
+AUC of model: 0.835151 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                    VIF  Tolerance
+statin0                        1.334513   0.749337
+antihtnbase                    1.278352   0.782257
+sex_Male                       1.380858   0.724187
+age                            1.175020   0.851049
+hdl                            1.299129   0.769746
+original_shape_VoxelVolume    40.023653   0.024985
+smoking_Never                  1.035552   0.965668
+original_shape_SurfaceArea    34.638137   0.028870
+dm2_prev                       1.093914   0.914149
+original_glcm_Imc1             1.324443   0.755034
+original_firstorder_Kurtosis   1.873468   0.533769
+original_glszm_ZoneVariance    4.029158   0.248191
+race_other                     1.001482   0.998521
+original_ngtdm_Coarseness      1.145507   0.872976
+original_shape_Sphericity      3.808027   0.262603
+dm1_prev                       1.016446   0.983820
+race_black                     1.009188   0.990895
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase', (0.3338853847675435, 0.020726284348889536, 2.1958833016180455e-58)), ('statin0', (0.31544043771494146, 0.021300223461170168, 1.2764750037583598e-49)), ('sex_Male', (0.439853798952354, 0.0342070614146245, 7.699050893351069e-38)), ('age', (0.3665044755667888, 0.03249017637309348, 1.6386723072877326e-29)), ('hdl', (-0.33050101391842795, 0.035373433037395687, 9.346681908615463e-21)), ('smoking_Never', (-0.1457878289879427, 0.02765418903169376, 1.3507959374461223e-07)), ('original_glcm_Imc1', (0.13200422177998292, 0.03156595821920498, 2.8914190311922588e-05)), ('original_firstorder_Kurtosis', (-0.10682987542135373, 0.03718195671468491, 0.004063825465423237)), ('original_glszm_ZoneVariance', (0.12721453013948394, 0.04925527684937948, 0.009801364441550406)), ('original_ngtdm_Coarseness', (0.04389735325829376, 0.01701796202319522, 0.009895153521484524)), ('original_shape_VoxelVolume', (-0.39641333782377536, 0.1576199760266719, 0.011903431565701405)), ('dm1_prev', (0.03552420924288719, 0.016646115274743876, 0.03283590057999135)), ('race_other', (-0.12933682816065775, 0.06061227826605292, 0.03285598259503035)), ('dm2_prev', (0.03319298917744019, 0.018651668569916294, 0.07513723349383471)), ('race_black', (-0.07089042298589786, 0.04052278964368628, 0.08022251989301112)), ('original_shape_SurfaceArea', (0.20797469286950465, 0.14298986307195766, 0.14581560569204186)), ('original_shape_Sphericity', (0.0, 0.04973329699812899, 1.0))] 
+AUC of model: 0.801711 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                    VIF  Tolerance
+statin0                        1.327711   0.753176
+antihtnbase                    1.277444   0.782813
+sex_Male                       1.380855   0.724189
+age                            1.174156   0.851676
+hdl                            1.298854   0.769909
+original_shape_VoxelVolume    40.010077   0.024994
+smoking_Never                  1.035498   0.965719
+original_shape_SurfaceArea    34.625947   0.028880
+original_ngtdm_Coarseness      1.145505   0.872977
+original_glcm_Imc1             1.324334   0.755096
+original_firstorder_Kurtosis   1.873150   0.533860
+race_other                     1.001457   0.998545
+original_shape_Sphericity      3.807053   0.262670
+original_glszm_ZoneVariance    4.028972   0.248202
+dm2_prev                       1.089660   0.917717
+race_black                     1.009188   0.990896
+Best Parameters of Model: {'model__C': 0.008, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.5334265058962037, 0.01647015612648592, 4.1218750897411024e-230)), ('age', (0.3924126715944351, 0.015693687145939328, 5.46299822719841e-138)), ('hdl', (-0.3762759004263974, 0.017641984519402052, 6.184397645118602e-101)), ('statin0', (0.32405965134222237, 0.01615865265516221, 1.8302766152965882e-89)), ('antihtnbase', (0.3184442906970353, 0.015977357001203604, 2.1925235506376177e-88)), ('smoking_Never', (-0.12497026653192848, 0.014516256927584459, 7.37090356816243e-18)), ('original_glcm_Imc1', (0.10068638652804456, 0.01653819425487636, 1.1424961082919477e-09)), ('race_other', (-0.08412457364431074, 0.018412995904312144, 4.906163467145875e-06)), ('original_firstorder_Kurtosis', (-0.06897052093773665, 0.01945367726660449, 0.0003920594843641855)), ('original_ngtdm_Coarseness', (0.06866531342659236, 0.023435773653054322, 0.00339031985169434)), ('original_shape_Sphericity', (-0.07732236050848414, 0.027824634669826813, 0.005454039748147878)), ('dm2_prev', (0.02549428342002399, 0.015259487731283352, 0.09477761715379192)), ('original_shape_VoxelVolume', (-0.10188447266924344, 0.08956425517688367, 0.2553053834991651)), ('race_black', (-0.012667370082027616, 0.015044985089368213, 0.3998068300563423)), ('original_shape_SurfaceArea', (0.0, 0.0828666922791204, 1.0)), ('original_glszm_ZoneVariance', (0.0, 0.02807916951864166, 1.0))] 
+AUC of model: 0.816864 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                    VIF  Tolerance
+statin0                        1.327711   0.753176
+antihtnbase                    1.277444   0.782813
+sex_Male                       1.380855   0.724189
+age                            1.174156   0.851676
+hdl                            1.298854   0.769909
+smoking_Never                  1.035498   0.965719
+original_shape_VoxelVolume    40.010077   0.024994
+original_shape_SurfaceArea    34.625947   0.028880
+dm2_prev                       1.089660   0.917717
+original_glcm_Imc1             1.324334   0.755096
+original_firstorder_Kurtosis   1.873150   0.533860
+original_glszm_ZoneVariance    4.028972   0.248202
+race_black                     1.009188   0.990896
+original_ngtdm_Coarseness      1.145505   0.872977
+original_shape_Sphericity      3.807053   0.262670
+race_other                     1.001457   0.998545
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.46608270509781513, 0.015240239618632287, 2.099855119493614e-205)), ('antihtnbase', (0.3420432872888711, 0.01614210762554607, 1.193426300042985e-99)), ('statin0', (0.31557979920536283, 0.01623636005742843, 3.7835511784924947e-84)), ('sex_Male', (0.29672239692325514, 0.01601597836035514, 1.2588844715096202e-76)), ('hdl', (-0.30199910251042356, 0.016576887345869474, 3.709265628764443e-74)), ('smoking_Never', (-0.12896497644407548, 0.014010878581253182, 3.4284507259420857e-20)), ('original_glcm_Imc1', (0.13048412252262678, 0.01622131705766304, 8.69591680302139e-16)), ('race_black', (-0.08277130970515273, 0.017107701361401658, 1.3098833628492862e-06)), ('original_firstorder_Kurtosis', (-0.0893627341666416, 0.019048146883899116, 2.713239301159458e-06)), ('original_shape_VoxelVolume', (-0.3957685537268655, 0.08770576415045525, 6.408070740009205e-06)), ('original_glszm_ZoneVariance', (0.12315645942772123, 0.027435484221189323, 7.15757967873173e-06)), ('race_other', (-0.06831091363204075, 0.016620818325031633, 3.957260983757267e-05)), ('original_shape_SurfaceArea', (0.29180514465086266, 0.08148562019080291, 0.0003421990377977873)), ('dm2_prev', (0.049927031920590316, 0.015448823658595462, 0.0012302639598768365)), ('original_ngtdm_Coarseness', (0.06527508455065728, 0.021035258984511782, 0.0019148731114404186)), ('original_shape_Sphericity', (0.02980088151785811, 0.027274512743988705, 0.274557402046545))] 
+AUC of model: 0.783340 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.7297428375297949, 0.019858684319290786, 1.3084633121846488e-295)), ('antihtnbase', (0.40839714735768706, 0.01661218794752455, 1.8647578758624835e-133)), ('statin0', (0.3973401884917542, 0.01726962911964825, 3.873508091902305e-117)), ('hdl', (-0.44833841607980157, 0.019544664136719864, 1.889914357846835e-116)), ('age', (0.33399990424859893, 0.016886236964985864, 4.478476576658997e-87)), ('tchol', (0.30816650426335823, 0.017094933429224614, 1.2009704461710444e-72)), ('liver_original_glcm_DifferenceEntropy', (1.0351885286290825, 0.06993450231903647, 1.4164705623100818e-49)), ('liver_original_glcm_DifferenceVariance', (-0.7128010691304358, 0.053296382912635255, 8.547045610263367e-41)), ('liver_original_shape_MeshVolume', (-0.9584854509483595, 0.07893989979416924, 6.32881584562054e-34)), ('smoking_Never', (-0.17905636719826343, 0.015374392417087141, 2.3935042581917993e-31)), ('liver_original_gldm_GrayLevelNonUniformity', (0.8262636913606327, 0.08415851310639769, 9.424468548440173e-23)), ('liver_original_glrlm_RunEntropy', (0.2968354599435724, 0.031240344521481864, 2.0654984147776646e-21)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.2892573083539618, 0.034992762560060724, 1.3829201329298352e-16)), ('liver_original_shape_LeastAxisLength', (-0.10750424595769288, 0.021808369343226188, 8.244247792684421e-07)), ('liver_original_glcm_Idn', (0.12668673677473, 0.030430458711349216, 3.138792149417328e-05)), ('liver_original_shape_SurfaceArea', (0.18843997871931875, 0.048572494459219406, 0.00010464494811323112)), ('liver_original_firstorder_Kurtosis', (-0.13719221743797266, 0.03579146233673459, 0.00012653901331775928)), ('liver_original_glszm_GrayLevelVariance', (0.05470016689188874, 0.03363980081711025, 0.1039379520774374))] 
+AUC of model: 0.849473 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+statin0                                                 1.289914   0.775246
+antihtnbase                                             1.261657   0.792608
+sex_Male                                                1.681333   0.594766
+age                                                     1.186636   0.842719
+hdl                                                     1.308268   0.764369
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_MeshVolume                        20.842596   0.047979
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.40425487737022026, 0.015654593266064172, 4.8421550535370236e-147)), ('sex_Male', (0.4582837373241985, 0.018306586004027323, 2.6198560435939636e-138)), ('antihtnbase', (0.3313670845912261, 0.016126876584395263, 8.102097259452295e-94)), ('statin0', (0.3164557937875516, 0.01609974774036959, 5.141999474369445e-86)), ('hdl', (-0.30853744658596866, 0.0172516199339519, 1.5560640204558338e-71)), ('smoking_Never', (-0.18071512519192967, 0.014384086914626594, 3.349802354115125e-36)), ('liver_original_glcm_DifferenceEntropy', (0.7061730166832456, 0.0578791189838248, 3.0768959752854894e-34)), ('liver_original_glcm_DifferenceVariance', (-0.455465592781921, 0.043842336386683715, 2.7908403603509027e-25)), ('liver_original_shape_MeshVolume', (-0.6204413392623706, 0.06698075275939148, 1.9880556384989463e-20)), ('liver_original_gldm_GrayLevelNonUniformity', (0.5788180680861612, 0.06299696867976913, 4.000995526155558e-20)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.17558946965011762, 0.02181427346667858, 8.327395508944313e-16)), ('liver_original_glrlm_RunEntropy', (0.15319659992592322, 0.02726447971784613, 1.9216827608752144e-08)), ('liver_original_shape_LeastAxisLength', (-0.10056974455187222, 0.020321872367466732, 7.465614724238916e-07)), ('liver_original_shape_SurfaceArea', (0.17642929490464984, 0.04442079744524022, 7.133987926500368e-05))] 
+AUC of model: 0.808919 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+statin0                                                 1.289914   0.775246
+antihtnbase                                             1.261657   0.792608
+sex_Male                                                1.681333   0.594766
+liver_original_shape_MeshVolume                        20.842596   0.047979
+hdl                                                     1.308268   0.764369
+age                                                     1.186636   0.842719
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.568314351739781, 0.01872616214550105, 2.615075548722655e-202)), ('age', (0.35723421648645554, 0.015918888135316438, 1.5702585615029782e-111)), ('antihtnbase', (0.3415881955161833, 0.01614886261215447, 2.619121769540935e-99)), ('hdl', (-0.34121078041559044, 0.017801649421968914, 6.93276852662674e-82)), ('statin0', (0.3061836423701826, 0.016031839790712203, 2.5998522141136474e-81)), ('liver_original_glcm_DifferenceEntropy', (0.8095248206519093, 0.05995061377503738, 1.4973907607460924e-41)), ('liver_original_glcm_DifferenceVariance', (-0.5574783932297495, 0.0458199863807853, 4.675621592142336e-34)), ('smoking_Never', (-0.17176005634197214, 0.014685394228575427, 1.336377822861894e-31)), ('liver_original_shape_MeshVolume', (-0.750538066722318, 0.06887008070441605, 1.1797036733971016e-27)), ('liver_original_gldm_GrayLevelNonUniformity', (0.6190999718925687, 0.06489089621662977, 1.4196848143577175e-21)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.20117266703938466, 0.022194108673006023, 1.2547904696676758e-19)), ('liver_original_glrlm_RunEntropy', (0.20643369839489326, 0.028222891102603866, 2.58521421935222e-13)), ('liver_original_shape_LeastAxisLength', (-0.09719522585012119, 0.020724020051740014, 2.7323263778212814e-06)), ('liver_original_shape_SurfaceArea', (0.2032564390646136, 0.04544801369704648, 7.738843828627564e-06))] 
+AUC of model: 0.833157 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                            VIF  Tolerance
+statin0                                1.288753   0.775944
+antihtnbase                            1.261204   0.792893
+sex_Male                               1.493954   0.669364
+age                                    1.171807   0.853383
+hdl                                    1.304731   0.766441
+liver_original_shape_LeastAxisLength   1.980885   0.504825
+smoking_Never                          1.033040   0.968017
+liver_original_shape_MeshVolume       10.565786   0.094645
+liver_original_shape_SurfaceArea       8.953800   0.111684
+liver_original_glrlm_RunEntropy        1.201719   0.832141
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase', (0.34594919309887534, 0.01911849859968689, 3.4895690259258945e-73)), ('statin0', (0.3268579317880817, 0.01943721118170103, 1.860327004033162e-63)), ('age', (0.35660971890906995, 0.0295122950101255, 1.2921650362025366e-33)), ('hdl', (-0.3253491272052535, 0.03208297421344827, 3.638612315445469e-24)), ('sex_Male', (0.28831635632657016, 0.031967448681413525, 1.8970907220855914e-19)), ('smoking_Never', (-0.17632448564982714, 0.025373022940365697, 3.671300883801186e-12)), ('liver_original_shape_MeshVolume', (-0.3272501635488607, 0.07973400579286517, 4.055874920316422e-05)), ('liver_original_shape_SurfaceArea', (0.21187126992827354, 0.07252254209272414, 0.003484017319477784)), ('liver_original_glrlm_RunEntropy', (-0.06904776158871954, 0.025180130817856264, 0.0061037974616446385)), ('liver_original_shape_LeastAxisLength', (-0.07557692268150955, 0.03437839865496043, 0.02792175056531482))] 
+AUC of model: 0.789626 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_just_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                 29.095670   0.034369
+liver_original_shape_LeastAxisLength                    1.965898   0.508673
+liver_original_glszm_GrayLevelNonUniformity             5.980173   0.167219
+liver_original_firstorder_Energy                             inf   0.000000
+liver_original_firstorder_TotalEnergy                        inf   0.000000
+liver_original_glcm_DifferenceVariance                 13.723830   0.072866
+liver_original_glcm_DifferenceEntropy                  99.221721   0.010078
+liver_original_glcm_Idn                                 5.971809   0.167453
+liver_original_firstorder_Kurtosis                      5.950354   0.168057
+liver_original_firstorder_InterquartileRange           11.933585   0.083797
+liver_original_glrlm_GrayLevelNonUniformityNormalized  84.235923   0.011871
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.702117   0.023418
+liver_original_shape_Elongation                         1.149511   0.869935
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.240095   0.138120
+liver_original_glcm_ClusterShade                        3.925063   0.254773
+liver_original_firstorder_Uniformity                   84.070186   0.011895
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        2.002333   0.499417
+liver_original_glszm_GrayLevelVariance                  7.511991   0.133121
+liver_original_shape_SurfaceVolumeRatio                 4.072508   0.245549
+liver_original_firstorder_Median                       57.862135   0.017282
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_glszm_GrayLevelNonUniformity', (0.6532374790416344, 0.0331846949885023, 2.904963913934459e-86)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.5869344039764207, 0.04727481200318614, 2.1568050004683847e-35)), ('liver_original_shape_LeastAxisLength', (-0.3125795297363722, 0.032701861160206736, 1.1951844518255741e-21)), ('liver_original_shape_Elongation', (0.13899029801811424, 0.01462265108348254, 1.997853647314439e-21)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.3347895341932974, 0.16813053760866511, 2.0380608610524277e-15)), ('liver_original_glcm_ClusterShade', (0.2558754968236614, 0.03391487416246327, 4.535405714039071e-14)), ('liver_original_firstorder_10Percentile', (-0.8307170698708702, 0.12531587914339593, 3.3800316543866526e-11)), ('liver_original_firstorder_InterquartileRange', (-0.6119513586826061, 0.10225501691970677, 2.169746243446663e-09)), ('liver_original_shape_SurfaceVolumeRatio', (-0.2326872883027096, 0.049243747265309425, 2.298721315197471e-06)), ('liver_original_firstorder_Kurtosis', (-0.15165080737062245, 0.036514392325032, 3.2788805273864265e-05)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.1393443580802065, 0.03492570898353139, 6.614687948192022e-05)), ('liver_original_firstorder_Uniformity', (0.6210331945557089, 0.24445214929199788, 0.01106908443600577)), ('liver_original_glcm_DifferenceEntropy', (-0.42629624157560075, 0.2777306717993956, 0.12480181824092633)), ('liver_original_firstorder_Median', (0.3779790600951074, 0.25177562380710594, 0.13328998280230406)), ('liver_original_firstorder_Energy', (-0.2802318673057983, 553914463954368.25, 0.9999999999999996)), ('liver_original_firstorder_TotalEnergy', (-0.2802318673057983, 553914463954369.4, 0.9999999999999996)), ('liver_original_glcm_DifferenceVariance', (-0.43552984608585044, nan, nan)), ('liver_original_glcm_Idn', (0.16330950787710202, nan, nan)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.18509071355460843, nan, nan)), ('liver_original_glszm_GrayLevelVariance', (0.16621772513882235, nan, nan))] 
+AUC of model: 0.722669 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  3.855434   0.259374
+liver_original_shape_LeastAxisLength                    1.946997   0.513611
+liver_original_glszm_GrayLevelNonUniformity             5.697354   0.175520
+liver_original_firstorder_Energy                             inf   0.000000
+liver_original_firstorder_TotalEnergy                        inf   0.000000
+liver_original_glcm_DifferenceVariance                 13.681175   0.073093
+liver_original_glcm_DifferenceEntropy                  96.988642   0.010310
+liver_original_firstorder_InterquartileRange           10.392869   0.096220
+liver_original_glrlm_GrayLevelNonUniformityNormalized  70.949826   0.014094
+liver_original_glcm_ClusterShade                        2.024860   0.493861
+liver_original_firstorder_Uniformity                   71.373155   0.014011
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.671041   0.023435
+liver_original_shape_SurfaceVolumeRatio                 4.048332   0.247015
+liver_original_shape_Elongation                         1.148384   0.870788
+liver_original_glcm_Idn                                 5.952480   0.167997
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.178090   0.139313
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.992331   0.501925
+liver_original_glszm_GrayLevelVariance                  7.502677   0.133286
+liver_original_firstorder_Kurtosis                      5.770041   0.173309
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_firstorder_10Percentile', (-0.5475330302022479, 0.011008067438862039, 0.0)), ('liver_original_glszm_GrayLevelNonUniformity', (0.5251358666661228, 0.037475915747100366, 1.304953664934629e-44)), ('liver_original_shape_LeastAxisLength', (-0.2243031630058683, 0.019545705858791576, 1.744987617395195e-30)), ('liver_original_firstorder_Energy', (-0.21616429528709463, nan, nan)), ('liver_original_firstorder_TotalEnergy', (-0.21616429528709463, nan, nan)), ('liver_original_firstorder_InterquartileRange', (-0.5663791198522371, 0.04885802605825909, 4.506209199494911e-31)), ('liver_original_glcm_ClusterShade', (0.18084056837286594, 0.01601593600072519, 1.448953010084231e-29)), ('liver_original_shape_Elongation', (0.11444034670249878, 0.014771083655997202, 9.36506237371935e-15)), ('liver_original_glcm_Idn', (0.10626117737761981, 0.023086221398450776, 4.1685563906375666e-06)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.1119261280418586, 0.027279644469248496, 4.079729259589486e-05)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.14985773835167915, 0.04537036361551457, 0.0009566069356921281)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.6740996741793656, 0.21816993825473308, 0.002002968840121847)), ('liver_original_glszm_GrayLevelVariance', (0.09601075248636452, 0.03364120489243352, 0.004317756601657325)), ('liver_original_shape_SurfaceVolumeRatio', (-0.13165283777165457, 0.05598907741187995, 0.018702807332660058)), ('liver_original_glcm_DifferenceEntropy', (-0.5255918494957065, 0.34255251797848113, 0.12494615992200922)), ('liver_original_glcm_DifferenceVariance', (-0.16377837688276567, 0.11443982519705602, 0.15239268570255654)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.37279689845266, nan, nan)), ('liver_original_firstorder_Uniformity', (0.7032484836351918, nan, nan)), ('liver_original_firstorder_Kurtosis', (-0.053149041429975376, 0.03697239357108147, 0.1505665601764971))] 
+AUC of model: 0.698417 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  3.855434   0.259374
+liver_original_shape_LeastAxisLength                    1.946997   0.513611
+liver_original_glszm_GrayLevelNonUniformity             5.697354   0.175520
+liver_original_firstorder_Energy                             inf   0.000000
+liver_original_firstorder_TotalEnergy                        inf   0.000000
+liver_original_glcm_DifferenceVariance                 13.681175   0.073093
+liver_original_glcm_DifferenceEntropy                  96.988642   0.010310
+liver_original_glcm_Idn                                 5.952480   0.167997
+liver_original_shape_Elongation                         1.148384   0.870788
+liver_original_glcm_ClusterShade                        2.024860   0.493861
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.992331   0.501925
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.178090   0.139313
+liver_original_glrlm_GrayLevelNonUniformityNormalized  70.949826   0.014094
+liver_original_firstorder_InterquartileRange           10.392869   0.096220
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.671041   0.023435
+liver_original_firstorder_Uniformity                   71.373155   0.014011
+liver_original_shape_SurfaceVolumeRatio                 4.048332   0.247015
+liver_original_glszm_GrayLevelVariance                  7.502677   0.133286
+liver_original_firstorder_Kurtosis                      5.770041   0.173309
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_firstorder_10Percentile', (-0.5566191421177844, 0.03261541487302385, 2.651753435614012e-65)), ('liver_original_shape_LeastAxisLength', (-0.27711391643072625, 0.017556965615033743, 4.028500335851897e-56)), ('liver_original_glszm_GrayLevelNonUniformity', (0.5744881507091559, 0.04075044972796723, 3.9227679761132236e-45)), ('liver_original_firstorder_Energy', (-0.24639691209691614, nan, nan)), ('liver_original_firstorder_TotalEnergy', (-0.24639691209691614, nan, nan)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.3361822949005395, 0.10635514619817873, 3.3559338824836186e-36)), ('liver_original_firstorder_InterquartileRange', (-0.5198661410813422, 0.04840738835098624, 6.647745041757877e-27)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.5838253056242129, 0.06208617545177272, 5.2794134192160086e-21)), ('liver_original_glcm_ClusterShade', (0.1843951406535417, 0.01973236264055592, 9.205632398499429e-21)), ('liver_original_shape_Elongation', (0.12679364238552215, 0.014678853441970806, 5.72838917559243e-18)), ('liver_original_glcm_DifferenceVariance', (-0.3732330178186437, 0.04885374402410824, 2.175530481715884e-14)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.17913986997095313, 0.02901830403572125, 6.686202226508413e-10)), ('liver_original_firstorder_Uniformity', (0.6123694264092936, 0.11236823272496346, 5.046427693249239e-08)), ('liver_original_shape_SurfaceVolumeRatio', (-0.18854240573701972, 0.04156093921833141, 5.718763080880917e-06)), ('liver_original_glcm_Idn', (0.14923444131856053, 0.03470765986487035, 1.7098686963474852e-05)), ('liver_original_glszm_GrayLevelVariance', (0.11654133897178054, 0.02778540821059244, 2.736720228098576e-05)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.13410887527160748, 0.03210950054310264, 2.958851131266774e-05)), ('liver_original_glcm_DifferenceEntropy', (-0.35066605688356706, 0.1392552730222658, 0.01179721268794934)), ('liver_original_firstorder_Kurtosis', (-0.05233978236351603, 0.032408471149376464, 0.10631001692640801))] 
+AUC of model: 0.712666 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  2.735346   0.365584
+liver_original_shape_LeastAxisLength                    1.927296   0.518862
+liver_original_glszm_GrayLevelNonUniformity             3.833846   0.260835
+liver_original_firstorder_Energy                             inf   0.000000
+liver_original_firstorder_TotalEnergy                        inf   0.000000
+liver_original_glcm_ClusterShade                        1.875314   0.533244
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.738103   0.575340
+liver_original_shape_Elongation                         1.143195   0.874741
+liver_original_glcm_DifferenceVariance                  4.777763   0.209303
+liver_original_glrlm_RunLengthNonUniformityNormalized   5.059993   0.197629
+liver_original_glcm_Idn                                 3.076537   0.325041
+liver_original_firstorder_InterquartileRange           10.182449   0.098208
+liver_original_glrlm_GrayLevelNonUniformityNormalized  66.837746   0.014962
+liver_original_firstorder_Uniformity                   68.890296   0.014516
+liver_original_glszm_GrayLevelNonUniformityNormalized   4.032350   0.247994
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_just_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                 29.095670   0.034369
+liver_original_shape_LeastAxisLength                    1.965898   0.508673
+liver_original_glszm_GrayLevelNonUniformity             5.980173   0.167219
+liver_original_firstorder_Energy                        5.501467   0.181770
+liver_original_glcm_DifferenceVariance                 13.723830   0.072866
+liver_original_glcm_DifferenceEntropy                  99.221721   0.010078
+liver_original_glcm_Idn                                 5.971809   0.167453
+liver_original_firstorder_Kurtosis                      5.950354   0.168057
+liver_original_firstorder_InterquartileRange           11.933585   0.083797
+liver_original_glrlm_GrayLevelNonUniformityNormalized  84.235923   0.011871
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.702117   0.023418
+liver_original_shape_Elongation                         1.149511   0.869935
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.240095   0.138120
+liver_original_glcm_ClusterShade                        3.925063   0.254773
+liver_original_firstorder_Uniformity                   84.070186   0.011895
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        2.002333   0.499417
+liver_original_glszm_GrayLevelVariance                  7.511991   0.133121
+liver_original_shape_SurfaceVolumeRatio                 4.072508   0.245549
+liver_original_firstorder_Median                       57.862135   0.017282
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_just_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                 29.095670   0.034369
+liver_original_shape_LeastAxisLength                    1.965898   0.508673
+liver_original_glszm_GrayLevelNonUniformity             5.980173   0.167219
+liver_original_firstorder_Energy                        5.501467   0.181770
+liver_original_glcm_DifferenceVariance                 13.723830   0.072866
+liver_original_glcm_DifferenceEntropy                  99.221721   0.010078
+liver_original_glcm_Idn                                 5.971809   0.167453
+liver_original_firstorder_Kurtosis                      5.950354   0.168057
+liver_original_firstorder_InterquartileRange           11.933585   0.083797
+liver_original_glrlm_GrayLevelNonUniformityNormalized  84.235923   0.011871
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.702117   0.023418
+liver_original_shape_Elongation                         1.149511   0.869935
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.240095   0.138120
+liver_original_glcm_ClusterShade                        3.925063   0.254773
+liver_original_firstorder_Uniformity                   84.070186   0.011895
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        2.002333   0.499417
+liver_original_glszm_GrayLevelVariance                  7.511991   0.133121
+liver_original_shape_SurfaceVolumeRatio                 4.072508   0.245549
+liver_original_firstorder_Median                       57.862135   0.017282
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_glszm_GrayLevelNonUniformity', (0.6532042184878659, 0.038239387275294745, 2.0216220683627978e-65)), ('liver_original_shape_LeastAxisLength', (-0.3125882396196274, 0.01963003630877798, 4.320242370847355e-57)), ('liver_original_firstorder_Energy', (-0.5604162769914917, 0.03695825651221933, 6.169850044516605e-52)), ('liver_original_firstorder_InterquartileRange', (-0.611849999992665, 0.05351111552067422, 2.8253814793379435e-30)), ('liver_original_firstorder_10Percentile', (-0.8305102417741868, 0.08099431073478844, 1.1362383625606346e-24)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.3352374532860545, 0.1323741357162817, 6.316686644080013e-24)), ('liver_original_shape_Elongation', (0.13899127232815434, 0.015060616904143807, 2.737059452060869e-20)), ('liver_original_glcm_ClusterShade', (0.25583684896955744, 0.030325540921525097, 3.274039935563306e-17)), ('liver_original_glcm_DifferenceVariance', (-0.43551420122052026, 0.06938604357584344, 3.458722103563639e-10)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.5869521345038091, 0.11124885728439259, 1.3201361223967782e-07)), ('liver_original_shape_SurfaceVolumeRatio', (-0.23267493584917162, 0.04702545009793694, 7.503718453417687e-07)), ('liver_original_firstorder_Uniformity', (0.6214980721712191, 0.13287300200311739, 2.9055764323612225e-06)), ('liver_original_glcm_Idn', (0.16330205344231974, 0.0356247147987441, 4.562646823384372e-06)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.18512580869966616, 0.04082305572119944, 5.764862292666054e-06)), ('liver_original_firstorder_Kurtosis', (-0.15167493122253234, 0.03560855252735769, 2.04876932572007e-05)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.13935474721514857, 0.032905307714302355, 2.2852793639480798e-05)), ('liver_original_glszm_GrayLevelVariance', (0.16621866015901693, 0.04052662827741658, 4.105376762650299e-05)), ('liver_original_firstorder_Median', (0.377655380065641, 0.11194450787200856, 0.0007419356515757596)), ('liver_original_glcm_DifferenceEntropy', (-0.4262628541931822, 0.18115050789558526, 0.0186182915029421))] 
+AUC of model: 0.722670 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  3.855434   0.259374
+liver_original_shape_LeastAxisLength                    1.946997   0.513611
+liver_original_glszm_GrayLevelNonUniformity             5.697354   0.175520
+liver_original_firstorder_Energy                        5.100596   0.196056
+liver_original_glcm_DifferenceVariance                 13.681175   0.073093
+liver_original_glcm_DifferenceEntropy                  96.988642   0.010310
+liver_original_firstorder_InterquartileRange           10.392869   0.096220
+liver_original_glrlm_GrayLevelNonUniformityNormalized  70.949826   0.014094
+liver_original_glcm_ClusterShade                        2.024860   0.493861
+liver_original_firstorder_Uniformity                   71.373155   0.014011
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.671041   0.023435
+liver_original_shape_SurfaceVolumeRatio                 4.048332   0.247015
+liver_original_shape_Elongation                         1.148384   0.870788
+liver_original_glcm_Idn                                 5.952480   0.167997
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.178090   0.139313
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.992331   0.501925
+liver_original_glszm_GrayLevelVariance                  7.502677   0.133286
+liver_original_firstorder_Kurtosis                      5.770041   0.173309
+Best Parameters of Model: {'model__C': 0.5, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_firstorder_10Percentile', (-0.5475414711061446, 0.029155766924383902, 1.1035287027380374e-78)), ('liver_original_glszm_GrayLevelNonUniformity', (0.5251196819944511, 0.0352261722907537, 2.963959941907844e-50)), ('liver_original_firstorder_Energy', (-0.43230607456793857, 0.03339523015545885, 2.502923743799074e-38)), ('liver_original_shape_LeastAxisLength', (-0.22430702732796978, 0.018722109153794294, 4.4763862910521596e-33)), ('liver_original_firstorder_InterquartileRange', (-0.566372401745095, 0.047679638475722916, 1.5271328044397074e-32)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.372899828398991, 0.11824631232829641, 3.6444131198232527e-31)), ('liver_original_glcm_ClusterShade', (0.18085153320627337, 0.02052794309770206, 1.2512658082775735e-18)), ('liver_original_shape_Elongation', (0.11444118529538276, 0.014426825947090004, 2.1473114026123175e-15)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.6741308527602793, 0.10185492859031846, 3.6276535256443134e-11)), ('liver_original_firstorder_Uniformity', (0.703348303373084, 0.11806260251647459, 2.562538177130658e-09)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.14986912507631045, 0.03913331976280359, 0.00012829623800312073)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.11192761267143396, 0.02982610890684777, 0.00017495950153909043)), ('liver_original_shape_SurfaceVolumeRatio', (-0.13165312915338875, 0.036545042677460095, 0.00031518424724355526)), ('liver_original_glcm_DifferenceEntropy', (-0.5256296361559547, 0.16018665971059134, 0.0010330885118080041)), ('liver_original_glcm_Idn', (0.10626474156109361, 0.034076542517918626, 0.0018182766282165493)), ('liver_original_glcm_DifferenceVariance', (-0.16375311595059056, 0.060355954225868785, 0.0066652400304389545)), ('liver_original_glszm_GrayLevelVariance', (0.09600198689572637, 0.03900705209082719, 0.013849462151799765)), ('liver_original_firstorder_Kurtosis', (-0.05314489399042481, 0.03299272628997062, 0.10722193017282992))] 
+AUC of model: 0.698415 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  3.855434   0.259374
+liver_original_shape_LeastAxisLength                    1.946997   0.513611
+liver_original_glszm_GrayLevelNonUniformity             5.697354   0.175520
+liver_original_firstorder_Energy                        5.100596   0.196056
+liver_original_glcm_DifferenceVariance                 13.681175   0.073093
+liver_original_glcm_DifferenceEntropy                  96.988642   0.010310
+liver_original_glcm_Idn                                 5.952480   0.167997
+liver_original_shape_Elongation                         1.148384   0.870788
+liver_original_glcm_ClusterShade                        2.024860   0.493861
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.992331   0.501925
+liver_original_glszm_GrayLevelNonUniformityNormalized   7.178090   0.139313
+liver_original_glrlm_GrayLevelNonUniformityNormalized  70.949826   0.014094
+liver_original_firstorder_InterquartileRange           10.392869   0.096220
+liver_original_glrlm_RunLengthNonUniformityNormalized  42.671041   0.023435
+liver_original_firstorder_Uniformity                   71.373155   0.014011
+liver_original_shape_SurfaceVolumeRatio                 4.048332   0.247015
+liver_original_glszm_GrayLevelVariance                  7.502677   0.133286
+liver_original_firstorder_Kurtosis                      5.770041   0.173309
+Best Parameters of Model: {'model__C': 0.2, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_firstorder_10Percentile', (-0.5566422530210218, 0.03020289061760804, 7.534557713610381e-76)), ('liver_original_glszm_GrayLevelNonUniformity', (0.5744532185981006, 0.036007427656467764, 2.683251077151128e-57)), ('liver_original_shape_LeastAxisLength', (-0.27711851156014067, 0.019125191088241768, 1.407315621356651e-47)), ('liver_original_firstorder_Energy', (-0.4927545985346946, 0.03434053848483565, 1.079841491279862e-46)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.3362489849283803, 0.12006897048263446, 9.063473397962733e-29)), ('liver_original_firstorder_InterquartileRange', (-0.5198512556341961, 0.04845621118737458, 7.498789348956411e-27)), ('liver_original_glcm_ClusterShade', (0.18440957250859033, 0.020939479347792566, 1.2878199764073679e-18)), ('liver_original_shape_Elongation', (0.12679476056735647, 0.014759170595568496, 8.628043774489591e-18)), ('liver_original_glcm_DifferenceVariance', (-0.3732592478155087, 0.06589989633754782, 1.4785516413358139e-08)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.5837566205817315, 0.10585022551288775, 3.489181247001862e-08)), ('liver_original_firstorder_Uniformity', (0.6124514419601618, 0.11974760962595339, 3.1454118931429134e-07)), ('liver_original_shape_SurfaceVolumeRatio', (-0.1885187817514223, 0.041118441010959454, 4.5447655630929235e-06)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.1791606443176146, 0.03972457037455627, 6.4805843799609864e-06)), ('liver_original_glcm_Idn', (0.14923642218153352, 0.03498370871532099, 1.9911275845421906e-05)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.1341149705404279, 0.03232869570193575, 3.346890404882377e-05)), ('liver_original_glszm_GrayLevelVariance', (0.1165333818993037, 0.03983044303516021, 0.0034364184145883286)), ('liver_original_glcm_DifferenceEntropy', (-0.35054309886610846, 0.16777862845554767, 0.036679005034445496)), ('liver_original_firstorder_Kurtosis', (-0.052332510009992554, 0.03353291059364655, 0.11861076812714717))] 
+AUC of model: 0.712666 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                             VIF  Tolerance
+liver_original_firstorder_10Percentile                  2.735346   0.365584
+liver_original_shape_LeastAxisLength                    1.927296   0.518862
+liver_original_glszm_GrayLevelNonUniformity             3.833846   0.260835
+liver_original_firstorder_Energy                        3.779036   0.264618
+liver_original_glcm_ClusterShade                        1.875314   0.533244
+liver_original_glrlm_LongRunLowGrayLevelEmphasis        1.738103   0.575340
+liver_original_shape_Elongation                         1.143195   0.874741
+liver_original_glcm_DifferenceVariance                  4.777763   0.209303
+liver_original_glrlm_RunLengthNonUniformityNormalized   5.059993   0.197629
+liver_original_glcm_Idn                                 3.076537   0.325041
+liver_original_firstorder_InterquartileRange           10.182449   0.098208
+liver_original_glrlm_GrayLevelNonUniformityNormalized  66.837746   0.014962
+liver_original_firstorder_Uniformity                   68.890296   0.014516
+liver_original_glszm_GrayLevelNonUniformityNormalized   4.032350   0.247994
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('liver_original_firstorder_10Percentile', (-0.5382978932738003, 0.024225355905752997, 2.179595155884696e-109)), ('liver_original_glszm_GrayLevelNonUniformity', (0.39007428398375915, 0.027193252420615138, 1.1528721829439914e-46)), ('liver_original_glrlm_GrayLevelNonUniformityNormalized', (-1.313692966741725, 0.11171422612922385, 6.317701878373177e-32)), ('liver_original_glrlm_RunLengthNonUniformityNormalized', (0.37214330862403566, 0.03228422164681144, 9.633923412619764e-31)), ('liver_original_shape_LeastAxisLength', (-0.2072953553711286, 0.018293429516322773, 9.14301732210197e-30)), ('liver_original_firstorder_Energy', (-0.29640830073616187, 0.026657261715547585, 1.011378573809415e-28)), ('liver_original_glcm_ClusterShade', (0.20322090633928547, 0.019348369989278302, 8.344994424594971e-26)), ('liver_original_glcm_DifferenceVariance', (-0.2750996268195261, 0.03278567120007201, 4.826426120011224e-17)), ('liver_original_shape_Elongation', (0.11730164690276064, 0.014079223393597434, 7.979583725771172e-17)), ('liver_original_firstorder_InterquartileRange', (-0.38195822918905487, 0.04592872298328424, 9.07321014766641e-17)), ('liver_original_firstorder_Uniformity', (0.8590983884844009, 0.1139065110901693, 4.623354979735253e-14)), ('liver_original_glcm_Idn', (0.14291091485305196, 0.023985708145545126, 2.550788721272724e-09)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.12893313395302897, 0.027488856840650396, 2.727005667336921e-06)), ('liver_original_glrlm_LongRunLowGrayLevelEmphasis', (-0.13013757737271556, 0.02803688802613437, 3.456286567831544e-06))] 
+AUC of model: 0.677116 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.7297428375297949, 0.019858684319290786, 1.3084633121846488e-295)), ('antihtnbase', (0.40839714735768706, 0.01661218794752455, 1.8647578758624835e-133)), ('statin0', (0.3973401884917542, 0.01726962911964825, 3.873508091902305e-117)), ('hdl', (-0.44833841607980157, 0.019544664136719864, 1.889914357846835e-116)), ('age', (0.33399990424859893, 0.016886236964985864, 4.478476576658997e-87)), ('tchol', (0.30816650426335823, 0.017094933429224614, 1.2009704461710444e-72)), ('liver_original_glcm_DifferenceEntropy', (1.0351885286290825, 0.06993450231903647, 1.4164705623100818e-49)), ('liver_original_glcm_DifferenceVariance', (-0.7128010691304358, 0.053296382912635255, 8.547045610263367e-41)), ('liver_original_shape_MeshVolume', (-0.9584854509483595, 0.07893989979416924, 6.32881584562054e-34)), ('smoking_Never', (-0.17905636719826343, 0.015374392417087141, 2.3935042581917993e-31)), ('liver_original_gldm_GrayLevelNonUniformity', (0.8262636913606327, 0.08415851310639769, 9.424468548440173e-23)), ('liver_original_glrlm_RunEntropy', (0.2968354599435724, 0.031240344521481864, 2.0654984147776646e-21)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.2892573083539618, 0.034992762560060724, 1.3829201329298352e-16)), ('liver_original_shape_LeastAxisLength', (-0.10750424595769288, 0.021808369343226188, 8.244247792684421e-07)), ('liver_original_glcm_Idn', (0.12668673677473, 0.030430458711349216, 3.138792149417328e-05)), ('liver_original_shape_SurfaceArea', (0.18843997871931875, 0.048572494459219406, 0.00010464494811323112)), ('liver_original_firstorder_Kurtosis', (-0.13719221743797266, 0.03579146233673459, 0.00012653901331775928)), ('liver_original_glszm_GrayLevelVariance', (0.05470016689188874, 0.03363980081711025, 0.1039379520774374))] 
+AUC of model: 0.849473 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+antihtnbase                                             1.261657   0.792608
+statin0                                                 1.289914   0.775246
+sex_Male                                                1.681333   0.594766
+age                                                     1.186636   0.842719
+hdl                                                     1.308268   0.764369
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_MeshVolume                        20.842596   0.047979
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.4042548773702202, 0.01565459326606417, 4.8421550535370236e-147)), ('sex_Male', (0.45828373732419825, 0.01830658600402733, 2.6198560435956042e-138)), ('antihtnbase', (0.3313670845912259, 0.016126876584395263, 8.102097259454371e-94)), ('statin0', (0.3164557937875518, 0.016099747740369593, 5.1419994743690054e-86)), ('hdl', (-0.3085374465859687, 0.0172516199339519, 1.556064020455701e-71)), ('smoking_Never', (-0.1807151251919298, 0.014384086914626592, 3.349802354114551e-36)), ('liver_original_glcm_DifferenceEntropy', (0.7061730166832471, 0.05787911898382486, 3.076895975285005e-34)), ('liver_original_glcm_DifferenceVariance', (-0.45546559278192233, 0.0438423363866837, 2.7908403603499035e-25)), ('liver_original_shape_MeshVolume', (-0.6204413392623724, 0.06698075275939133, 1.988055638498031e-20)), ('liver_original_gldm_GrayLevelNonUniformity', (0.5788180680861624, 0.06299696867976896, 4.000995526153861e-20)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.17558946965011765, 0.02181427346667861, 8.327395508944855e-16)), ('liver_original_glrlm_RunEntropy', (0.1531965999259237, 0.027264479717846117, 1.9216827608749954e-08)), ('liver_original_shape_LeastAxisLength', (-0.10056974455187222, 0.020321872367466732, 7.465614724238916e-07)), ('liver_original_shape_SurfaceArea', (0.17642929490465084, 0.04442079744524042, 7.133987926500235e-05))] 
+AUC of model: 0.808919 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+statin0                                                 1.289914   0.775246
+antihtnbase                                             1.261657   0.792608
+sex_Male                                                1.681333   0.594766
+liver_original_shape_MeshVolume                        20.842596   0.047979
+hdl                                                     1.308268   0.764369
+age                                                     1.186636   0.842719
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': 'balanced', 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.568314351739781, 0.01872616214550105, 2.615075548722655e-202)), ('age', (0.35723421648645554, 0.015918888135316438, 1.5702585615029782e-111)), ('antihtnbase', (0.3415881955161833, 0.01614886261215447, 2.619121769540935e-99)), ('hdl', (-0.34121078041559044, 0.017801649421968914, 6.93276852662674e-82)), ('statin0', (0.3061836423701826, 0.016031839790712203, 2.5998522141136474e-81)), ('liver_original_glcm_DifferenceEntropy', (0.8095248206519093, 0.05995061377503738, 1.4973907607460924e-41)), ('liver_original_glcm_DifferenceVariance', (-0.5574783932297495, 0.0458199863807853, 4.675621592142336e-34)), ('smoking_Never', (-0.17176005634197214, 0.014685394228575427, 1.336377822861894e-31)), ('liver_original_shape_MeshVolume', (-0.750538066722318, 0.06887008070441605, 1.1797036733971016e-27)), ('liver_original_gldm_GrayLevelNonUniformity', (0.6190999718925687, 0.06489089621662977, 1.4196848143577175e-21)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.20117266703938466, 0.022194108673006023, 1.2547904696676758e-19)), ('liver_original_glrlm_RunEntropy', (0.20643369839489326, 0.028222891102603866, 2.58521421935222e-13)), ('liver_original_shape_LeastAxisLength', (-0.09719522585012119, 0.020724020051740014, 2.7323263778212814e-06)), ('liver_original_shape_SurfaceArea', (0.2032564390646136, 0.04544801369704648, 7.738843828627564e-06))] 
+AUC of model: 0.833157 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                            VIF  Tolerance
+antihtnbase                            1.261204   0.792893
+statin0                                1.288753   0.775944
+sex_Male                               1.493954   0.669364
+age                                    1.171807   0.853383
+hdl                                    1.304731   0.766441
+liver_original_shape_LeastAxisLength   1.980885   0.504825
+smoking_Never                          1.033040   0.968017
+liver_original_shape_MeshVolume       10.565786   0.094645
+liver_original_shape_SurfaceArea       8.953800   0.111684
+liver_original_glrlm_RunEntropy        1.201719   0.832141
+Best Parameters of Model: {'model__C': 1, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('antihtnbase', (0.34594919309887534, 0.01911849859968689, 3.4895690259258945e-73)), ('statin0', (0.3268579317880816, 0.01943721118170103, 1.8603270040332156e-63)), ('age', (0.35660971890907, 0.0295122950101255, 1.2921650362025366e-33)), ('hdl', (-0.32534912720525333, 0.03208297421344827, 3.638612315445653e-24)), ('sex_Male', (0.28831635632657027, 0.031967448681413525, 1.8970907220855377e-19)), ('smoking_Never', (-0.17632448564982703, 0.025373022940365694, 3.671300883801279e-12)), ('liver_original_shape_MeshVolume', (-0.3272501635488595, 0.07973400579286498, 4.05587492031652e-05)), ('liver_original_shape_SurfaceArea', (0.21187126992827246, 0.07252254209272396, 0.0034840173194778676)), ('liver_original_glrlm_RunEntropy', (-0.0690477615887194, 0.025180130817856264, 0.006103797461644749)), ('liver_original_shape_LeastAxisLength', (-0.0755769226815098, 0.03437839865496045, 0.027921750565314377))] 
+AUC of model: 0.789626 
+ 
+-----------------Date of Analysis: 2023-05-25----------------- 
+cohorts/CADcohort_all_demo_radliver.csv
+Number of patients 38474 
+Model Choice: logreg_l1 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                              VIF  Tolerance
+sex_Male                                                 1.692005   0.591015
+age                                                      1.116520   0.895640
+liver_original_glcm_Imc1                                 3.598339   0.277906
+liver_original_shape_Sphericity                          1.417089   0.705672
+liver_original_firstorder_Kurtosis                       4.534006   0.220555
+liver_original_firstorder_10Percentile                   3.093669   0.323241
+liver_original_shape_LeastAxisLength                     1.463650   0.683223
+liver_original_ngtdm_Contrast                            9.293585   0.107601
+liver_original_glszm_GrayLevelNonUniformityNormalized    5.910353   0.169195
+liver_original_glrlm_ShortRunEmphasis                   54.240892   0.018436
+liver_original_glrlm_RunPercentage                      47.545133   0.021033
+liver_original_glcm_Idmn                                 6.560327   0.152431
+liver_original_glszm_GrayLevelVariance                   6.715014   0.148920
+liver_original_glcm_DifferenceVariance                   5.091345   0.196412
+liver_original_glszm_LowGrayLevelZoneEmphasis            2.254905   0.443478
+race_asian                                               1.016982   0.983301
+liver_original_firstorder_Skewness                       1.760966   0.567870
+liver_original_glszm_SmallAreaEmphasis                 214.134793   0.004670
+liver_original_glszm_SizeZoneNonUniformityNormalized   218.463960   0.004577
+Best Parameters of Model: {'model__C': 5, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('sex_Male', (0.7687496684166252, 0.04631523473844247, 7.180873841573058e-62)), ('age', (0.5578982956619689, 0.037399228138848634, 2.5407514537274287e-50)), ('liver_original_glrlm_ShortRunEmphasis', (1.2918128677553544, 0.25701752548831713, 5.003815780874792e-07)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.3640950444737085, 0.07738825162317928, 2.541342860475846e-06)), ('liver_original_glrlm_RunPercentage', (-1.0466087623849551, 0.23080155067930158, 5.769374249165739e-06)), ('liver_original_shape_LeastAxisLength', (-0.15838420187371618, 0.040631154417132144, 9.695137870958562e-05)), ('liver_original_firstorder_Kurtosis', (-0.279146316560059, 0.083711638481672, 0.0008541672422226039)), ('liver_original_firstorder_10Percentile', (-0.18354823487881952, 0.05853560162989053, 0.0017146297017148287)), ('liver_original_glcm_DifferenceVariance', (-0.25663231361174493, 0.08839169755195715, 0.00369190065835595)), ('race_asian', (0.07279325925075354, 0.02621253451452914, 0.005485641208396254)), ('liver_original_glcm_Imc1', (0.17942048825028364, 0.07473396386909802, 0.01635976081928792)), ('liver_original_glszm_GrayLevelVariance', (0.19094837136871118, 0.09426531217111217, 0.04280083600058154)), ('liver_original_glcm_Idmn', (0.2967313250474405, 0.16766322460989955, 0.07675951953789346)), ('liver_original_glszm_LowGrayLevelZoneEmphasis', (-0.08472106783256768, 0.053981921958742976, 0.11654682910044999)), ('liver_original_firstorder_Skewness', (0.042164894590777414, 0.045639948065407776, 0.35555952886588726)), ('liver_original_glszm_SmallAreaEmphasis', (0.380285054024393, 0.5333086448681722, 0.4758039986520505)), ('liver_original_glszm_SizeZoneNonUniformityNormalized', (-0.2968631934964364, 0.5430655905956294, 0.5846237810019497)), ('liver_original_ngtdm_Contrast', (0.07951191743596359, 0.16026432269271454, 0.6198027867558297)), ('liver_original_shape_Sphericity', (0.005272000715650059, 0.04210326260904963, 0.9003525773784831))] 
+AUC of model: 0.770299 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+sex_Male                                                1.621345   0.616772
+age                                                     1.093430   0.914553
+liver_original_glcm_Imc1                                2.614466   0.382487
+liver_original_firstorder_10Percentile                  2.336704   0.427953
+liver_original_shape_LeastAxisLength                    1.416091   0.706169
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.039232   0.198443
+liver_original_glrlm_ShortRunEmphasis                  52.841339   0.018925
+liver_original_glcm_Idmn                                3.579546   0.279365
+liver_original_glrlm_RunPercentage                     46.129692   0.021678
+liver_original_firstorder_Skewness                      1.705575   0.586312
+race_asian                                              1.014921   0.985299
+liver_original_glcm_DifferenceVariance                  3.540570   0.282440
+liver_original_glszm_LowGrayLevelZoneEmphasis           2.108141   0.474352
+liver_original_firstorder_Kurtosis                      4.329673   0.230964
+liver_original_glszm_GrayLevelVariance                  5.846462   0.171044
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': None, 'model__max_iter': 1000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.5882446386461069, 0.029065097090030002, 4.452870348065746e-91)), ('sex_Male', (0.5502020184331856, 0.034813122066297116, 2.8993958598327506e-56)), ('liver_original_glrlm_ShortRunEmphasis', (1.0568471734535985, 0.19643783704217513, 7.44613882187902e-08)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.31070985194192613, 0.059722593239416824, 1.9657112905699575e-07)), ('liver_original_firstorder_10Percentile', (-0.18807492932961098, 0.038813389374402193, 1.2621700084672518e-06)), ('liver_original_glrlm_RunPercentage', (-0.8221068155029608, 0.18086156589678404, 5.4804180410359885e-06)), ('liver_original_shape_LeastAxisLength', (-0.09804513739616688, 0.03148348008780241, 0.0018445864201606789)), ('liver_original_glcm_Imc1', (0.13010445585146363, 0.04262396155057977, 0.0022703576326690714)), ('race_asian', (0.0661547809754559, 0.022278788655527963, 0.00298375549955949)), ('liver_original_glszm_LowGrayLevelZoneEmphasis', (-0.11606077396961827, 0.04247377985232962, 0.006285041322978258)), ('liver_original_glcm_DifferenceVariance', (-0.14886994009334156, 0.059667803069444, 0.01259644392426753)), ('liver_original_firstorder_Kurtosis', (-0.1202461382799199, 0.05734145163742292, 0.03599185530046394)), ('liver_original_firstorder_Skewness', (0.06719576434085925, 0.034345343292296895, 0.05040936576525482)), ('liver_original_glcm_Idmn', (0.12820584994284612, 0.07078516474402617, 0.07011042383688355)), ('liver_original_glszm_GrayLevelVariance', (0.11801535987015262, 0.07218197282383704, 0.10205533741314446))] 
+AUC of model: 0.747245 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+sex_Male                                                1.621345   0.616772
+age                                                     1.093430   0.914553
+liver_original_glcm_Imc1                                2.614466   0.382487
+liver_original_firstorder_10Percentile                  2.336704   0.427953
+liver_original_firstorder_Kurtosis                      4.329673   0.230964
+liver_original_shape_LeastAxisLength                    1.416091   0.706169
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.039232   0.198443
+liver_original_glszm_GrayLevelVariance                  5.846462   0.171044
+liver_original_glszm_LowGrayLevelZoneEmphasis           2.108141   0.474352
+race_asian                                              1.014921   0.985299
+liver_original_glcm_DifferenceVariance                  3.540570   0.282440
+liver_original_glrlm_ShortRunEmphasis                  52.841339   0.018925
+liver_original_glrlm_RunPercentage                     46.129692   0.021678
+liver_original_firstorder_Skewness                      1.705575   0.586312
+liver_original_glcm_Idmn                                3.579546   0.279365
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.5567104832263464, 0.03429982310203011, 3.0590033649219563e-59)), ('sex_Male', (0.6680981705834667, 0.04148738118515176, 2.4049857327159284e-58)), ('liver_original_glrlm_ShortRunEmphasis', (1.2093314706767162, 0.23123306300396262, 1.6957924439517665e-07)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.341587257158713, 0.0694277240408431, 8.652603221041643e-07)), ('liver_original_glrlm_RunPercentage', (-0.9108020999576478, 0.21200887152472567, 1.7386325251154605e-05)), ('liver_original_firstorder_10Percentile', (-0.172486586893924, 0.045656231077884954, 0.00015812977711865043)), ('liver_original_shape_LeastAxisLength', (-0.1260965075245056, 0.036834198264470534, 0.0006185342201236577)), ('race_asian', (0.06799306999146881, 0.02508797859392408, 0.006724563472295897)), ('liver_original_glcm_DifferenceVariance', (-0.17421371934444874, 0.07179185660926322, 0.01523894316309852)), ('liver_original_glcm_Idmn', (0.20330533469782358, 0.08569962528569335, 0.017677667315704516)), ('liver_original_glszm_LowGrayLevelZoneEmphasis', (-0.11791308952598775, 0.05020033864341327, 0.018831467126123682)), ('liver_original_glcm_Imc1', (0.11448596652684993, 0.04999912369689521, 0.02203526437213505)), ('liver_original_firstorder_Kurtosis', (-0.15325578350392308, 0.06955534783087543, 0.027569068912683153)), ('liver_original_firstorder_Skewness', (0.07631826805559049, 0.04054571748319663, 0.059798427076268895)), ('liver_original_glszm_GrayLevelVariance', (0.12113393975520916, 0.08542834515331388, 0.15620256820806827))] 
+AUC of model: 0.761506 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                                             VIF  Tolerance
+age                                                     1.088512   0.918686
+sex_Male                                                1.621139   0.616850
+liver_original_glcm_Imc1                                2.222783   0.449886
+liver_original_firstorder_10Percentile                  2.336248   0.428037
+liver_original_firstorder_Kurtosis                      3.998676   0.250083
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.039149   0.198446
+liver_original_glszm_GrayLevelVariance                  4.780081   0.209201
+liver_original_glszm_LowGrayLevelZoneEmphasis           1.336202   0.748390
+liver_original_shape_LeastAxisLength                    1.409732   0.709355
+race_asian                                              1.014903   0.985316
+liver_original_glcm_DifferenceVariance                  3.263672   0.306403
+liver_original_glrlm_ShortRunEmphasis                  52.343316   0.019105
+liver_original_glrlm_RunPercentage                     45.862431   0.021804
+liver_original_firstorder_Skewness                      1.704666   0.586625
+Best Parameters of Model: {'model__C': 10, 'model__class_weight': None, 'model__max_iter': 5000, 'model__penalty': 'l1'} 
+Top 20 Features: [('age', (0.5784442592211085, 0.026173891961857668, 3.1573373347310785e-108)), ('sex_Male', (0.4119142173726515, 0.03121375991394904, 9.183537417109976e-40)), ('liver_original_glszm_GrayLevelNonUniformityNormalized', (0.29727129839767974, 0.05339678036822721, 2.588445646950892e-08)), ('liver_original_firstorder_10Percentile', (-0.19512284074685193, 0.03506567686839347, 2.6291021012262304e-08)), ('liver_original_glrlm_ShortRunEmphasis', (0.9268667432762873, 0.17786176821140634, 1.8766003710922366e-07)), ('liver_original_glrlm_RunPercentage', (-0.7794295079723536, 0.1636315006590266, 1.9043170561870623e-06)), ('liver_original_glszm_LowGrayLevelZoneEmphasis', (-0.18162107164592553, 0.043457819368486604, 2.924726251164625e-05)), ('liver_original_glcm_Imc1', (0.154304063230627, 0.037996093473085954, 4.8852353343459885e-05)), ('liver_original_glcm_DifferenceVariance', (-0.17079911877011375, 0.05008681689178649, 0.0006494826619976293)), ('liver_original_glszm_GrayLevelVariance', (0.17252894216170442, 0.05428840934462189, 0.0014829119653552813)), ('liver_original_shape_LeastAxisLength', (-0.08758843180064045, 0.02879497393442328, 0.0023517134483777027)), ('liver_original_firstorder_Kurtosis', (-0.13789809744200818, 0.05206558939473979, 0.008083889793597117)), ('race_asian', (0.05468446172725168, 0.021318091259892313, 0.010312619139521471)), ('liver_original_firstorder_Skewness', (0.07096467709669568, 0.031236251045309044, 0.02309441087004804))] 
+AUC of model: 0.726264 
+ 
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+-----------------Date of Analysis: 2023-05-26----------------- 
+cohorts/CADcohort_all_radliver.csv
+Number of patients 38474 
+Model Choice: xgboost 
+Outcome that is being predicted: Coronary_Artery_Disease 
+                                                             VIF  Tolerance
+antihtnbase                                             1.267766   0.788789
+statin0                                                 1.427522   0.700515
+sex_Male                                                1.691247   0.591280
+liver_original_shape_MeshVolume                        24.769158   0.040373
+hdl                                                     1.413164   0.707632
+smoking_Never                                           1.034054   0.967067
+age                                                     1.235401   0.809454
+liver_original_shape_SurfaceArea                        9.919030   0.100816
+liver_original_glcm_DifferenceVariance                  7.393248   0.135259
+liver_original_glcm_DifferenceEntropy                  13.712430   0.072927
+liver_original_glszm_GrayLevelNonUniformityNormalized   5.423333   0.184388
+liver_original_glcm_Idn                                 3.000560   0.333271
+liver_original_shape_LeastAxisLength                    2.035743   0.491221
+liver_original_glrlm_RunEntropy                         3.627474   0.275674
+liver_original_gldm_GrayLevelNonUniformity             27.573647   0.036267
+liver_original_firstorder_Kurtosis                      4.756334   0.210246
+liver_original_glszm_GrayLevelVariance                  4.354588   0.229643
+tchol                                                   1.288828   0.775899
+AUC of model: 0.848494 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_INTERMEDIATE 
+                                                             VIF  Tolerance
+antihtnbase                                             1.261657   0.792608
+statin0                                                 1.289914   0.775246
+sex_Male                                                1.681333   0.594766
+age                                                     1.186636   0.842719
+hdl                                                     1.308268   0.764369
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_MeshVolume                        20.842596   0.047979
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+AUC of model: 0.808057 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_HARD 
+                                                             VIF  Tolerance
+antihtnbase                                             1.261657   0.792608
+statin0                                                 1.289914   0.775246
+sex_Male                                                1.681333   0.594766
+liver_original_shape_MeshVolume                        20.842596   0.047979
+hdl                                                     1.308268   0.764369
+age                                                     1.186636   0.842719
+smoking_Never                                           1.033925   0.967188
+liver_original_shape_SurfaceArea                        9.644139   0.103690
+liver_original_glszm_GrayLevelNonUniformityNormalized   2.277404   0.439096
+liver_original_glcm_DifferenceEntropy                  13.290403   0.075242
+liver_original_glcm_DifferenceVariance                  7.039627   0.142053
+liver_original_gldm_GrayLevelNonUniformity             17.834365   0.056072
+liver_original_glrlm_RunEntropy                         3.220923   0.310470
+liver_original_shape_LeastAxisLength                    2.005348   0.498667
+AUC of model: 0.831597 
+ 
+Outcome that is being predicted: Coronary_Artery_Disease_SOFT 
+                                            VIF  Tolerance
+antihtnbase                            1.261204   0.792893
+statin0                                1.288753   0.775944
+sex_Male                               1.493954   0.669364
+age                                    1.171807   0.853383
+hdl                                    1.304731   0.766441
+liver_original_shape_LeastAxisLength   1.980885   0.504825
+smoking_Never                          1.033040   0.968017
+liver_original_shape_MeshVolume       10.565786   0.094645
+liver_original_shape_SurfaceArea       8.953800   0.111684
+liver_original_glrlm_RunEntropy        1.201719   0.832141
+AUC of model: 0.793163 
+ 

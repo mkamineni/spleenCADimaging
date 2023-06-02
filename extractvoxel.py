@@ -79,7 +79,7 @@ def extract_voxel_helper(subject_id, counter, conversion_map):
             if orig_image is None:
                 continue
             # get both liver and spleen
-            for org_label in [2]:
+            for org_label in [1]:
                 os.makedirs(os.path.join(segments, subject_id), exist_ok=True)
                 segment_org = segment_one_org(segment_map, org_label)
                 #print(segment_org.shape)
