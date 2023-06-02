@@ -91,7 +91,20 @@ def make_feat_numerical(coh, covars):
     covars = [var for var in covars if var not in cat_feats]
     return coh, covars
 
-def impute_select_features(X_train, X_test, Y_train, Y_test, include):
+def impute_select_features_cox(X, Y, include):
+    imputer = SimpleImputer(missing_values=np.nan, strategy='median')
+    imputer.fit(X)
+    X = pd.DataFrame(imputer.transform(X), columns = X.columns).reset_index(drop = True)
+    Y = Y.reset_index(drop = True)
+    included_feats = step_reg.forward_regression(X.drop(include, axis = 1, inplace = False), Y, threshold_in = 0.2) + [include]
+    X = X[included_feats]
+    vif = calculate_vif(X, included_feats)
+    print(vif.to_string())
+
+    return X, Y
+
+    
+def impute_select_features(X_train, X_test, Y_train, Y_test):
     '''
     include is a string that represents a feature to include in the model
     '''
@@ -101,7 +114,8 @@ def impute_select_features(X_train, X_test, Y_train, Y_test, include):
     Y_train = Y_train.reset_index(drop = True)
     X_test = pd.DataFrame(imputer.transform(X_test), columns = X_test.columns).reset_index(drop = True)
     
-    included_feats = step_reg.forward_regression(X_train.drop(include, axis = 1, inplace = False), Y_train) + [include]
+    included_feats = step_reg.forward_regression(X_train, Y_train, threshold_in = 0.1)
+
     X_train, X_test = X_train[included_feats], X_test[included_feats]
     vif = calculate_vif(X_train, included_feats)
     print(vif.to_string())

@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 from preprocess import create_cohort
-from run_model import train_model
+from run_model import train_model, bootstrap_model
 
 if __name__=="__main__":
     parser = ArgumentParser()
@@ -15,8 +15,13 @@ if __name__=="__main__":
     	help = "run preprocessing script",
     	action = 'store_true', 
     	default = False)
+    
+    parser.add_argument('--run_model', '-run_model', 
+    	help = "run model once",
+    	action = 'store_true', 
+    	default = False)
 
-    parser.add_argument('--model_choices', '-run_model', 
+    parser.add_argument('--model_choices', '-model_choices', 
     	help = "specify models to train: mention any or all of the following separated by commas: logreg_l1, logreg_l2, xgboost, cox",
     	default = 'logreg_l1', 
     	type = str)
@@ -45,6 +50,7 @@ if __name__=="__main__":
     run_bootstrap = args.run_bootstrap
     eval_model = args.eval_model
     coh = args.coh.lower()
+    run_model = args.run_model
     model_choices = [elem.strip() for elem in args.model_choices.lower().split(',')]
     
     withPCE, withDemo, withRadiomicsSpleen = 'pce' in coh, 'demo' in coh, 'spleen' in coh
@@ -53,11 +59,11 @@ if __name__=="__main__":
     if preprocess:
         create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
     
-    if model_choices:
+    if run_model:
         train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
     
     if run_bootstrap:
-        pass
+        bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
     
     if eval_model:
         pass
