@@ -17,4 +17,22 @@ cohorts/CADcohort_all_demo_rad.csv
 Number of patients 38474 
 Bootstrap of 1000 reps for Model logreg_l1 and Outcome Coronary_Artery_Disease 
 AUC [CI]: 0.763202 [0.7589345871526267, 0.7662032185388781] 
-Top 20 Features: [('sex_Male', (0.8060125178906028, 0.0014653131363595764, 0.0)), ('age', (0.6255956048510507, 0.0012822433886741874, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.21315815856917908, 0.0012742600232999218, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.32138632787690374, 0.001654897499748445, 0.0)), ('spleen_original_shape_Sphericity', (0.18049593288298488, 0.0011483155517358718, 0.0)), ('spleen_original_glcm_Autocorrelation', (0.22076477220280544, 0.0015002650864073166, 0.0)), ('race_asian', (0.07831318328546524, 0.0008629718110770772, 0.0)), ('spleen_original_shape_Maximum2DDiameterRow', (0.0924870347397951, 0.0013521560816720755, 0.0)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.08056872339432392, 0.001947616958290322, 0.0))] 
+Top 20 Features: [('sex_Male', (0.8060125178906028, 0.0014653131363595764, 0.0)), ('age', (0.6255956048510507, 0.0012822433886741874, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.21315815856917908, 0.0012742600232999218, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.32138632787690374, 0.001654897499748445, 0.0)), ('spleen_original_shape_Sphericity', (0.18049593288298488, 0.0011483155517358718, 0.0)), ('spleen_original_glcm_Autocorrelation', (0.22076477220280544, 0.0015002650864073166, 0.0)), ('race_asian', (0.07831318328546524, 0.0008629718110770772, 0.0)), ('spleen_original_shape_Maximum2DDiameterRow', (0.0924870347397951, 0.0013521560816720755, 0.0)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.08056872339432392, 0.001947616958290322, 0.0))] -----------------Date of Analysis: 2023-06-05----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
+-----------------Date of Analysis: 2023-06-06----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+-----------------Date of Analysis: 2023-06-06----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
+-----------------Date of Analysis: 2023-06-06----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
+-----------------Date of Analysis: 2023-06-06----------------- 
+cohorts/CADcohort_all_rad.csv
+Number of patients 38474 
+Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 

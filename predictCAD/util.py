@@ -96,6 +96,8 @@ def impute_select_features_cox(X, Y, include):
     imputer.fit(X)
     X = pd.DataFrame(imputer.transform(X), columns = X.columns).reset_index(drop = True)
     Y = Y.reset_index(drop = True)
+    if type(include) == list:
+        return X[include], Y
     included_feats = step_reg.forward_regression(X.drop(include, axis = 1, inplace = False), Y, threshold_in = 0.2) + [include]
     X = X[included_feats]
     vif = calculate_vif(X, included_feats)

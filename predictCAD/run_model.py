@@ -3,6 +3,10 @@ import numpy as np
 random.seed(0)
 np.random.seed(0)
 
+import sys
+np.set_printoptions(threshold=sys.maxsize)
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
@@ -10,6 +14,7 @@ import xgboost as xgb
 
 from sklearn import metrics
 from sklearn.model_selection import KFold, GridSearchCV, train_test_split
+#from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
@@ -24,10 +29,13 @@ from evaluation import standard_metrics, most_important_coefs, bootstrap_eval
     
 def initialize_model_grid_search(model_choice):
     # params for logregs
+    #c_parameters=[5**(-5),5**(-4),5**(-3),5**(-2),5**(-1),0.5,5**(0),5,10]
     c_parameters=[5**(-5),5**(-4),5**(-3),5**(-2),5**(-1),0.5,5**(0),5,10]
 
     if model_choice == 'logreg_l1':
         pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression(solver = 'saga'))])
+
+        #pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression(solver = 'saga'))])
         param_grid = dict({'model__penalty': ['l1'], 'model__max_iter': [1000, 5000], 'model__class_weight':['balanced', None], 'model__C':c_parameters})
         
     elif model_choice == 'logreg_l2':
@@ -61,13 +69,15 @@ def train_eval_cross_sectional_model(f, choice, X_train, Y_train, X_test, Y_test
     return predictions, result
 
 def train_eval_cox_model(f, data_filt, covars, outcome):
+    covars = ['antihtnbase', 'statin0', 'sex_Male', 'age', 'hdl', 'smoking_Never', 'spleen_original_shape_Sphericity','spleen_original_shape_MinorAxisLength', 'spleen_original_gldm_DependenceEntropy', 'race_asian']
     #create a new train test split
+    input(data_filt.columns)
     time_outcome = 'FollowUp_'+outcome
     print(data_filt[outcome].value_counts())
     cox_data_filt = data_filt[data_filt[time_outcome]>data_filt['time_to_mri_acquisition']/365.25]
     input(cox_data_filt[outcome].value_counts())
     Y = cox_data_filt[outcome]
-    X, Y = impute_select_features_cox(cox_data_filt[covars+[time_outcome]], Y, include = time_outcome)
+    X, Y = impute_select_features_cox(cox_data_filt[covars+[time_outcome]], Y, include = covars + [time_outcome])
     # train Cox model
     cph = CoxPHFitter()
     cph.fit(pd.concat([X, Y], axis=1), duration_col = time_outcome, event_col = outcome)
@@ -78,13 +88,12 @@ def train_eval_cox_model(f, data_filt, covars, outcome):
     f.write(results.summary.to_string())
 
 
-def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa):
+def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes):
     '''
     Train one iteration of the model, compatible with any of the model choices: logistic regression, xgboost, and cox model
     '''
     with open('cohorts/covars.txt', 'r') as fp:
         covars = [x.strip() for x in fp.readlines()]
-    outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
     
     if withRadiomicsLiver:
         f = open('liver_model_outputs.txt', "a+")
@@ -118,14 +127,13 @@ def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadio
 
                 
             
-def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, reps = 1000):
+def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, reps = 1000):
     '''
     Function to implement Monte Carlo bootstrapping
     Only bootstraps if the model is logistic regression
     '''
     with open('cohorts/covars.txt', 'r') as fp:
         covars = [x.strip() for x in fp.readlines()]
-    outcomes = ['Coronary_Artery_Disease']#, 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
 
     f = open('bootstrap_outputs.txt', "a+")
     f.write('-----------------Date of Analysis: %s----------------- \n' %str(date.today()))
@@ -136,7 +144,7 @@ def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withR
     train, test = data_filt[data_filt.train==1], data_filt[data_filt.train==0]
     X_train, X_test = train[covars], test[covars]
     f.write("Number of patients %d \n" %data_filt.shape[0])
-
+    
     for choice in model_choices:
         if 'logreg' in choice:
             for outcome in outcomes:
@@ -151,6 +159,8 @@ def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withR
                 idx = [i for i in range(sample_size)]
 
                 for i in range(reps): 
+                    f1 = open('bootstrap_track.txt', 'a+')
+                    f1.write("Starting bootstrap %d" %i)
                     print("Starting bootstrap %d" %i)
                     sidx = np.random.choice(idx,replace=True,size=sample_size)
 
@@ -159,11 +169,17 @@ def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withR
                     predictions, result = train_eval_cross_sectional_model(f, choice, X_train_b, Y_train_b, X_test, Y_test, cohort, outcome)
                     fpr,tpr,_=metrics.roc_curve(np.array(Y_test), predictions[:,1], pos_label=1)
                     auroc=metrics.auc(fpr,tpr)
+                    print('AUC')
+                    print(auroc)
+                    f1.write(str(auroc))
                     aucs.append(auroc)
 
                     best_pipeline = result.best_estimator_
                     best_model= best_pipeline.named_steps['model'] 
                     feat_imp = best_model.coef_[0]
+                    print(np.array(feat_imp))
+                    f1.write(str(np.array(feat_imp)))
+                    f1.close()
                     coefs[i,:] = feat_imp
                 bootstrap_eval(aucs, coefs, X_train.columns, reps, log = f)         
             

@@ -37,12 +37,9 @@ if __name__=="__main__":
     	default = False)
     
     parser.add_argument('--coh', '-coh', 
-    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna",
+    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev",
     	default = False, 
     	type = str)
-    
-
-
 
     args = parser.parse_args()
     randseed = args.randseed
@@ -54,16 +51,22 @@ if __name__=="__main__":
     model_choices = [elem.strip() for elem in args.model_choices.lower().split(',')]
     
     withPCE, withDemo, withRadiomicsSpleen = 'pce' in coh, 'demo' in coh, 'spleen' in coh
-    withRadiomicsLiver, withExistAbFeats, dropNa = 'liver' in coh, 'existab' in coh, 'dropna' in coh
+    withRadiomicsLiver, withExistAbFeats, dropNa, prev = 'liver' in coh, 'existab' in coh, 'dropna' in coh, 'prev' in coh
     
+    #outcomes = ['Coronary_Artery_Disease']#, 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
+    outcomes = ['composite_mi_cad_stroke']
+
+    if prev:
+        outcomes = ['Prev_'+outcome for outcome in outcomes]
+        
     if preprocess:
-        create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
+        create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
     
     if run_model:
-        train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
+        train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
     
     if run_bootstrap:
-        bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa)
+        bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
     
     if eval_model:
         pass
