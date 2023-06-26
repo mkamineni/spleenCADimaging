@@ -82,6 +82,13 @@ def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir =
     plt.savefig(figdir+filename+'/auroc_age.png')
     plt.clf()
     
+    if 'Prev' in filename:
+        selected_feat = open(figdir+filename+'/selected_feats.txt', 'w+')
+        for col in X_test.columns:
+            selected_feat.write(col+"\n")
+        selected_feat.close()
+
+    
 def most_important_coefs(result, X_train, log):
     log.write('Best Parameters of Model: %s \n' %str(result.best_params_))
 

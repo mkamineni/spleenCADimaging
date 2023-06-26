@@ -30,14 +30,9 @@ if __name__=="__main__":
     	help = "bootstrap model 1000 times",
     	action = 'store_true', 
     	default = False)
-
-    parser.add_argument('--eval_model', '-eval_model', 
-    	help = "evaluate the performance of the model and calculate confidence intervals for coefficients",
-    	action = 'store_true', 
-    	default = False)
     
     parser.add_argument('--coh', '-coh', 
-    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev",
+    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev, inc",
     	default = False, 
     	type = str)
 
@@ -45,19 +40,21 @@ if __name__=="__main__":
     randseed = args.randseed
     preprocess = args.preprocess
     run_bootstrap = args.run_bootstrap
-    eval_model = args.eval_model
     coh = args.coh.lower()
     run_model = args.run_model
     model_choices = [elem.strip() for elem in args.model_choices.lower().split(',')]
     
     withPCE, withDemo, withRadiomicsSpleen = 'pce' in coh, 'demo' in coh, 'spleen' in coh
-    withRadiomicsLiver, withExistAbFeats, dropNa, prev = 'liver' in coh, 'existab' in coh, 'dropna' in coh, 'prev' in coh
+    withRadiomicsLiver, withExistAbFeats, dropNa = 'liver' in coh, 'existab' in coh, 'dropna' in coh
     
-    #outcomes = ['Coronary_Artery_Disease']#, 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT']
-    outcomes = ['composite_mi_cad_stroke']
+    # modify outcomes - default is all, but if you want prevalent or incident, will be changed here
+    outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT','composite_mi_cad_stroke']
 
-    if prev:
-        outcomes = ['Prev_'+outcome for outcome in outcomes]
+    if 'prev' in coh:
+        outcomes = ['Prevalent_'+outcome for outcome in outcomes]
+        
+    if 'inc' in coh:
+        outcomes = ['Incident_'+outcome for outcome in outcomes]
         
     if preprocess:
         create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
@@ -67,6 +64,3 @@ if __name__=="__main__":
     
     if run_bootstrap:
         bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
-    
-    if eval_model:
-        pass

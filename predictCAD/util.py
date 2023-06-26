@@ -4,34 +4,25 @@ import numpy as np
 from scipy.stats import norm
 import step_reg
 from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 import datetime
 
 
-def add_mri_times(data):
+def add_all_mri_times(data):
     '''
-    Adding MRI acquisition times and age at MRI
+    adding information about prevalent and incident cases based on MRI
     '''
-    # opening up datafile with information about MRI acquisiton times and age at MRI and modifying columns to prepare for merge with main dataframe
-    mri_data = pd.read_csv("gs://ukbb_spleen/MRI_acquisition_times.csv", sep=',')
-    mri_data = mri_data.rename({'Unnamed: 0': 'ID', 'sex': 'Sex', 'enroll_age':'age'}, axis='columns')
-
-    # calculate time to mri acquisition in days
-    mri_data.acquisition_time = pd.DatetimeIndex(mri_data.acquisition_time).normalize()
-    mri_data.enroll_date = pd.DatetimeIndex(mri_data.enroll_date).normalize()
-
-    mri_data['time_to_mri_acquisition'] = (mri_data['acquisition_time']  - mri_data['enroll_date'] ).astype('timedelta64[D]').astype('int64')
-
-    mri_data['age_at_mri'] = mri_data['age'] + (mri_data['acquisition_time']  - mri_data['enroll_date']).astype('timedelta64[D]').astype('int64')/365.25
-    mri_data = mri_data[['ID', 'Sex', 'age', 'time_to_mri_acquisition', 'age_at_mri']]
-    mri_data['age'] = mri_data['age'].apply(np.floor).astype(int)
+    mri_data = pd.read_csv("gs://ukbb_spleen/CAD_Phenotypes_for_MRI_Participants.csv")
+    mri_data = mri_data.rename(columns = {'f.eid':'ID'})
     
+    # only want one MRI for patient
+    mri_data = mri_data.sort_values(by = ['ID', 'MRI_Date'], ascending = True).drop_duplicates('ID')
+    # for now remove the 127 patients that got MRI on 3rd visit because I don't have that info
+    mri_data = mri_data[~mri_data['filename'].str.contains('_3_0.zip')]
+
     # merge mri data with cohort
-    merged = data.merge(mri_data, on = ['ID', 'age', 'Sex'], how = 'inner')
-    
-    # update the age to age at mri
-    new = merged.drop('age', axis = 1)
-    new = new.rename(columns = {'age_at_mri': 'age'})
-    return new
+    merged = data.merge(mri_data, on = ['ID'], how = 'inner')
+    return merged
     
 
 def add_radiomics_features(data, phase, organ = 'spleen'):
@@ -50,7 +41,7 @@ def add_radiomics_features(data, phase, organ = 'spleen'):
     data = data.drop_duplicates('ID')
     print(data.shape)
     data = pd.merge(data, rad, on = "ID", how = "inner")
-    print(data.shape)
+    input(data.shape)
     for col in data.columns:
         if 'Unnamed' in col:
             data = data.drop(col, axis =1)
@@ -72,13 +63,6 @@ def make_feat_numerical(coh, covars):
     
     cat_feats = ['race', 'Sex', 'SmokingStatusv2']
     feat_map = {'race':'race', 'Sex':'sex', 'SmokingStatusv2':'smoking'}
-    # categories that are already binary: dm2_prev, dm1_prev, antihtnbase, so leave alone
-
-    # continuous vars: tchol, hdl, SBP
-
-    # quintile age
-    #age_expand = pd.get_dummies(pd.qcut(coh['age'], 5), prefix = "age")
-	#coh = pd.concat([coh, age_expand], axis=1)
         
     # make categorical vars into binary
     for feat in cat_feats:
@@ -91,25 +75,36 @@ def make_feat_numerical(coh, covars):
     covars = [var for var in covars if var not in cat_feats]
     return coh, covars
 
-def impute_select_features_cox(X, Y, include):
+def impute_select_features_cox(X, Y, time_outcome):
+    '''
+    time_outcome is the time to the outcome of interest in a Cox regression model and should always be included in the final dataset
+    also apply standard scaling here
+    '''
+    # impute features with median of column value
     imputer = SimpleImputer(missing_values=np.nan, strategy='median')
     imputer.fit(X)
     X = pd.DataFrame(imputer.transform(X), columns = X.columns).reset_index(drop = True)
     Y = Y.reset_index(drop = True)
-    if type(include) == list:
-        return X[include], Y
-    included_feats = step_reg.forward_regression(X.drop(include, axis = 1, inplace = False), Y, threshold_in = 0.2) + [include]
+    
+    # use forward regression to identify most significant features
+    included_feats = step_reg.forward_regression(X.drop(time_outcome, axis = 1, inplace = False), Y, threshold_in = 0.025) + [time_outcome]
     X = X[included_feats]
-    vif = calculate_vif(X, included_feats)
+    covars = [elem for elem in included_feats if elem!=time_outcome]
+    print("Number of features selected %d" %len(included_feats))
+    
+    scaler = StandardScaler()
+    df_scaled = scaler.fit_transform(df[covars].to_numpy())
+    df_scaled = pd.DataFrame(df_scaled, columns=covars)
+    df_scaled[time_outcome] = X[time_outcome]
+
+    # calculate the variance inflation factor for the selected features
+    vif = calculate_vif(df_scaled, included_feats)
     print(vif.to_string())
 
-    return X, Y
+    return df_scaled, Y
 
     
 def impute_select_features(X_train, X_test, Y_train, Y_test):
-    '''
-    include is a string that represents a feature to include in the model
-    '''
     imputer = SimpleImputer(missing_values=np.nan, strategy='median')
     imputer.fit(X_train)
     X_train = pd.DataFrame(imputer.transform(X_train), columns = X_train.columns).reset_index(drop = True)

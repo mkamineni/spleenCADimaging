@@ -68,18 +68,26 @@ def train_eval_cross_sectional_model(f, choice, X_train, Y_train, X_test, Y_test
     predictions = result.best_estimator_.predict_proba(np.array(X_test))
     return predictions, result
 
-def train_eval_cox_model(f, data_filt, covars, outcome):
-    covars = ['antihtnbase', 'statin0', 'sex_Male', 'age', 'hdl', 'smoking_Never', 'spleen_original_shape_Sphericity','spleen_original_shape_MinorAxisLength', 'spleen_original_gldm_DependenceEntropy', 'race_asian']
-    #create a new train test split
-    input(data_filt.columns)
-    time_outcome = 'FollowUp_'+outcome
-    print(data_filt[outcome].value_counts())
-    cox_data_filt = data_filt[data_filt[time_outcome]>data_filt['time_to_mri_acquisition']/365.25]
-    input(cox_data_filt[outcome].value_counts())
-    Y = cox_data_filt[outcome]
-    X, Y = impute_select_features_cox(cox_data_filt[covars+[time_outcome]], Y, include = covars + [time_outcome])
+def train_eval_cox_model(f, filename, data_filt, covars, outcome):
+    #define the time outcome for patients who havee CAD
+    time_outcome = 'Years_To_'+outcome.replace('Incident_', '')
+    
+    # drop patients with prevalent CAD
+    print("Before dropping prevalent CAD cases %s" %str(data_filt.shape))
+    data_filt = data_filt[(data_filt[time_outcome]>0)|(data_filt[time_outcome].isnull())]
+    print("After dropping prevalent CAD cases %s" %str(data_filt.shape))
+    
+    # define time outcome for patients without CAD as time to last follow up
+    data_filt[time_outcome] = np.where(data_filt[time_outcome].isnull(), data_filt['time_to_follow_up'], data_filt[time_outcome])
+
+    print(data_filt[data_filt[outcome]==0][time_outcome].value_counts(dropna=False))
+    print(data_filt[data_filt[outcome]==1][time_outcome].value_counts(dropna=False))
+    
+    Y = data_filt[outcome]
+    X, Y = impute_select_features_cox(data_filt[covars+[time_outcome]], Y, time_outcome)
+    
     # train Cox model
-    cph = CoxPHFitter()
+    cph = CoxPHFitter(l1_ratio=1.0)
     cph.fit(pd.concat([X, Y], axis=1), duration_col = time_outcome, event_col = outcome)
     cph.print_summary()
     f.write(cph.summary.to_string())
@@ -113,19 +121,17 @@ def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadio
         for outcome in outcomes:
             Y_train, Y_test = train[outcome], test[outcome]
             f.write("Outcome that is being predicted: %s \n" %outcome)
-            
+            filename = cohort[8:-4]+'_'+outcome #removing .csv at end of cohort name and cohorts directory at beginning
+
             if choice == 'cox':
                 # have to filter data for cox model and (X_train, X_test, Y_train, Y_test, include = time_outcome)
-                train_eval_cox_model(f, data_filt, covars, outcome)
+                train_eval_cox_model(f, filename, data_filt, covars, outcome)
             else:
                 X_train, X_test, Y_train, Y_test = impute_select_features(X_train, X_test, Y_train, Y_test)
                 predictions, result = train_eval_cross_sectional_model(f, choice, X_train, Y_train, X_test, Y_test, cohort, outcome)
-                filename = cohort[8:-4]+'_'+outcome #removing .csv at end of cohort name and cohorts directory at beginning
                 standard_metrics(predictions, X_test, Y_test, log = f, model = choice, filename = filename)
                 if 'logreg' in choice:
                     most_important_coefs(result, X_train, log = f)
-
-                
             
 def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, reps = 1000):
     '''
