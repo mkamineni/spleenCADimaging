@@ -75,43 +75,52 @@ def make_feat_numerical(coh, covars):
     covars = [var for var in covars if var not in cat_feats]
     return coh, covars
 
-def impute_select_features_cox(X, Y, time_outcome):
+def impute_select_features_cox(X_tr, Y_tr, X_test, Y_test, time_outcome, threshold):
     '''
     time_outcome is the time to the outcome of interest in a Cox regression model and should always be included in the final dataset
     also apply standard scaling here
     '''
     # impute features with median of column value
     imputer = SimpleImputer(missing_values=np.nan, strategy='median')
-    imputer.fit(X)
-    X = pd.DataFrame(imputer.transform(X), columns = X.columns).reset_index(drop = True)
-    Y = Y.reset_index(drop = True)
+    imputer.fit(X_tr)
+    
+    # apply imputation to train and test data
+    X_tr = pd.DataFrame(imputer.transform(X_tr), columns = X_tr.columns).reset_index(drop = True)
+    Y_tr = Y_tr.reset_index(drop = True)
+    X_test = pd.DataFrame(imputer.transform(X_test), columns = X_test.columns).reset_index(drop = True)
+    Y_test = Y_test.reset_index(drop = True)
     
     # use forward regression to identify most significant features
-    included_feats = step_reg.forward_regression(X.drop(time_outcome, axis = 1, inplace = False), Y, threshold_in = 0.025) + [time_outcome]
-    X = X[included_feats]
+    included_feats = step_reg.forward_regression(X_tr.drop(time_outcome, axis = 1, inplace = False), Y_tr, threshold_in = threshold) + [time_outcome]
+    X_tr = X_tr[included_feats]
+    X_test = X_test[included_feats]
     covars = [elem for elem in included_feats if elem!=time_outcome]
     print("Number of features selected %d" %len(included_feats))
     
     scaler = StandardScaler()
-    df_scaled = scaler.fit_transform(df[covars].to_numpy())
-    df_scaled = pd.DataFrame(df_scaled, columns=covars)
-    df_scaled[time_outcome] = X[time_outcome]
+    X_tr_scaled = scaler.fit_transform(X_tr[covars].to_numpy())
+    X_tr_scaled = pd.DataFrame(X_tr_scaled, columns=covars)
+    X_tr_scaled[time_outcome] = X_tr[time_outcome]
+    
+    X_test_scaled = scaler.transform(X_test[covars].to_numpy())
+    X_test_scaled = pd.DataFrame(X_test_scaled, columns=covars)
+    X_test_scaled[time_outcome] = X_test[time_outcome]
 
     # calculate the variance inflation factor for the selected features
-    vif = calculate_vif(df_scaled, included_feats)
+    vif = calculate_vif(X_tr_scaled, included_feats)
     print(vif.to_string())
 
-    return df_scaled, Y
+    return X_tr_scaled, Y_tr, X_test_scaled, Y_test
 
     
-def impute_select_features(X_train, X_test, Y_train, Y_test):
+def impute_select_features(X_train, X_test, Y_train, Y_test, threshold):
     imputer = SimpleImputer(missing_values=np.nan, strategy='median')
     imputer.fit(X_train)
     X_train = pd.DataFrame(imputer.transform(X_train), columns = X_train.columns).reset_index(drop = True)
     Y_train = Y_train.reset_index(drop = True)
     X_test = pd.DataFrame(imputer.transform(X_test), columns = X_test.columns).reset_index(drop = True)
     
-    included_feats = step_reg.forward_regression(X_train, Y_train, threshold_in = 0.1)
+    included_feats = step_reg.forward_regression(X_train, Y_train, threshold_in = threshold)
 
     X_train, X_test = X_train[included_feats], X_test[included_feats]
     vif = calculate_vif(X_train, included_feats)

@@ -50,6 +50,8 @@ if __name__=="__main__":
     # modify outcomes - default is all, but if you want prevalent or incident, will be changed here
     outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT','composite_mi_cad_stroke']
 
+    outcomes = ['Coronary_Artery_Disease_INTERMEDIATE']
+
     if 'prev' in coh:
         outcomes = ['Prevalent_'+outcome for outcome in outcomes]
         

@@ -17,22 +17,11 @@ cohorts/CADcohort_all_demo_rad.csv
 Number of patients 38474 
 Bootstrap of 1000 reps for Model logreg_l1 and Outcome Coronary_Artery_Disease 
 AUC [CI]: 0.763202 [0.7589345871526267, 0.7662032185388781] 
-Top 20 Features: [('sex_Male', (0.8060125178906028, 0.0014653131363595764, 0.0)), ('age', (0.6255956048510507, 0.0012822433886741874, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.21315815856917908, 0.0012742600232999218, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.32138632787690374, 0.001654897499748445, 0.0)), ('spleen_original_shape_Sphericity', (0.18049593288298488, 0.0011483155517358718, 0.0)), ('spleen_original_glcm_Autocorrelation', (0.22076477220280544, 0.0015002650864073166, 0.0)), ('race_asian', (0.07831318328546524, 0.0008629718110770772, 0.0)), ('spleen_original_shape_Maximum2DDiameterRow', (0.0924870347397951, 0.0013521560816720755, 0.0)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.08056872339432392, 0.001947616958290322, 0.0))] -----------------Date of Analysis: 2023-06-05----------------- 
-cohorts/CADcohort_all_rad.csv
-Number of patients 38474 
-Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
------------------Date of Analysis: 2023-06-06----------------- 
-cohorts/CADcohort_all_rad.csv
-Number of patients 38474 
+Top 20 Features: [('sex_Male', (0.8060125178906028, 0.0014653131363595764, 0.0)), ('age', (0.6255956048510507, 0.0012822433886741874, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.21315815856917908, 0.0012742600232999218, 0.0)), ('spleen_original_gldm_LargeDependenceHighGrayLevelEmphasis', (-0.32138632787690374, 0.001654897499748445, 0.0)), ('spleen_original_shape_Sphericity', (0.18049593288298488, 0.0011483155517358718, 0.0)), ('spleen_original_glcm_Autocorrelation', (0.22076477220280544, 0.0015002650864073166, 0.0)), ('race_asian', (0.07831318328546524, 0.0008629718110770772, 0.0)), ('spleen_original_shape_Maximum2DDiameterRow', (0.0924870347397951, 0.0013521560816720755, 0.0)), ('spleen_original_shape_Maximum2DDiameterSlice', (-0.08056872339432392, 0.001947616958290322, 0.0))]
+
 -----------------Date of Analysis: 2023-06-06----------------- 
 cohorts/CADcohort_all_rad.csv
 Number of patients 38474 
 Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
------------------Date of Analysis: 2023-06-06----------------- 
-cohorts/CADcohort_all_rad.csv
-Number of patients 38474 
-Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
------------------Date of Analysis: 2023-06-06----------------- 
-cohorts/CADcohort_all_rad.csv
-Number of patients 38474 
-Bootstrap of 1000 reps for Model logreg_l1 and Outcome composite_mi_cad_stroke 
+AUC [CI]: 0.798938 [0.7952624517689215, 0.8017174035009716] 
+Top 20 Features: [('statin0', (0.3043597691004071, 0.0008853125523852675, 0.0)), ('antihtnbase', (0.32121413992444975, 0.0008413040874612975, 0.0)), ('sex_Male', (0.4362126113148847, 0.0012935598155738943, 0.0)), ('age', (0.4859280176350921, 0.0013423526356284934, 0.0)), ('hdl', (-0.2825934438233289, 0.00132603504662197, 0.0)), ('smoking_Never', (-0.16015713796851155, 0.0009734672656943834, 0.0)), ('spleen_original_shape_MinorAxisLength', (-0.1690184276079962, 0.001894820530914175, 0.0)), ('spleen_original_glcm_Correlation', (0.1030956315017753, 0.001512825227289323, 0.0)), ('race_asian', (0.0421502952866745, 0.0007898341620850432, 0.0)), ('spleen_original_glszm_GrayLevelNonUniformity', (0.1243888918748032, 0.0018110965975929399, 0.0)), ('dm1_prev', (0.11415966901757238, 0.0061341507701831305, 2.6409595818582114e-77))] 

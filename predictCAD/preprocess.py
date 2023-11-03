@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import random
@@ -28,11 +27,11 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     
     data_filt = add_all_mri_times(data_filt)
     
-    if withRadiomicsSpleen:
-        data_filt, spleen_rad_covars = add_radiomics_features(data_filt, phase, 'spleen')
+    #if withRadiomicsSpleen:
+    data_filt, spleen_rad_covars = add_radiomics_features(data_filt, phase, 'spleen')
 
-    if withRadiomicsLiver:
-        data_filt, liver_rad_covars = add_radiomics_features(data_filt, phase, 'liver')    
+    #if withRadiomicsLiver:
+    data_filt, liver_rad_covars = add_radiomics_features(data_filt, phase, 'liver')    
 
     data_filt = add_existing_abdominal_features(data_filt, abdominal_covars)
     

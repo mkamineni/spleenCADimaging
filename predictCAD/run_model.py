@@ -3,10 +3,6 @@ import numpy as np
 random.seed(0)
 np.random.seed(0)
 
-import sys
-np.set_printoptions(threshold=sys.maxsize)
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
@@ -14,10 +10,8 @@ import xgboost as xgb
 
 from sklearn import metrics
 from sklearn.model_selection import KFold, GridSearchCV, train_test_split
-#from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
 from lifelines import CoxPHFitter
 from lifelines.statistics import proportional_hazard_test
 
@@ -26,16 +20,11 @@ from logreg_wpval import LogisticRegression
 from util import impute_select_features, impute_select_features_cox, calculate_vif, make_filename
 from evaluation import standard_metrics, most_important_coefs, bootstrap_eval
 
-    
 def initialize_model_grid_search(model_choice):
-    # params for logregs
-    #c_parameters=[5**(-5),5**(-4),5**(-3),5**(-2),5**(-1),0.5,5**(0),5,10]
     c_parameters=[5**(-5),5**(-4),5**(-3),5**(-2),5**(-1),0.5,5**(0),5,10]
 
     if model_choice == 'logreg_l1':
         pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression(solver = 'saga'))])
-
-        #pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression(solver = 'saga'))])
         param_grid = dict({'model__penalty': ['l1'], 'model__max_iter': [1000, 5000], 'model__class_weight':['balanced', None], 'model__C':c_parameters})
         
     elif model_choice == 'logreg_l2':
@@ -59,16 +48,14 @@ def initialize_model_grid_search(model_choice):
     search = GridSearchCV(pipeline, param_grid, scoring='roc_auc', n_jobs=-1, cv=cv)
     return search
 
-def train_eval_cross_sectional_model(f, choice, X_train, Y_train, X_test, Y_test, cohort, outcome):
+def train_eval_cross_sectional_model(choice, X_train, Y_train, X_test, Y_test, cohort, outcome, threshold):
     search = initialize_model_grid_search(choice)
-
-    # execute search
     result = search.fit(np.array(X_train), Y_train)
     print(result)
     predictions = result.best_estimator_.predict_proba(np.array(X_test))
     return predictions, result
 
-def train_eval_cox_model(f, filename, data_filt, covars, outcome):
+def train_eval_cox_model(f, filename, data_filt, covars, outcome, threshold):
     #define the time outcome for patients who havee CAD
     time_outcome = 'Years_To_'+outcome.replace('Incident_', '')
     
@@ -79,21 +66,30 @@ def train_eval_cox_model(f, filename, data_filt, covars, outcome):
     
     # define time outcome for patients without CAD as time to last follow up
     data_filt[time_outcome] = np.where(data_filt[time_outcome].isnull(), data_filt['time_to_follow_up'], data_filt[time_outcome])
-
-    print(data_filt[data_filt[outcome]==0][time_outcome].value_counts(dropna=False))
-    print(data_filt[data_filt[outcome]==1][time_outcome].value_counts(dropna=False))
     
-    Y = data_filt[outcome]
-    X, Y = impute_select_features_cox(data_filt[covars+[time_outcome]], Y, time_outcome)
+    # split the data into train and test sets (70% training)
+    data_filt = data_filt.sample(frac=1.0)
+    train = data_filt[:int(data_filt.shape[0]*0.7)]
+    test = data_filt[int(data_filt.shape[0]*0.7):]
     
-    # train Cox model
+    Y_tr, Y_test= train[outcome], test[outcome]
+    X_tr, Y_tr, X_test, Y_test = impute_select_features_cox(train[covars+[time_outcome]], Y_tr, \
+                                      test[covars+[time_outcome]], Y_test, \
+                                      time_outcome, threshold)
+    
+    # train Cox model on training data
     cph = CoxPHFitter(l1_ratio=1.0)
-    cph.fit(pd.concat([X, Y], axis=1), duration_col = time_outcome, event_col = outcome)
+    cph.fit(pd.concat([X_tr, Y_tr], axis=1), duration_col = time_outcome, event_col = outcome)
     cph.print_summary()
-    f.write(cph.summary.to_string())
-    results = proportional_hazard_test(cph, pd.concat([X, Y], axis=1), time_transform='rank')
+    results = proportional_hazard_test(cph, pd.concat([X_tr, Y_tr], axis=1), time_transform='rank')
     results.print_summary()
-    f.write(results.summary.to_string())
+    if f:
+        f.write(cph.summary.to_string())
+        f.write(results.summary.to_string())
+    
+    # evalute on testing data
+    test_score = cph.score(pd.concat([X_test, Y_test], axis=1))
+    return test_score
 
 
 def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes):
@@ -122,16 +118,36 @@ def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadio
             Y_train, Y_test = train[outcome], test[outcome]
             f.write("Outcome that is being predicted: %s \n" %outcome)
             filename = cohort[8:-4]+'_'+outcome #removing .csv at end of cohort name and cohorts directory at beginning
+            
+            thresholds = [0.025, 0.05, 0.1, 0.2]
+            metrics = []
+            for threshold in thresholds:
+                if choice == 'cox':
+                    # only use for 70% of the data for training and validation, test set is untouched
+                    metric = train_eval_cox_model(None, filename, data_filt.sample(frac=0.7), covars, outcome, threshold)
+                else:
+                    X_train_tr, X_train_val, Y_train_tr, Y_train_val = train_test_split(X_train, Y_train, test_size=0.33, random_state=42)
+                    X_train_tr, X_train_val, Y_train_tr, Y_train_val = impute_select_features(X_train_tr, X_train_val, \
+                                                                                              Y_train_tr, Y_train_val, threshold)
 
+                    predictions, result = train_eval_cross_sectional_model(choice, X_train_tr, Y_train_tr, 
+                                                                           X_train_val, Y_train_val, cohort, outcome, threshold)
+                    metric = standard_metrics(predictions, X_train_val, Y_train_val, log = None, model = choice, filename = filename)
+                metrics.append(metric)
+            print(metrics)
+            best_threshold = thresholds[np.argmax(metrics)]
+            
+            # train final model after choosing best threshold
             if choice == 'cox':
-                # have to filter data for cox model and (X_train, X_test, Y_train, Y_test, include = time_outcome)
-                train_eval_cox_model(f, filename, data_filt, covars, outcome)
+                CI = train_eval_cox_model(f, filename, data_filt, covars, outcome, threshold)
             else:
-                X_train, X_test, Y_train, Y_test = impute_select_features(X_train, X_test, Y_train, Y_test)
-                predictions, result = train_eval_cross_sectional_model(f, choice, X_train, Y_train, X_test, Y_test, cohort, outcome)
+                X_train, X_test, Y_train, Y_test = impute_select_features(X_train, X_test, Y_train, Y_test, best_threshold)
+                predictions, result = train_eval_cross_sectional_model(choice, X_train, Y_train, \
+                                                                       X_test, Y_test, cohort, outcome, best_threshold)
                 standard_metrics(predictions, X_test, Y_test, log = f, model = choice, filename = filename)
                 if 'logreg' in choice:
                     most_important_coefs(result, X_train, log = f)
+
             
 def bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, reps = 1000):
     '''

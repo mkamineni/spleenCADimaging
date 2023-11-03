@@ -16,13 +16,13 @@ from radiomics import featureextractor, getTestCase
 import csv
 
 # go through outputs folder and then go through stitched_data folder
-stitched_dir = '/home/jupyter/MRI-spleen/stitched_data'
-nnunet_folder = '/home/jupyter/MRI-spleen/nnunet_data'
+stitched_dir = '/home/jupyter/MRI-spleen/stitch_segment/stitched_data'
+nnunet_folder = '/home/jupyter/MRI-spleen/stitch_segment/nnunet_data'
 #stitched_exts = ['opp.nii.gz', 'fat.nii.gz', 'inp.nii.gz', 'wat.nii.gz']
 stitched_exts = ['opp.nii.gz','wat.nii.gz']
 
-directory = '/home/jupyter/MRI-spleen/outputs'
-segments = '/home/jupyter/MRI-spleen/segments'
+directory = '/home/jupyter/MRI-spleen/stitch_segment/outputs'
+segments = '/home/jupyter/MRI-spleen/stitch_segment/segments2'
         
 def load_pickle(pickle_path):
     with open(pickle_path, 'rb') as f:
@@ -85,7 +85,7 @@ def extract_voxel_helper(subject_id, counter, conversion_map):
                 continue
                 
             # get both livers and spleen
-            for org_label in [1]:
+            for org_label in [1,2]:
                 os.makedirs(os.path.join(segments, subject_id), exist_ok=True)
                 segment_org = segment_one_org(segment_map, org_label)
 
@@ -160,8 +160,8 @@ def main():
 
     df1 = pd.DataFrame.from_dict(dict1,orient='index', columns = ["Image", "Mask", "ID"])
     df2 = pd.DataFrame.from_dict(dict2,orient='index', columns = ["Image", "Mask", "ID"])
-    df1.to_csv("radiomics/radiomics_filenames_1.csv")
-    df2.to_csv("radiomics/radiomics_filenames_2.csv")
+    df1.to_csv("../radiomics/radiomics_filenames_1.csv")
+    df2.to_csv("../radiomics/radiomics_filenames_2.csv")
 
      
 

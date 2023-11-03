@@ -1,3 +1,0 @@
-data: contains 10 raw zip files corresponding to one MRI each from UK Biobank
-stiched_data: contains the stitched versions of these 10 MRIs
-

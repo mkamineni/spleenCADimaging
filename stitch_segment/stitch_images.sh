@@ -1,6 +1,6 @@
 counter=1
 limit=2 #make sure to do 1 more than the number of iterations you want to do
-increment=4287
+increment=5136
 
 START="$(date +%s)"
 
@@ -51,14 +51,14 @@ do
     #echo "Time to predict (s): ${PREDICT}"
 
     #extract voxels
-    #python extractvoxel.py --increment $increment --counter $counter
+    python extractvoxel.py --increment $increment --counter $counter
     #VOXEL=$[ $(date +%s) - ${START} ]
     #START="$(date +%s)"
     #echo "Time to extract voxels (s): ${VOXEL}"
     
 
-    pyradiomics radiomics/radiomics_filenames_1.csv -o radiomics/radiomics_results_1ext_${counter}.csv -f csv --jobs 16
-    #pyradiomics radiomics/radiomics_filenames_2.csv -o radiomics/radiomics_results_2b_${counter}.csv -f csv --jobs 16
+    pyradiomics ../radiomics/radiomics_filenames_1.csv -o ../radiomics/radiomics_results_1b_${counter}.csv -f csv --jobs 16
+    pyradiomics ../radiomics/radiomics_filenames_2.csv -o ../radiomics/radiomics_results_2b_${counter}.csv -f csv --jobs 16
     
     #rm radiomics/radiomics_filenames_1.csv
     #rm segments/**/*1_seg_org*

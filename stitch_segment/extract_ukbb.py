@@ -168,8 +168,8 @@ def main():
     logging.warning('num_subjects: {0}'.format(num_subjects))
     logging.warning('start_idx: {0}\n'.format(start_idx))
     
-    zip_files = glob.glob(os.path.join(zip_folder, '*_20201_2_0.zip'))
-    #zip_files = glob.glob(os.path.join(zip_folder, '*_3_0.zip'))
+    #zip_files = glob.glob(os.path.join(zip_folder, '*_20201_2_0.zip'))
+    zip_files = glob.glob(os.path.join(zip_folder, '*_3_0.zip'))
 
     #zip_files.sort()
     

@@ -28,7 +28,8 @@ def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir =
     plt.tight_layout()
     plt.savefig(figdir+filename+'/auroc.png')
     plt.clf()
-    log.write('AUC of model: %f \n' %auroc)
+    if log:
+        log.write('AUC of model: %f \n' %auroc)
     
     pre,rec,_=metrics.precision_recall_curve(df.label, df.prob)
     aupr=metrics.average_precision_score(df.label, df.prob)
@@ -49,7 +50,8 @@ def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir =
     precision = metrics.precision_score(df.label, df.pred)
     recall = metrics.recall_score(df.label, df.pred)
     f1_score = metrics.f1_score(df.label, df.pred)
-    log.write('Precision, Recall, F1 score at 95th Percentile: %f, %f, %f \n \n' %(precision, recall, f1_score))
+    if log:
+        log.write('Precision, Recall, F1 score at 95th Percentile: %f, %f, %f \n \n' %(precision, recall, f1_score))
     
     # compute calibration curve
     df['bin']=pd.qcut(df.prob,10) #bin by risk est (5 bins)
@@ -76,17 +78,14 @@ def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir =
 
         #Plot
         plt.plot(fpr,tpr,label='AUROC for age group %s-%s =%0.2f' %(str(groups[group]),str(groups[group+1]), auroc))
-        log.write('AUC for age group %s: %f \n' %(str(groups[group]), auroc))
+        if log:
+            log.write('AUC for age group %s: %f \n' %(str(groups[group]), auroc))
     plt.legend(loc='lower right')
     plt.tight_layout()
     plt.savefig(figdir+filename+'/auroc_age.png')
     plt.clf()
-    
-    if 'Prev' in filename:
-        selected_feat = open(figdir+filename+'/selected_feats.txt', 'w+')
-        for col in X_test.columns:
-            selected_feat.write(col+"\n")
-        selected_feat.close()
+
+    return auroc
 
     
 def most_important_coefs(result, X_train, log):
