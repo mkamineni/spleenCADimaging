@@ -13,24 +13,28 @@ from scipy import stats
 def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir = 'figures/'):
     if not os.path.exists(figdir+filename+'/'):
         os.makedirs(figdir+filename+'/')
+        
+    # set up dataframe 
     df = pd.DataFrame()
     df['prob'] = predictions[:,1]
     df['label'] = np.array(Y_test)
     df['age'] = X_test.age
     
+    # compute AUROC
     fpr,tpr,_=metrics.roc_curve(df.label, df.prob, pos_label=1)
-    auroc=metrics.auc(fpr,tpr)
+    overall_auroc=metrics.auc(fpr,tpr)
     
-    #Plot
+    #Plot AUROC figure
     plt.figure()
-    plt.plot(fpr,tpr,label='Test AUROC=%0.2f' %auroc)
+    plt.plot(fpr,tpr,label='Test AUROC=%0.2f' %overall_auroc)
     plt.legend(loc='lower right')
     plt.tight_layout()
     plt.savefig(figdir+filename+'/auroc.png')
     plt.clf()
     if log:
-        log.write('AUC of model: %f \n' %auroc)
+        log.write('AUC of model: %f \n' %overall_auroc)
     
+    # compute AUPR
     pre,rec,_=metrics.precision_recall_curve(df.label, df.prob)
     aupr=metrics.average_precision_score(df.label, df.prob)
 
@@ -85,7 +89,8 @@ def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir =
     plt.savefig(figdir+filename+'/auroc_age.png')
     plt.clf()
 
-    return auroc
+    # return auroc on test set
+    return overall_auroc
 
     
 def most_important_coefs(result, X_train, log):
@@ -108,6 +113,10 @@ def most_important_coefs(result, X_train, log):
     sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1][2], reverse = False)
 
     log.write('Top 20 Features: %s \n' %str(sorted_feat_to_imp[:20])) 
+    
+    adjusted_p_values = calculate_FDR(p_values)
+    log.write('Top 20 Features adjusted p_values: %s \n' %str(adjusted_p_values)) 
+    
 
 def bootstrap_eval(aucs, coefs, covars, reps, log):
     def se(data):
@@ -129,3 +138,22 @@ def bootstrap_eval(aucs, coefs, covars, reps, log):
     sorted_feat_to_imp = sorted(feat_to_imp.items(), key=lambda x:x[1][2], reverse = False)
 
     log.write('Top 20 Features: %s \n' %str(sorted_feat_to_imp[:20])) 
+
+def calculate_FDR(p_values):
+    p_values = np.array(p_values)
+    # Number of tests
+    m = len(p_values)
+    # Sort the p-values and get the sorted indices
+    sorted_indices = np.argsort(p_values)
+    sorted_p_values = p_values[sorted_indices]
+    # Calculate the cumulative minimum of the adjusted p-values (from the end)
+    adjusted_p_values = np.minimum.accumulate((m / np.arange(m, 0, -1)) * sorted_p_values[::-1])[::-1]
+    # Adjust the p-values to ensure they are monotonically increasing
+    adjusted_p_values = np.minimum.accumulate(np.minimum(adjusted_p_values[::-1], 1))[::-1]
+    return adjusted_p_values
+
+
+#cox_p_values = [3.070157*10**(-2), 8.972309*10**(-3), 1.986826*10**(-3), 9.215075*10**(-3), 4.041386*10**(-2)]
+cox_p_values = [9.192007*10**(-6), 2.280038*10**(-4)]
+
+print(calculate_FDR(cox_p_values))

@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 from preprocess import create_cohort
-from run_model import train_model, bootstrap_model
+from run_model import train_model
 
 if __name__=="__main__":
     parser = ArgumentParser()
@@ -25,21 +25,16 @@ if __name__=="__main__":
     	help = "specify models to train: mention any or all of the following separated by commas: logreg_l1, logreg_l2, xgboost, cox",
     	default = 'logreg_l1', 
     	type = str)
-
-    parser.add_argument('--run_bootstrap', '-run_bootstrap', 
-    	help = "bootstrap model 1000 times",
-    	action = 'store_true', 
-    	default = False)
     
     parser.add_argument('--coh', '-coh', 
     	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev, inc",
     	default = False, 
     	type = str)
+    
 
     args = parser.parse_args()
     randseed = args.randseed
     preprocess = args.preprocess
-    run_bootstrap = args.run_bootstrap
     coh = args.coh.lower()
     run_model = args.run_model
     model_choices = [elem.strip() for elem in args.model_choices.lower().split(',')]
@@ -59,10 +54,7 @@ if __name__=="__main__":
         outcomes = ['Incident_'+outcome for outcome in outcomes]
         
     if preprocess:
-        create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
-    
+        create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, removeHemeCancer= withRadiomicsSpleen)
+        
     if run_model:
-        train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
-    
-    if run_bootstrap:
-        bootstrap_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes)
+        train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer = withRadiomicsSpleen, outcomes = outcomes)
