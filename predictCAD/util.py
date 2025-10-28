@@ -15,12 +15,13 @@ np.random.seed(0)
 #think about the split for incident and prevalent CAD
 #think about how to group clusters
 #double check Cox part in train_eval_cox_model
+datapath = "/medpop/esp2/mkaminen/data/"
 
 def add_all_mri_times(data, outcomes):
     '''
     adding information about prevalent and incident cases based on MRI
     '''
-    mri_data = pd.read_csv("gs://ukbb_spleen/CAD_Phenotypes_for_MRI_Participants.csv")
+    mri_data = pd.read_csv(datapath+"CAD_Phenotypes_for_MRI_Participants.csv")
     #mri_data = pd.read_csv("gs://ukbb_spleen/CAD_Phenotypes_Imaging_Participants.csv")
 
     mri_data = mri_data.rename(columns = {'f.eid':'ID', 'Index_Date':'MRI_Date'})
@@ -45,10 +46,10 @@ def add_radiomics_features(data, phase, organ = 'spleen'):
     '''
     print(organ)
     print(phase)
-    rad = pd.read_csv('../radiomics/radiomics_%s_1.csv' %organ)
-    diag_cols = [elem for elem in rad.columns if 'diagnostics' in elem]
-    rad = rad[rad.Image.str.contains(phase)]
-    rad = rad.drop(['Image', 'Mask']+diag_cols, axis = 1)
+    rad = pd.read_csv(datapath+'%s_%s.csv' %(organ, phase))
+    #diag_cols = [elem for elem in rad.columns if 'diagnostics' in elem]
+    #rad = rad[rad.Image.str.contains(phase)]
+    rad = rad.drop(['Unnamed: 0'], axis = 1)
     rad = rad.add_prefix(organ+'_')
     rad = rad.rename(columns = {organ+'_ID':'ID'})
     rad = rad.drop_duplicates('ID').dropna()

@@ -13,6 +13,7 @@ withRadiomicsSpleen = True
 withExistAbFeats = False #existing abdominal features
 dropNa = False
 phase = 'wat'
+datapath = "/medpop/esp2/mkaminen/data/"
 
 def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, phase = 'wat', removeHemeCancer = False):
 
@@ -22,7 +23,7 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     abdominal_covars = ['spleen_vol']
 
     # reading in patient characteristics
-    data = pd.read_csv("gs://ukbb_spleen/CHIPCAD_pheno_v5.csv", sep='\s+', usecols=pce_covars+['ID', 'pce_goff'])
+    data = pd.read_csv(datapath+"CHIPCAD_pheno_v5.csv", sep='\s+', usecols=pce_covars+['ID', 'pce_goff'])
     
     data_filt = data.sort_values(by = ["ID"]).drop_duplicates()
     print(data_filt.shape)
@@ -72,7 +73,7 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
         coh = coh.dropna(subset = outcomes) 
     print(coh.shape)
     if removeHemeCancer:
-        no_heme_coh = pd.read_csv("cohorts/radspleen_wo_heme_cancer.csv", usecols = ["ID"])
+        no_heme_coh = pd.read_csv(datapath+"radspleen_wo_heme_cancer.csv", usecols = ["ID"])
         coh = coh.merge(no_heme_coh, how = "inner", on = "ID")
         print("removed heme")
         print(coh.shape)
