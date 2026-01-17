@@ -13,14 +13,15 @@ withRadiomicsSpleen = True
 withExistAbFeats = False #existing abdominal features
 dropNa = False
 phase = 'wat'
-datapath = "/medpop/esp2/mkaminen/data/"
 
-def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, phase = 'wat', removeHemeCancer = False):
+def create_cohort(datapath, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, phase = phase, removeHemeCancer = False, withLivSens = False):
 
     pce_covars = ['age', 'race', 'Sex', 'tchol', 'hdl', 'SBP', 'dm2_prev', 'dm1_prev', 'antihtnbase', 'SmokingStatusv2', 'statin0']
     demo_only = ['age', 'race', 'Sex']
     other= ['ID', 'pce_goff', 'time_to_follow_up'] +['Years_To_'+outcome.replace('Incident_', '').replace('Prevalent_', '') for outcome in outcomes] # adding follow up times here because don't want to drop na based on these columns, unless cox model
     abdominal_covars = ['spleen_vol']
+    liv_sens = ["prevalent_disease_Chronic_Liver_Disease_updated"]#, "prevalent_disease_Chronic_Liver_Disease"]
+
 
     # reading in patient characteristics
     data = pd.read_csv(datapath+"CHIPCAD_pheno_v5.csv", sep='\s+', usecols=pce_covars+['ID', 'pce_goff'])
@@ -29,17 +30,22 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     print(data_filt.shape)
 
     # adding in MRI times and outcomes
-    data_filt = add_all_mri_times(data_filt, outcomes)
+    data_filt = add_all_mri_times(datapath, data_filt, outcomes)
     print(data_filt.columns)
 
     if withRadiomicsSpleen:
-        data_filt, spleen_rad_covars = add_radiomics_features(data_filt, phase, 'spleen')
+        data_filt, spleen_rad_covars = add_radiomics_features(datapath, data_filt, phase, 'spleen')
     print(data_filt.columns)
 
     if withRadiomicsLiver:
-        data_filt, liver_rad_covars = add_radiomics_features(data_filt, phase, 'liver')    
+        data_filt, liver_rad_covars = add_radiomics_features(datapath, data_filt, phase, 'liver')    
 
-    data_filt = add_existing_abdominal_features(data_filt, abdominal_covars)
+    if withLivSens:
+        liv_data = pd.read_csv("../../Data/liver_analysis/CAD_pat_char_with_liver.csv", usecols = ["ID"]+liv_sens)
+        input(data_filt.shape)
+        data_filt = pd.merge(data_filt, liv_data, on="ID", how="left")
+        input(data_filt.shape)         
+    #data_filt = add_existing_abdominal_features(data_filt, abdominal_covars)
     
     covars = []
     if withPCE:
@@ -57,6 +63,9 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     if withExistAbFeats:
         covars = covars + abdominal_covars
 
+    if withLivSens:
+        covars = covars + liv_sens
+
     cols_to_keep = covars+outcomes+other
 
     data_filt = data_filt[cols_to_keep]
@@ -70,13 +79,16 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     if dropNa:
         coh = coh.dropna()
     else:
-        coh = coh.dropna(subset = outcomes) 
+        coh = coh.dropna(subset = outcomes)
     print(coh.shape)
+    print(coh.head(10))
+    
     if removeHemeCancer:
         no_heme_coh = pd.read_csv(datapath+"radspleen_wo_heme_cancer.csv", usecols = ["ID"])
         coh = coh.merge(no_heme_coh, how = "inner", on = "ID")
         print("removed heme")
         print(coh.shape)
+        print(coh.head(10))
 
     '''
     Printing Statistics about the Patient Cohort
@@ -108,8 +120,8 @@ def create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     # training label for prevalent CAD analyses
     coh['train'] = np.random.choice(2, coh.shape[0], p=[0.3, 0.7])
 
-    with open('cohorts/covars.txt', 'w') as fp:
+    with open(datapath+'cohorts/covars.txt', 'w') as fp:
         fp.writelines(var + '\n' for var in covars)
     print(coh.time_to_follow_up.value_counts(dropna=False))
 
-    coh.to_csv(make_filename(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer), index = None)
+    coh.to_csv(make_filename(datapath, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer, withLivSens), index = None)

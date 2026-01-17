@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 from scipy import stats
 
-
-def standard_metrics(predictions, X_test, Y_test, log, model, filename, figdir = 'figures/'):
+def standard_metrics(datapath, predictions, X_test, Y_test, log, model, filename):
+    figdir = datapath+'figures/'
     if not os.path.exists(figdir+filename+'/'):
         os.makedirs(figdir+filename+'/')
         

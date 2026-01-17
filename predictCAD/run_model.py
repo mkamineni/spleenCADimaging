@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
-import xgboost as xgb
+#import xgboost as xgb
 
 from sklearn import metrics
 from sklearn.model_selection import KFold, GridSearchCV, train_test_split
@@ -38,14 +38,14 @@ def initialize_model_grid_search(model_choice):
         pipeline=Pipeline([('standard_scaler', StandardScaler()), ('model', LogisticRegression())])
         param_grid = dict({'model__penalty': ['l2'], 'model__class_weight':['balanced', None], 'model__C':c_parameters})
 
-    elif model_choice == 'xgboost':                
-        pipeline = xgb.XGBClassifier()
+    #elif model_choice == 'xgboost':                
+    #    pipeline = xgb.XGBClassifier()
 
-        param_grid = dict({
-            'max_depth': [3, 5, 10, 15, 20],
-            'learning_rate': [0.01, 0.1, 0.2, 0.3],
-            'n_estimators': [100, 500, 1000]
-        })        
+    #    param_grid = dict({
+    #        'max_depth': [3, 5, 10, 15, 20],
+    #        'learning_rate': [0.01, 0.1, 0.2, 0.3],
+    #        'n_estimators': [100, 500, 1000]
+    #    })        
 
     # configure the cross-validation procedure
     cv = KFold(n_splits=5, shuffle=True, random_state=1)
@@ -105,19 +105,19 @@ def train_eval_cox_model(f, filename, X_train, Y_train, X_test, Y_test, time_out
     return test_score
 
 
-def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer, outcomes):
+def train_model(datapath, model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer, outcomes, withLivSens):
     '''
     Train one iteration of the model, compatible with logistic regression and cox model
     '''
-    with open('cohorts/covars.txt', 'r') as fp:
+    with open(datapath+'cohorts/covars.txt', 'r') as fp:
         covars = [x.strip() for x in fp.readlines()]
-    
+   	 
     if withRadiomicsLiver:
         f = open('liver_model_outputs.txt', "a+")
     else:
-        f = open('model_outputs.txt', "a+")
+        f = open(datapath+'model_outputs.txt', "a+")
     f.write('-----------------Date of Analysis: %s----------------- \n' %str(date.today()))
-    cohort = make_filename(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer)
+    cohort = make_filename(datapath, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer, withLivSens)
     f.write(cohort + '\n')
     data_filt = pd.read_csv(cohort)
     f.write("Number of patients %d \n" %data_filt.shape[0])
@@ -175,7 +175,7 @@ def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadio
 
                     predictions, result = train_eval_cross_sectional_model(choice, X_train_tr, Y_train_tr, 
                                                                            X_train_val, Y_train_val, cohort, outcome)
-                    metric = standard_metrics(predictions, X_train_val, Y_train_val, log = None, model = choice, filename = filename)
+                    metric = standard_metrics(datapath, predictions, X_train_val, Y_train_val, log = None, model = choice, filename = filename)
                 metrics_x.append(metric)
             best_threshold = thresholds[np.argmax(metrics_x)]
             f.write("Best threshold: %f \n" %best_threshold)
@@ -219,7 +219,7 @@ def train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadio
                 print(np.mean(sorted_aucs))
                 print(str(conf_interval))
 
-                standard_metrics(predictions, X_test, Y_test, log = f, model = choice, filename = filename)
+                standard_metrics(datapath, predictions, X_test, Y_test, log = f, model = choice, filename = filename)
                 if 'logreg' in choice:
                     most_important_coefs(result, X_train, log = f)
 

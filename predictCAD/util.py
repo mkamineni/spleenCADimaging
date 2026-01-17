@@ -15,9 +15,8 @@ np.random.seed(0)
 #think about the split for incident and prevalent CAD
 #think about how to group clusters
 #double check Cox part in train_eval_cox_model
-datapath = "/medpop/esp2/mkaminen/data/"
 
-def add_all_mri_times(data, outcomes):
+def add_all_mri_times(datapath, data, outcomes):
     '''
     adding information about prevalent and incident cases based on MRI
     '''
@@ -40,7 +39,7 @@ def add_all_mri_times(data, outcomes):
     return merged
     
 
-def add_radiomics_features(data, phase, organ = 'spleen'):
+def add_radiomics_features(datapath, data, phase, organ = 'spleen'):
     '''
     Combine raddiomics features with cohort
     '''
@@ -175,11 +174,11 @@ def calculate_vif(df, features):
     # return VIF DataFrame
     return pd.DataFrame({'VIF': vif, 'Tolerance': tolerance})
 
-def make_filename(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer):
+def make_filename(datapath, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer, withLivSens):
     '''
     Based on the parameters passed to make cohort, create an identiifable filename
     '''
-    filename = 'cohorts/CADcohort'
+    filename = datapath+'cohorts/CADcohort'
     if not dropNa:
         filename = filename + '_all'
     if withDemo:
@@ -193,7 +192,9 @@ def make_filename(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, wi
     if withExistAbFeats:
         filename = filename + '_existab'
     if removeHemeCancer:
-        filename = filename + '_no_heme'        
+        filename = filename + '_no_heme'
+    if withLivSens:
+        filename = filename + '_livsens'        
     return filename+'.csv'
 
 

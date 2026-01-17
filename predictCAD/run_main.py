@@ -27,7 +27,7 @@ if __name__=="__main__":
     	type = str)
     
     parser.add_argument('--coh', '-coh', 
-    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev, inc",
+    	help = "cohort parameters, mention any or all of following: pce, demo, spleen, liver, existab, dropna, prev, inc, liv_sens",
     	default = False, 
     	type = str)
     
@@ -40,12 +40,15 @@ if __name__=="__main__":
     model_choices = [elem.strip() for elem in args.model_choices.lower().split(',')]
     
     withPCE, withDemo, withRadiomicsSpleen = 'pce' in coh, 'demo' in coh, 'spleen' in coh
-    withRadiomicsLiver, withExistAbFeats, dropNa = 'liver' in coh, 'existab' in coh, 'dropna' in coh
-    
+    withRadiomicsLiver, withExistAbFeats, dropNa, withLivSens = 'liver' in coh, 'existab' in coh, 'dropna' in coh, 'liv_sens' in coh
+    #liv_sens referring to sensitivity analysis to see how adjusting for chronic liver disease affects results
+
     # modify outcomes - default is all, but if you want prevalent or incident, will be changed here
     outcomes = ['Coronary_Artery_Disease', 'Coronary_Artery_Disease_INTERMEDIATE', 'Coronary_Artery_Disease_HARD', 'Coronary_Artery_Disease_SOFT','composite_mi_cad_stroke']
 
     outcomes = ['Coronary_Artery_Disease_INTERMEDIATE']
+    
+    datapath = "/Users/meghanakamineni/Documents/HarvardMed/RAThesis/Data/spleen_inphase_epi/"
 
     if 'prev' in coh:
         outcomes = ['Prevalent_'+outcome for outcome in outcomes]
@@ -54,7 +57,7 @@ if __name__=="__main__":
         outcomes = ['Incident_'+outcome for outcome in outcomes]
         
     if preprocess:
-        create_cohort(withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, removeHemeCancer= withRadiomicsSpleen)
+        create_cohort(datapath, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, outcomes, removeHemeCancer= withRadiomicsSpleen, withLivSens = withLivSens)
         
     if run_model:
-        train_model(model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer = withRadiomicsSpleen, outcomes = outcomes)
+        train_model(datapath, model_choices, withPCE, withDemo, withRadiomicsSpleen, withRadiomicsLiver, withExistAbFeats, dropNa, removeHemeCancer = withRadiomicsSpleen, outcomes = outcomes, withLivSens=withLivSens)
