@@ -26,6 +26,12 @@ Repository Structure:
 - predictCAD: preprocess data and implement models to identify splenic radiomics features that are associated with prevalent and incident CAD
 - radiomics: extracted radiomics features for both spleen and liver
 
+Related Repositiories:
+- spleenCADimaging: MRI processing, segmentation, and radiomics extraction
+- spleenCADgenetics: GWAS and downstream genetic analyses
+- spleenResultsAnalysis: gene prioritization and visualization of data into figures
+- spleen_replication: External replication analyses in independent Massachusetts General Brigham Biobank (MGBB) cohort
+
 Publication: 
 - If you use this repository, please cite: 
 Kamineni, M., Raghu, V., Truong, B., Alaa, A., Schuermans, A., Friedman, S., Reeder, Ch., Bhattacharya, R., Libby, P., Ellinor, P.T., Maddah, M., Philippakis, A., Hornsby, Wh., Yu, Zh., Natarajan, P., (2024). Deep learning-derived splenic radiomics, genomics, and coronary artery disease. medRxiv.
