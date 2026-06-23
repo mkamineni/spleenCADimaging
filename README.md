@@ -11,15 +11,10 @@ Organ segmentation was implemented using a pre-trained deep learning model: (cod
 
 ## Workflow
 - Abdominal MRI
-    ↓
 - Image Stitching
-    ↓
 - Organ Segmentation
-    ↓
 - Spleen Radiomic Feature Extraction
-    ↓
 - Feature Selection and Modeling
-    ↓
 - Association with Prevalent and Incident CAD
 
 ## Repository Structure
