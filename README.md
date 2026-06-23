@@ -18,15 +18,14 @@ Organ segmentation was implemented using a pre-trained deep learning model: (cod
 - Association with Prevalent and Incident CAD
 
 ## Repository Structure
-* stitch_segment: code to stitch together MRI images acquired from different stations and then segment out various organs, utilzing a pre-trained model on UK Biobank data
-* predictCAD: preprocess data and implement models to identify splenic radiomics features that are associated with prevalent and incident CAD
-* radiomics: extracted radiomics features for both spleen and liver
+* **stitch_segment**: code to stitch together MRI images acquired from different stations and then segment out various organs, utilzing a pre-trained model on UK Biobank data
+* **predictCAD**: preprocess data and implement models to identify splenic radiomics features that are associated with prevalent and incident CAD
+* **radiomics**: extracted radiomics features for both spleen and liver
 
 ## Related Repositiories
-* spleenCADimaging: MRI processing, segmentation, and radiomics extraction
-* spleenCADgenetics: GWAS and downstream genetic analyses
-* spleenResultsAnalysis: gene prioritization and visualization of data into figures
-* spleen_replication: External replication analyses in independent Massachusetts General Brigham Biobank (MGBB) cohort
+* **spleenCADgenetics**: GWAS and downstream genetic analyses
+* **spleenResultsAnalysis**: gene prioritization and visualization of data into figures
+* **spleen_replication**: External replication analyses in independent Massachusetts General Brigham Biobank (MGBB) cohort
 
 ## Publication
 - If you use this repository, please cite: 
