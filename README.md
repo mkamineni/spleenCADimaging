@@ -1,6 +1,7 @@
 # Spleen CAD Imaging
 
-Description: Abdominal-MRI derived splenic radiomics pipeline for studying associations between spleen imaging features and coronary artery disease (CAD).
+## Description
+Abdominal-MRI derived splenic radiomics pipeline for studying associations between spleen imaging features and coronary artery disease (CAD).
 
 ## Overview
 Emerging evidence suggests that the spleen plays an important role in inflammatory pathways and cardiovascular disease. 
@@ -27,10 +28,10 @@ Organ segmentation was implemented using a pre-trained deep learning model: (cod
 - radiomics: extracted radiomics features for both spleen and liver
 
 ## Related Repositiories
-- spleenCADimaging: MRI processing, segmentation, and radiomics extraction
-- spleenCADgenetics: GWAS and downstream genetic analyses
-- spleenResultsAnalysis: gene prioritization and visualization of data into figures
-- spleen_replication: External replication analyses in independent Massachusetts General Brigham Biobank (MGBB) cohort
+- **spleenCADimaging: MRI processing, segmentation, and radiomics extraction
+- **spleenCADgenetics: GWAS and downstream genetic analyses
+- **spleenResultsAnalysis: gene prioritization and visualization of data into figures
+- **spleen_replication: External replication analyses in independent Massachusetts General Brigham Biobank (MGBB) cohort
 
 ## Publication
 - If you use this repository, please cite: 
@@ -38,6 +39,7 @@ Kamineni, M., Raghu, V., Truong, B., Alaa, A., Schuermans, A., Friedman, S., Ree
 
 ## Author
 Meghana Kamineni, MD
+
 Harvard Medical School, Massachusetts General Hospital 
 
 ## References
